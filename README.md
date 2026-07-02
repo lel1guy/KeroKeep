@@ -17,6 +17,10 @@ Post-apocalyptic medieval fantasy idle game. Manage a crumbling stronghold, recr
 
 📖 **[Full Game Design Document](docs/GDD.md)** — vision, pillars, core loop, all 5 systems, content plan, and C# conversion tracking.
 
+## Screenshots
+
+> ⚠️ TODO: Add gameplay GIFs or screenshots once the C# port is playable.
+
 ## Prototype
 
 The original GDScript version is archived at [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) — playable alpha, used as reference for the C# port. All systems documented in the GDD were extracted from its live code.
