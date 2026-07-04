@@ -23,12 +23,6 @@ I built the original prototype in GDScript (Godot). Now I'm porting it to C# to 
 
 ---
 
-## Why Frog Warriors?
-
-The incremental/idle genre is crowded with spreadsheets and generic fantasy. I wanted a game with visible consequence — archers you *see* fire, waves you *feel* bearing down. The frog civilization gives it a distinct visual identity without making it a joke. These are warriors holding the last wall of a dying kingdom. The stakes are real.
-
----
-
 ## Where I'm At
 
 | System | Status |
@@ -88,17 +82,9 @@ You need **Godot 4 with Mono/.NET support** and **.NET 8 SDK**.
 
 ---
 
-## What I'm Learning
+## Dev Log
 
-This project is my C# classroom. I'm an electrician apprentice from Portugal learning game dev from scratch — Godot free, code open, building in public. Every commit is me figuring something out:
-
-- Godot C# signals and autoloads
-- File-scoped namespaces and partial classes
-- JSON save/load pipelines
-- Economy and upgrade scaling math
-- MoSCoW scoping for solo dev
-
-If you're also learning, the [dev log](https://github.com/lel1guy/KeroKeep/blob/main/docs/Dev-Log.md) has session-by-session breakdowns of what I built, what broke, and how I fixed it.
+Session-by-session breakdown of what I built, what broke, and how I fixed it: [Dev-Log.md](docs/Dev-Log.md)
 
 ---
 
@@ -108,6 +94,6 @@ The original GDScript version is at [lel1guy/LastBastion](https://github.com/lel
 
 ---
 
-Built by [@lel1guy](https://github.com/lel1guy) — Quarteira, Algarve, Portugal. Open source, no pay-to-win, forever.
+Built by [@lel1guy](https://github.com/lel1guy). Open source, no pay-to-win, forever.
 
 *Previously: [LastBastion](https://github.com/lel1guy/LastBastion) (GDScript) | [FootPong](https://github.com/lel1guy/FootPong) (first game)*

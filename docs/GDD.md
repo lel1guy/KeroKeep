@@ -23,8 +23,6 @@ I love incremental games. Numbers go up, dopamine hits. But most of them feel li
 
 I wanted an incremental game where the world actually reacts. Archers you see fire. Waves you feel bearing down on the wall. Every upgrade traces back to something *you did*, not something a timer decided. Survival tension with RPG depth, wrapped in idle DNA — and instead of generic humans, the defenders are the armored frog warriors of a dying kingdom.
 
-I'm an electrician apprentice from Quarteira learning game dev. This is my first serious project — the one I'm porting from GDScript to C# to learn the language properly.
-
 ### The Feeling
 
 | Moment | Feeling |
