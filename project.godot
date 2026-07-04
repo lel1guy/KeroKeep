@@ -10,9 +10,13 @@ config_version=5
 
 [application]
 
-config/name="lastbastioncs"
-config/features=PackedStringArray("4.7", "Forward Plus")
+config/name="KeroKeep"
+config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://b8843ynpre73"
 
 [display]
 
