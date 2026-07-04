@@ -1,14 +1,11 @@
 # LastBastion — Game Design Document
 
 > **Status:** 🟢 Active — C# port in progress
-> **Engine:** Godot 4 (Mono)
-> **Language:** C#
+> **Engine:** Godot 4 (Mono) · **Language:** C#
 > **Repo:** [lel1guy/LastBastionCS](https://github.com/lel1guy/LastBastionCS) (private)
-> **PC path:** `D:\Game Development\Projects\lastbastioncs`
-> **Prototype:** [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) — GDScript, playable alpha (archived reference)
-> **Dev Log:** Dev-Log — C# port session log (in vault)
+> **Prototype:** [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) — GDScript (archived)
+> **Design philosophy:** B/C hybrid — named survivors with stats + skill levels, engineering tree, siege waves
 > **Last updated:** 2026-07-02
-> **New systems planned:** Quests, Achievements, Bosses, Prestige
 
 ---
 
@@ -20,122 +17,483 @@
 
 ### Why This Game Exists
 
-The incremental/idle genre is rich with games where numbers go up — but few where the numbers *feel* real. V wanted an incremental game with visible consequence: archers you see fire, waves you feel bearing down, every upgrade earned by surviving one more round. Not bars filling in menus. Not abstract numbers ticking behind a UI. A game where survival tension and RPG influence are threaded through the core idle DNA — something that didn't exist, so he started building it.
-
-### "X meets Y"
-
-*Pending — comparable influences to be named when inspiration strikes.*
+The incremental/idle genre is rich with games where numbers go up — but few where the numbers *feel* real. V wanted an incremental game with visible consequence: archers you see fire, waves you feel bearing down, every upgrade earned by surviving one more round. A game where survival tension and RPG influence are threaded through the core idle DNA.
 
 ### The Feeling
 
 | Moment | Feeling |
 |--------|---------|
 | **Growth beat** | Watching your base harden, numbers climb, survivors grow stronger — knowing *you* earned every increment through action |
-| **Siege tension** | The dread before a wave. "Will we make it?" Relief when the last enemy falls. Pressure of knowing it *never* ends — and the world runs even while you're away |
-| **Boss encounter** | A rare, named enemy appears. Higher stakes, bigger reward. The moment the music swells and you lock in — this one matters |
-| **Prestige reset** | Letting go. Trading everything you built for a permanent edge. The quiet moment before you press the button, knowing what you lose and what you gain |
+| **Siege tension** | The dread before a wave. "Will we make it?" Relief when the last enemy falls. Pressure of knowing it *never* ends |
+| **Boss encounter** | A named threat appears. Music shifts. The screen darkens. This one matters — beating it means real progression, losing it means real setback |
+| **Prestige reset** | The wall has held through everything. Time to begin again — stronger, wiser, with scars that show. A bittersweet goodbye to the survivors who got you here |
 
 ### Design Pillars
 
 **P1 — EARNED GROWTH**
-Progress isn't passive. Every number that goes up traces back to player action — mobs killed, archers commanded, resources chosen and spent. Clicking and timers are pacing mechanisms, not idle automation. What matters: the game doesn't grow without the player.
+Progress traces back to player action — mobs killed, archers commanded, resources chosen and spent. Clicking and timers are pacing mechanisms, not idle automation. The game doesn't grow without the player.
 
 **P2 — PERSISTENT SIEGE**
-There is no pause. No victory screen. The siege is eternal. Once all archers are unlocked, the simulation runs even while offline — random hordes and bosses appear, the world keeps burning. Until then, you hold the line with your own hands. When you walk away, you'll wonder if it still stands when you return. Offline persistence is a reward, not a given.
+There is no pause. No victory screen. The siege is eternal. Once all archers are unlocked, the simulation runs even while offline — random hordes and bosses appear, the world keeps burning. Offline persistence is a reward, not a given.
 
 **P3 — FAIR FOREVER**
-No pay-to-win. No premium currency. Money never touches game balance. If monetization ever happens, it's optional — ads for a temporary assist that helps without breaking the tension. The game respects your time and your wallet equally.
+No pay-to-win. No premium currency. Money never touches game balance. If monetization ever happens, it's optional — ads for a temporary assist. The game respects your time and your wallet equally.
 
-The four new planned systems — Quests, Achievements, Bosses, Prestige — all serve P1 through P3. Quests give direction to earned growth. Achievements mark meaningful milestones. Bosses intensify the siege with higher-stakes moments. Prestige deepens the meta loop without touching monetization.
+### B/C Hybrid Design
+
+LastBastion uses a hybrid approach between two design philosophies:
+
+| Aspect | Approach | What It Means |
+|--------|----------|---------------|
+| **Survivors** | Option B | Named individuals with stats, personality, and attachment. 6 max (3 farmers, 3 scavengers). |
+| **Skills** | Option C | 5 skills replace 9 flat upgrades. Depth over breadth. Skill levels gate new mechanics. |
+| **Engineering** | Option C | Tech tree unlocked through skill levels. Recipes persist through prestige. |
+| **Siege waves** | Option C | Percentage-based difficulty. Unpredictable = tense. No fixed wave schedules. |
 
 ---
 
 ## 2. Core Loop
 
-### 2.1 Moment-to-Moment (~10 seconds)
+LastBastion's gameplay operates on three nested timescales, plus four progression layers.
 
-The player clicks monsters to attack. Each click deals damage. Monster HP ticks down until zero, at which point the monster dies and rewards are granted.
+### 2.1 Moment-to-Moment (~10 seconds)
 
 | Element | Description |
 |---------|-------------|
 | **Player input** | Click on monster → deal damage |
-| **Reward** | Gold, possibly scrap/food from special monsters |
+| **System response** | HP decreases, damage number pops, death animation at 0 HP |
+| **Reward** | Gold, Bones (from kills), occasionally Oil |
 | **Feel target** | Snappy, responsive, impact. Every click matters. |
-
-**Random Boss Interruption:** Each wave has a small % chance to spawn a boss. Bosses have 5-10× normal HP and drop 5-10× gold. See §3.10.
 
 ### 2.2 Session (~10-20 minutes)
 
 | Element | Description |
 |---------|-------------|
-| **Daily Quests** | 3-5 tasks per day. Reset every 24h |
-| **Main Quest Chain** | Story-driven quest line with multiple bosses. Final boss unlocks prestige |
-| **Achievements** | Pop during play — milestones for kills, unlocks, economy, boss kills, prestige count |
+| **Unlocking** | Spend resources to unlock new archers / defenses |
+| **Upgrading** | Level up skills, upgrade survivors, progress engineering tree |
+| **Monster scaling** | Over time, monsters grow stronger. New types appear. Bosses can spawn. |
+| **Tension** | Resources are finite. Every choice delays another. |
 
 ### 2.3 Meta (hours / days)
 
 | Element | Description |
 |---------|-------------|
-| **Offline simulation** | Unlocks when all archers acquired. World runs while away |
-| **Prestige** | Defeat the final quest boss → prestige becomes available. Player chooses to reset for permanent bonuses |
+| **Offline simulation** | Unlocks when all archers acquired. World runs while away. |
+| **Random events** | Hordes and bosses can appear unpredictably. |
+| **Progression check** | Has the wall held? Are new upgrades available? |
+
+### 2.4 Quests
+
+Structured objectives that guide progression and reward meaningful choices.
+
+| Type | Example | Reward |
+|------|---------|--------|
+| **Milestone** | "Kill 100 skeletons" | Gold, Oil |
+| **Survivor** | "Level up Kael to level 5" | Unique survivor trait |
+| **Boss** | "Defeat Gorath the Breaker" | Prestige currency, rare resources |
+| **Prestige** | "Complete all quests in a cycle" | Triggers prestige option |
+
+Quests are optional — they guide but don't gate. A player can ignore quests and still progress through the siege loop.
+
+### 2.5 Achievements
+
+Permanent, one-time accomplishments. Cosmetic and bragging rights.
+
+| Tier | Example | Unlock |
+|------|---------|--------|
+| **Bronze** | "First Blood" — kill your first monster | Title |
+| **Silver** | "Wall of Flesh" — survive 50 waves | Cosmetic base upgrade |
+| **Gold** | "Unbroken" — complete a prestige cycle with zero wall breaches | Rare title |
+
+**Open question:** Should achievements grant gameplay rewards (stat boosts) or purely cosmetic? *(TBD)*
+
+### 2.6 Bosses
+
+Bosses break the rhythm. They're threats that demand attention and offer outsized rewards.
+
+| Type | Trigger | Behavior |
+|------|---------|----------|
+| **Random spawn** | Percentage chance per wave | Tougher stats, unique attack patterns, drops rare loot (Oil, Bones) |
+| **Quest boss** | Summoned when quest conditions met | Named, unique mechanics, gate to next progression tier |
+
+**Hybrid approach:** Random spawns keep tension high during normal play. Quest bosses give structure and clear goals.
+
+### 2.7 Prestige
+
+The endgame loop. Reset the world, keep permanent bonuses, start stronger.
+
+| Trigger | Description |
+|---------|-------------|
+| **Victory** | Defeat the final quest boss → choose to prestige |
+| **Defeat** | The wall falls → forced prestige with reduced bonus |
+
+**Dual path philosophy:** You're never forced — you can keep playing indefinitely. But eventually the wall falls, or you choose to transcend. Either way, you come back stronger.
+
+**What persists through prestige:**
+- Skill level bonuses (permanent stat boosts)
+- Engineering recipes
+- Achievement titles and cosmetics
+- Prestige currency (earned per cycle)
+
+**What resets:**
+- All resources (Gold, Scrap, Food, Oil, Bones)
+- Survivors (new names, new stories)
+- Archers and upgrades
+- Monster stages
+
+### Loop Diagram
+
+```
+[Click to kill] ──→ [Earn resources] ──→ [Unlock/Upgrade/Skill]
+       ↑                                          │
+       │                                          ↓
+       └──────── [Monsters get stronger] ←───────┘
+        ┌─────────────────────────────────────────┘
+        ↓
+[Quests] ──→ [Bosses] ──→ [Prestige] ──→ [Stronger restart]
+```
+
+### Resources
+
+| Resource | Earned How | Spent On |
+|----------|-----------|----------|
+| **Gold** | Kills, waves, base income | Unlocks, general upgrades |
+| **Scrap** | Salvage, scavengers auto-farm | Archer unlocks, damage upgrades |
+| **Food** | Farmers auto-farm | Upkeep for archers, survivors, workers |
+| **Oil** | Rare drops, boss kills, quest rewards | Engineering tree — advanced buildings, automation |
+| **Bones** | Monster kills, boss kills | Crafting, rituals, survivor upgrades |
+
+#### Upkeep & Failure
+
+Every archer and survivor has an ongoing **food upkeep cost**.
+
+**If food hits zero:**
+1. Archers stop firing — defenses go silent
+2. Survivors stop producing — Scrap and Food income drops to zero
+3. **Death spiral**: no food → no workers → no production → no recovery without manual intervention
 
 ---
 
-## 3. Systems (Summary)
+## 3. Systems
 
-### Resource Web
-**Gold** (kills/waves) · **Scrap** (survivor scavenging) · **Food** (survivor farming) · **Oil** (ferment crops) · **Bones** (monster drops)
+### 3.1 Archer System
 
-### Survivors (§3.6)
-6 named NPCs with stats (Farming 1-10, Scavenging 1-10) and traits. Three risk zones for scavenging (Safe/Risky/Dead Zone). Permanent death. Food upkeep creates tension.
+| Property | Value |
+|----------|-------|
+| **Archer types** | 1 type (single archer unit), tier progression |
+| **Max archers** | 4 total |
+| **Arrow count** | Max 3 per archer (upgraded) |
 
-### Skills (§3.7)
-5 skills replacing flat upgrades: Combat, Archery, Scavenging, Farming, Engineering. Level through use. Focus Overdrive (manual boost).
+Each archer: unlock cost (Gold + Scrap + Food), upkeep cost (Food/tick), per-arrow damage (upgraded), tier progression upgrading stats and visuals.
 
-### Quests (§3.8)
-Daily (3-5/day) + Main quest chain (5 stages with bosses) + Side quests.
+### 3.2 Monster System
 
-### Achievements (§3.9)
-7 categories: Combat, Bosses, Economy, Unlocks, Engineering, Prestige, Survivors. Permanent, persist through prestige.
+| Monster | Stage | Status |
+|---------|-------|--------|
+| **Skeleton** | 0 | Implemented (3 variants) |
+| **Zombie** | 1 | Implemented (7 variants) |
+| **Orc** | 2 | Planned |
+| **Demon** | 3 | Planned |
 
-### Bosses (§3.10)
-Hybrid: random spawns (5-12% per wave) + quest bosses. Siege Waves (8-15% per wave) with defense gap display.
+**Behavior:** All monsters descend from `BaseMob` (CharacterBody2D). Move straight down. On click → damage. 0 HP → death animation + gold + bones. Progression via `unlocked_stage`.
 
-### Engineering (§3.11)
-Arrow tiers (Bone→Iron→Steel→Fire). Defense constructions (Spikes→Oil Trap→Auto-Turret). Oil production via crop fermentation.
+### 3.3 Upgrade System → Transitioning to Skills
 
-### Prestige (§3.12)
-Trigger: defeat final quest boss OR wall falls. Legacy Points shop. Skill baselines carry 5% forward.
+Nine flat upgrades currently implemented in the GDScript prototype (Pocket Search, Scavengers, Farmers, Strength, Storeroom, Farm, Gear, Arrow Count, Archers). Exponential cost growth (×1.5 per level). Three-resource affordability check.
+
+**Architecture decision:** Port the 9-upgrade system as-is for MVP. Transition to the 5-skill system (3.7) post-MVP — deeper, more earned, better alignment with P1.
+
+### 3.4 Economy
+
+| Resource | Manual Collection | Auto Collection |
+|----------|------------------|-----------------|
+| **Scrap** | Scavenge (15s cd, 10 Scrap) | Auto-scrap (1s tick, upgrades scale) |
+| **Food** | Farm (4s cd, 5 Food) | Auto-food (1s tick, upgrades scale) |
+| **Gold** | Combat kills | — |
+| **Oil** | Boss kills, quests | — |
+| **Bones** | Monster kills, boss kills | — |
+
+**Combat income:** Monster gold × `gold_drop_multiplier`. Click damage 1 base (+1/level). Arrow damage 0.25 base (+0.25/level).
+
+### 3.5 Save System
+
+`Save&Load` autoload → `user://SaveFile.json`. Triggers on window close, app pause, focus out, auto-save every 60s. Loads on startup.
+
+### 3.6 Survivor System (NEW)
+
+Named NPCs you recruit, manage, and grow attached to. They're the heart of your bastion.
+
+| Property | Value |
+|----------|-------|
+| **Max survivors** | 6 total (3 farmers, 3 scavengers) |
+| **Acquisition** | Recruited with Gold + Food (random name, random starting stats) |
+| **Roles** | Farmers produce Food. Scavengers produce Scrap. |
+| **Stats** | Efficiency (production rate), Loyalty (prestige bonus carry-over), Resilience (survives food crises longer) |
+| **Leveling** | Gain XP from working. Level up → stats improve. Each level unlocks a new trait slot. |
+| **Attachment** | 6 is small enough to remember names. Each has a short bio. Losing one to a siege hurts. |
+
+**Why 6 max:** Enough for attachment and strategy without spreadsheet overload. 3+3 split keeps role decisions meaningful.
+
+### 3.7 Skill System (NEW)
+
+5 skills replace the 9 flat upgrades. Skills level up through use, not purchase. Deeper, more earned.
+
+| # | Skill | Replaces | Effect | Level Up By |
+|---|-------|----------|--------|-------------|
+| 1 | **Combat** | Strength, Gear, Arrow Count | Click damage, arrow damage, arrow capacity | Killing monsters |
+| 2 | **Scavenging** | Scavengers, Storeroom | Auto-scrap rate, manual scavenge yield, rare find chance | Collecting scrap |
+| 3 | **Farming** | Farmers, Farm | Auto-food rate, manual farm yield, crop resilience | Collecting food |
+| 4 | **Engineering** | — (new) | Unlocks engineering tree nodes, build speed, Oil efficiency | Building/upgrading structures |
+| 5 | **Leadership** | Archers, Pocket Search | Max archers, gold multiplier, survivor morale | Recruiting survivors, surviving waves |
+
+**Skill gating:** Skill levels unlock new mechanics. Engineering 3 → Oil refinery. Leadership 4 → 5th archer. Combat 5 → critical hits.
+
+**Transition plan:** Port the 9 flat upgrades as-is for MVP (they work, they're tested). Add the 5-skill system in a post-MVP update. Players keep their progress — upgrades convert to equivalent skill levels.
+
+### 3.8 Quest System (NEW)
+
+Structured objectives that give direction without taking away agency.
+
+| Component | Description |
+|-----------|-------------|
+| **Quest board** | 3 active quest slots. Complete one, a new one appears. |
+| **Types** | Milestone (kill X, collect Y), Survivor (level up, recruit), Boss (defeat named boss), Prestige (complete all in cycle) |
+| **Rewards** | Gold, Oil, Bones, rare survivor traits, prestige currency |
+| **Optional** | Quests guide but don't gate. Ignore them and the siege loop still works. |
+
+### 3.9 Achievement System (NEW)
+
+Permanent, one-time accomplishments. Tracked globally, persist through prestige.
+
+| Tier | Count | Example |
+|------|-------|---------|
+| **Bronze** | ~20 | "First Blood", "Scrap Collector", "Farmer's First Harvest" |
+| **Silver** | ~12 | "Wall of Flesh" (50 waves), "Boss Slayer" (5 boss kills), "Full House" (6 survivors) |
+| **Gold** | ~6 | "Unbroken" (prestige with zero breaches), "Gorath's Bane" (kill Gorath 3 times) |
+
+**Reward question (TBD):** Cosmetic only (titles, base visuals) or gameplay (small stat boosts)? Design decision pending.
+
+### 3.10 Boss System (NEW)
+
+| Type | Spawn | Stats | Reward |
+|------|-------|-------|--------|
+| **Random** | % chance per wave, increases with stage | 5× HP, 3× damage, unique attack pattern | Gold, Bones, rare Oil |
+| **Quest** | Summoned via quest completion | Named, 10× HP, unique mechanics, phases | Prestige currency, survivor trait, engineering recipe |
+
+**Hybrid approach:** Random bosses keep the siege tense. Quest bosses give structure and clear progression gates.
+
+### 3.11 Engineering System (NEW)
+
+A tech tree that unlocks through skill levels. Permanent upgrades, buildings, and automation.
+
+| Tier | Unlocks at | Examples |
+|------|-----------|----------|
+| **T1** | Engineering 1 | Reinforced walls (+10% HP), basic traps (slow enemies) |
+| **T2** | Engineering 3 | Oil refinery (auto-oil production), ballista tower (heavy damage) |
+| **T3** | Engineering 5 | Auto-repair (walls self-heal), signal fire (survivor loyalty boost) |
+| **T4** | Engineering 7 | Foundry (permanent damage bonus through prestige), thunder dome (boss arena — farmable) |
+
+**Key rule:** Engineering recipes persist through prestige. Once you learn to build a ballista, you keep that knowledge forever. This is the primary long-term progression anchor.
+
+**Costs:** Buildings cost Oil + Scrap. Upgrades cost Oil + Gold. Oil is the engineering bottleneck — scarce, valuable, boss-gated.
+
+### 3.12 Prestige System (NEW)
+
+| Aspect | Detail |
+|--------|--------|
+| **Trigger** | Victory (kill final quest boss) → choose to prestige. Defeat (wall falls) → forced prestige. |
+| **Persists** | Skill level bonuses, engineering recipes, achievements, prestige currency |
+| **Resets** | Resources (all 5), survivors, archers, upgrades, monster stages |
+| **Prestige currency** | Earned per cycle based on achievements completed, bosses killed, survivors saved. Spent on permanent upgrades (starting resources, stat boosts, unique cosmetics). |
+| **Philosophy** | Never forced by victory — you choose when you're ready. Forced by defeat — but you come back stronger. |
 
 ---
 
 ## 4. Content Plan (MoSCoW)
 
-- **Must Do (MVP):** C# port of GDScript prototype (~3-5 weeks)
-- **Should Do:** Survivors, Skills, Bosses, Siege Waves, Daily Quests, Achievements (~6-10 weeks)
-- **Could Do:** Main quest chain, Full engineering, Prestige, Offline, Polish (~6-9 weeks)
-- **Won't Do:** Multiplayer, Monetization, Mobile port, Narrative system
+### Must Do — MVP (3-5 weeks)
+
+| # | Feature | Est. | Depends On |
+|---|---------|------|------------|
+| M1 | Port 9-upgrade system to C# | 3d | GameManager.cs |
+| M2 | Archer system (4 archers, 3 arrows each) | 2d | Upgrades |
+| M3 | Monster system (Skeleton, Zombie, Orc) | 2d | — |
+| M4 | Economy (manual + auto collection, 3 resources) | 2d | Upgrades |
+| M5 | Save/Load (JSON autoload) | 1d | GameManager |
+| M6 | Core UI (resources, upgrades, archer panel) | 3d | All above |
+| M7 | Wave system (percentage-based scaling) | 2d | Monsters |
+| **Total MVP** | | **15d (~3 weeks)** | |
+
+### Should Do — Post-MVP (6-10 weeks)
+
+| # | Feature | Est. | Depends On |
+|---|---------|------|------------|
+| S1 | Survivor system (6 named, stats, leveling) | 5d | Economy (Food upkeep) |
+| S2 | 5-skill system (replacing 9 upgrades) | 5d | Survivors |
+| S3 | Boss system (random + quest) | 4d | Waves, Monsters |
+| S4 | Quest system (3 slots, 4 types) | 4d | Bosses |
+| S5 | Oil + Bones resources | 2d | Economy |
+| S6 | Engineering tree (T1-T2) | 5d | Skills, Oil |
+| S7 | Offline simulation | 3d | Economy |
+| **Total Should Do** | | **28d (~6 weeks)** | |
+
+### Could Do — Polish & Depth (6-9 weeks)
+
+| # | Feature | Est. | Depends On |
+|---|---------|------|------------|
+| C1 | Achievement system (38 achievements) | 3d | All Should Do |
+| C2 | Engineering T3-T4 | 4d | Engineering T1-T2 |
+| C3 | Prestige system (dual trigger, currency) | 5d | Bosses, Engineering |
+| C4 | Archer tier system (Scout → Marksman → Ranger) | 3d | Archers |
+| C5 | Sound effects & music | 5d | — |
+| C6 | Animated UI feedback (damage numbers, popups) | 4d | Core UI |
+| C7 | Orc + Demon monsters | 3d | Monster system |
+| **Total Could Do** | | **27d (~6 weeks)** | |
 
 ---
 
-## 5. C# Conversion
+## 5. C# Conversion Plan
 
-7 core systems being ported (GameManager 6/10 done). 7 new systems designed for post-MVP. Architecture: port upgrade system first, transition to skill system later.
+### Current Sprint — Core Systems
+
+| # | System | Source | Target | Status |
+|---|--------|--------|--------|:---:|
+| 1 | GameManager | `GameManager.gd` | `Scripts/GameManager.cs` | 🟡 6/10 chunks |
+| 2 | Save & Load | `Save&Load.gd` | TBD | ⬜ |
+| 3 | Combat (arrows) | `Scripts/Arrow.gd` | TBD | ⬜ |
+| 4 | Enemies | `Scripts/Enemy*.gd` | TBD | ⬜ |
+| 5 | Upgrades (9-flat, transitional) | `Scripts/Upgrade*.gd` | TBD | ⬜ |
+| 6 | UI | Scene scripts | TBD | ⬜ |
+| 7 | Economy (timers) | In GameManager | TBD | ⬜ |
+
+### Post-MVP — New Systems
+
+| # | System | C# Target | Status |
+|---|--------|-----------|:---:|
+| 8 | Survivors | TBD | ⬜ |
+| 9 | Skills (5-skill) | TBD | ⬜ |
+| 10 | Quests | TBD | ⬜ |
+| 11 | Achievements | TBD | ⬜ |
+| 12 | Bosses | TBD | ⬜ |
+| 13 | Engineering | TBD | ⬜ |
+| 14 | Prestige | TBD | ⬜ |
+
+### C# Architecture Decisions
+
+| Decision | Rationale |
+|----------|-----------|
+| `namespace LastBastion;` | File-scoped namespace |
+| `partial class` | Required by Godot source generators |
+| `[Signal] delegate` | Godot C# signal pattern |
+| `{ get; private set; }` | Resource properties — read-only externally |
+| `f` suffix on floats | C# explicit float literal |
+| `EmitSignal(SignalName.X, value)` | Type-safe signal emission |
 
 ---
 
-## 6. Risks
+## 6. MVP / Cut List
 
-Top risks: C# learning curve, scope creep, core loop not being fun, burnout. See full risk matrix with 10 assessed risks.
+### MVP Checklist
+
+- [ ] GameManager.cs complete (autoload, signals, all resource methods)
+- [ ] 9 upgrades functional (buy, level, cost scaling)
+- [ ] 3 monster types spawnable (Skeleton, Zombie, Orc)
+- [ ] 4 archers placeable, firing arrows
+- [ ] Manual + auto economy working (Scrap, Food)
+- [ ] Save/Load working (auto-save every 60s)
+- [ ] Core UI: resource bars, upgrade panel, archer panel
+- [ ] Wave system: percentage-based scaling, endless
+
+### Explicitly Cut from MVP
+
+| Feature | Why Cut | When |
+|---------|---------|------|
+| Survivor system | Adds complexity before the core is stable | Post-MVP |
+| 5-skill system | Port 9-upgrade first, transition later | Post-MVP |
+| Bosses | Needs stable monster + wave system first | Post-MVP |
+| Quests | Needs bosses for boss quest type | Post-MVP |
+| Oil, Bones | New resources add economy complexity | Post-MVP |
+| Engineering tree | Needs skills + Oil | Post-MVP |
+| Prestige | Endgame — nothing to prestige from yet | Endgame |
+| Achievements | Polish layer | Polish phase |
+| Offline simulation | Needs stable economy first | Post-MVP |
+
+### Anti-Cut List (NEVER cut)
+
+| Feature | Why |
+|---------|-----|
+| P3 — Fair Forever | Core pillar. No pay-to-win. Non-negotiable. |
+| Save system | Players must not lose progress. |
+| Wave/ siege loop | The game IS the siege. |
 
 ---
 
-## 7. Tuning Variables
+## 7. Risk Assessment
 
-25+ tunable knobs across Combat, Economy, Skills, Bosses, and Prestige. Full table with defaults and ranges.
+| # | Risk | P | I | Mitigation |
+|---|------|---|---|------------|
+| 1 | **Scope creep** — 12 systems is too many for one person | High | High | Strict MoSCoW. MVP is 7 systems, not 12. Cut ruthlessly. |
+| 2 | **Skill system over-design** — 5 skills too complex before core is fun | Med | High | Port 9-upgrade first. Add skills only when core loop is fun on its own. |
+| 3 | **Burnout** — solo dev, long timeline | High | High | MVP in 3 weeks. Ship something playable. Rest is bonus. |
+| 4 | **Engineering tree imbalance** — powerspike or useless | Med | Med | Tuning variables section (below). Playtest each tier before adding next. |
+| 5 | **Survivor attachment not landing** — players don't care about named NPCs | Low | Med | 6 survivors is small enough to test. If attachment doesn't work, pivot to faceless workers. |
+| 6 | **Prestige feels like punishment** — losing everything hurts | Med | High | Dual trigger (victory OR defeat). Let players choose. Strong persist bonuses. |
+| 7 | **C# port technical debt** — rushing conversion breaks things | Med | Med | Port one system at a time. Build after every chunk. Tests before moving on. |
+| 8 | **Resource bloat** — 5 resources is too many for an idle game | Low | Med | Start with 3 (Gold, Scrap, Food). Add Oil + Bones in post-MVP only if they earn their place. |
+| 9 | **Offline simulation accuracy** — too generous or too punishing | Low | Low | Percentage-based formula. Tune with real play data. Conservative defaults. |
+| 10 | **"X meets Y" never found** — game lacks easy pitch | Low | Low | Play more games in the genre. Note influences. Not a blocker — game can stand on its own. |
+
+**Riskiest assumption:** That the B/C hybrid (named survivors + engineering tree + 5 skills) is fun as a package before all pieces exist. Mitigation: MVP first, expand only when core is proven fun.
 
 ---
 
-> **Full GDD:** 909 lines, 8 sections. Maintained in `vault/Game Dev/LastBastion/GDD.md`.
-> **Last updated:** 2026-07-02 — B/C hybrid redesign with Hermes.
-> **Repo:** [lel1guy/LastBastionCS](https://github.com/lel1guy/LastBastionCS)
+## 8. Tuning Variables
+
+### Combat
+
+| Variable | Default | Range | Notes |
+|----------|---------|-------|-------|
+| Click damage | 1 | 1-5 | Per Strength level |
+| Arrow damage | 0.25 | 0.1-1.0 | Per Gear level |
+| Boss HP multiplier | 5× | 3-10× | Random bosses |
+| Quest boss HP multiplier | 10× | 8-20× | Named bosses |
+
+### Economy
+
+| Variable | Default | Range | Notes |
+|----------|---------|-------|-------|
+| Scavenge cooldown | 15s | 10-30s | Manual |
+| Farm cooldown | 4s | 2-8s | Manual |
+| Auto-scrap rate | 1/s | 0.5-3/s | Scales with level |
+| Auto-food rate | 1/s | 0.5-3/s | Scales with level |
+| Upgrade cost multiplier | 1.5× | 1.3-2.0× | Per level |
+| Food upkeep per archer | 0.1/s | 0.05-0.3/s | Tension valve |
+| Food upkeep per survivor | 0.2/s | 0.1-0.5/s | Higher than archers |
+
+### Siege
+
+| Variable | Default | Range | Notes |
+|----------|---------|-------|-------|
+| Wave HP scaling | +15%/wave | 10-25% | Percentage-based |
+| Wave spawn rate increase | +5%/wave | 3-10% | More monsters per wave |
+| Boss spawn chance | 5%/wave | 3-10% | After stage 1 |
+| Offline simulation rate | 50% of live | 30-70% | Conservative default |
+
+### Prestige
+
+| Variable | Default | Range | Notes |
+|----------|---------|-------|-------|
+| Base prestige currency | 10 | 5-20 | Per cycle |
+| Bonus per achievement | +2 | 1-5 | Encourages completionism |
+| Bonus per boss killed | +5 | 3-10 | Bosses matter |
+| Starting resource bonus | +10% | 5-25% | Per prestige level |
+
+---
+
+## GDScript Prototype
+
+The original GDScript version at [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) (playable alpha, archived 2026-07-02). All original systems (3.1-3.5) were documented from its live code. The C# version inherits this design and expands it with systems 3.6-3.12.
+
+---
+
+*Single GDD — B/C hybrid redesign, 2026-07-02. Session 2.*
