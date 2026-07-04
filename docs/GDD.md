@@ -5,7 +5,7 @@
 > **Engine:** Godot 4 (Mono) · **Language:** C#
 > **Repo:** [lel1guy/KeroKeep](https://github.com/lel1guy/KeroKeep) (public)
 > **Prototype:** [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) — GDScript (archived)
-> **Dev Log:** Dev Log (vault)
+> **Dev Log:** [[Dev-Log|C# port session log]]
 > **Design philosophy:** B/C hybrid — named survivors with stats + skill levels, engineering tree, siege waves
 > **Last updated:** 2026-07-04
 
@@ -13,13 +13,17 @@
 
 ## 1. Vision & Pillars
 
-### Elevator Pitch
+### What Is This?
 
 > You command Kero Keep — the last fortress standing between the kingdom of Batrachia and an endless siege. Build. Fight. Grow. Everything you earn, you earned.
 
-### Why This Game Exists
+### Why I'm Making It
 
-The incremental/idle genre is rich with games where numbers go up — but few where the numbers *feel* real. V wanted an incremental game with visible consequence: archers you see fire, waves you feel bearing down, every upgrade earned by surviving one more round. A game where survival tension and RPG influence are threaded through the core idle DNA — and where the defenders aren't generic humans, but the armored frog warriors of a dying kingdom.
+I love incremental games. Numbers go up, dopamine hits. But most of them feel like spreadsheets — you don't *see* anything happening.
+
+I wanted an incremental game where the world actually reacts. Archers you see fire. Waves you feel bearing down on the wall. Every upgrade traces back to something *you did*, not something a timer decided. Survival tension with RPG depth, wrapped in idle DNA — and instead of generic humans, the defenders are the armored frog warriors of a dying kingdom.
+
+I'm an electrician apprentice from Quarteira learning game dev. This is my first serious project — the one I'm porting from GDScript to C# to learn the language properly.
 
 ### The Feeling
 
@@ -30,20 +34,20 @@ The incremental/idle genre is rich with games where numbers go up — but few wh
 | **Boss encounter** | A named threat appears. Music shifts. The screen darkens. This one matters — beating it means real progression, losing it means real setback |
 | **Prestige reset** | The wall has held through everything. Time to begin again — stronger, wiser, with scars that show. A bittersweet goodbye to the survivors who got you here |
 
-### Design Pillars
+### My Design Pillars
 
 **P1 — EARNED GROWTH**
-Progress traces back to player action — mobs killed, archers commanded, resources chosen and spent. Clicking and timers are pacing mechanisms, not idle automation. The game doesn't grow without the player.
+Progress traces back to player action — mobs killed, archers commanded, resources chosen and spent. Clicking and timers are pacing mechanisms, not idle automation. The game doesn't grow without you.
 
 **P2 — PERSISTENT SIEGE**
-There is no pause. No victory screen. The siege is eternal. Once all archers are unlocked, the simulation runs even while offline — random hordes and bosses appear, the world keeps burning. Offline persistence is a reward, not a given.
+There is no pause. No victory screen. The siege is eternal. Once all archers are unlocked, the simulation runs even while you're offline — random hordes and bosses appear, the world keeps burning. Offline persistence is a reward, not a given.
 
 **P3 — FAIR FOREVER**
-No pay-to-win. No premium currency. Money never touches game balance. If monetization ever happens, it's optional — ads for a temporary assist. The game respects your time and your wallet equally.
+No pay-to-win. No premium currency. Money never touches game balance. If monetization ever happens, it's optional — ads for a temporary assist. The game respects your time and your wallet equally. Non-negotiable.
 
 ### B/C Hybrid Design
 
-Kero Keep uses a hybrid approach between two design philosophies:
+I'm using a hybrid approach between two design philosophies:
 
 | Aspect | Approach | What It Means |
 |--------|----------|---------------|
@@ -88,7 +92,7 @@ Kero Keep's gameplay operates on three nested timescales, plus four progression 
 
 | Element | Description |
 |---------|-------------|
-| **Offline simulation** | Unlocks when all archers acquired. World runs while away. |
+| **Offline simulation** | Unlocks when all archers acquired. World runs while you're away. |
 | **Random events** | Hordes and bosses can appear unpredictably. |
 | **Progression check** | Has the wall held? Are new upgrades available? |
 
@@ -103,7 +107,7 @@ Structured objectives that guide progression and reward meaningful choices.
 | **Boss** | "Defeat Gorath the Breaker" | Prestige currency, rare resources |
 | **Prestige** | "Complete all quests in a cycle" | Triggers prestige option |
 
-Quests are optional — they guide but don't gate. A player can ignore quests and still progress through the siege loop.
+Quests are optional — they guide but don't gate. You can ignore quests and still progress through the siege loop.
 
 ### 2.5 Achievements
 
@@ -126,7 +130,7 @@ Bosses break the rhythm. They're threats that demand attention and offer outsize
 | **Random spawn** | Percentage chance per wave | Tougher stats, unique attack patterns, drops rare loot (Oil, Bones) |
 | **Quest boss** | Summoned when quest conditions met | Named, unique mechanics, gate to next progression tier |
 
-**Hybrid approach:** Random spawns keep tension high during normal play. Quest bosses give structure and clear goals.
+**My approach:** Random spawns keep tension high during normal play. Quest bosses give structure and clear goals.
 
 ### 2.7 Prestige
 
@@ -139,7 +143,7 @@ The endgame loop. Reset the world, keep permanent bonuses, start stronger.
 
 **Dual path philosophy:** You're never forced — you can keep playing indefinitely. But eventually the wall falls, or you choose to transcend. Either way, you come back stronger.
 
-**What persists through prestige:**
+**What sticks through prestige:**
 - Skill level bonuses (permanent stat boosts)
 - Engineering recipes
 - Achievement titles and cosmetics
@@ -211,7 +215,7 @@ Each archer: unlock cost (Gold + Scrap + Food), upkeep cost (Food/tick), per-arr
 
 Nine flat upgrades currently implemented in the GDScript prototype (Pocket Search, Scavengers, Farmers, Strength, Storeroom, Farm, Gear, Arrow Count, Archers). Exponential cost growth (×1.5 per level). Three-resource affordability check.
 
-**Architecture decision:** Port the 9-upgrade system as-is for MVP. Transition to the 5-skill system (3.7) post-MVP — deeper, more earned, better alignment with P1.
+**My decision:** Port the 9-upgrade system as-is for MVP. Transition to the 5-skill system (3.7) post-MVP — deeper, more earned, better alignment with P1.
 
 ### 3.4 Economy
 
@@ -258,7 +262,7 @@ Named NPCs you recruit, manage, and grow attached to. They're the heart of your 
 
 **Skill gating:** Skill levels unlock new mechanics. Engineering 3 → Oil refinery. Leadership 4 → 5th archer. Combat 5 → critical hits.
 
-**Transition plan:** Port the 9 flat upgrades as-is for MVP (they work, they're tested). Add the 5-skill system in a post-MVP update. Players keep their progress — upgrades convert to equivalent skill levels.
+**My transition plan:** Port the 9 flat upgrades as-is for MVP (they work, they're tested). Add the 5-skill system post-MVP. Players keep their progress — upgrades convert to equivalent skill levels.
 
 ### 3.8 Quest System (NEW)
 
@@ -281,7 +285,7 @@ Permanent, one-time accomplishments. Tracked globally, persist through prestige.
 | **Silver** | ~12 | "Wall of Flesh" (50 waves), "Boss Slayer" (5 boss kills), "Full House" (6 survivors) |
 | **Gold** | ~6 | "Unbroken" (prestige with zero breaches), "Gorath's Bane" (kill Gorath 3 times) |
 
-**Reward question (TBD):** Cosmetic only (titles, base visuals) or gameplay (small stat boosts)? Design decision pending.
+**Reward question (TBD):** Cosmetic only (titles, base visuals) or gameplay (small stat boosts)? I haven't decided yet.
 
 ### 3.10 Boss System (NEW)
 
@@ -290,7 +294,7 @@ Permanent, one-time accomplishments. Tracked globally, persist through prestige.
 | **Random** | % chance per wave, increases with stage | 5× HP, 3× damage, unique attack pattern | Gold, Bones, rare Oil |
 | **Quest** | Summoned via quest completion | Named, 10× HP, unique mechanics, phases | Prestige currency, survivor trait, engineering recipe |
 
-**Hybrid approach:** Random bosses keep the siege tense. Quest bosses give structure and clear progression gates.
+**My approach:** Random bosses keep the siege tense. Quest bosses give structure and clear progression gates.
 
 ### 3.11 Engineering System (NEW)
 
@@ -390,8 +394,8 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 
 ### C# Architecture Decisions
 
-| Decision | Rationale |
-|----------|-----------|
+| Decision | Why |
+|----------|-----|
 | `namespace KeroKeep;` | File-scoped namespace (renamed from LastBastion 2026-07-04) |
 | `partial class` | Required by Godot source generators |
 | `[Signal] delegate` | Godot C# signal pattern |
@@ -414,10 +418,10 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 - [ ] Core UI: resource bars, upgrade panel, archer panel
 - [ ] Wave system: percentage-based scaling, endless
 
-### Explicitly Cut from MVP
+### What I'm Cutting from MVP
 
-| Feature | Why Cut | When |
-|---------|---------|------|
+| Feature | Why | When It Comes Back |
+|---------|-----|-------------------|
 | Survivor system | Adds complexity before the core is stable | Post-MVP |
 | 5-skill system | Port 9-upgrade first, transition later | Post-MVP |
 | Bosses | Needs stable monster + wave system first | Post-MVP |
@@ -428,7 +432,7 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 | Achievements | Polish layer | Polish phase |
 | Offline simulation | Needs stable economy first | Post-MVP |
 
-### Anti-Cut List (NEVER cut)
+### Never Cutting
 
 | Feature | Why |
 |---------|-----|
@@ -440,20 +444,20 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 
 ## 7. Risk Assessment
 
-| # | Risk | P | I | Mitigation |
-|---|------|---|---|------------|
+| # | Risk | P | I | My Plan |
+|---|------|---|---|---------|
 | 1 | **Scope creep** — 12 systems is too many for one person | High | High | Strict MoSCoW. MVP is 7 systems, not 12. Cut ruthlessly. |
 | 2 | **Skill system over-design** — 5 skills too complex before core is fun | Med | High | Port 9-upgrade first. Add skills only when core loop is fun on its own. |
 | 3 | **Burnout** — solo dev, long timeline | High | High | MVP in 3 weeks. Ship something playable. Rest is bonus. |
-| 4 | **Engineering tree imbalance** — powerspike or useless | Med | Med | Tuning variables section (below). Playtest each tier before adding next. |
-| 5 | **Survivor attachment not landing** — players don't care about named NPCs | Low | Med | 6 survivors is small enough to test. If attachment doesn't work, pivot to faceless workers. |
+| 4 | **Engineering tree imbalance** — powerspike or useless | Med | Med | Tuning variables section below. Playtest each tier before adding next. |
+| 5 | **Survivor attachment not landing** — players don't care about named NPCs | Low | Med | 6 survivors is small enough to test. If attachment doesn't work, I'll pivot to faceless workers. |
 | 6 | **Prestige feels like punishment** — losing everything hurts | Med | High | Dual trigger (victory OR defeat). Let players choose. Strong persist bonuses. |
 | 7 | **C# port technical debt** — rushing conversion breaks things | Med | Med | Port one system at a time. Build after every chunk. Tests before moving on. |
-| 8 | **Resource bloat** — 5 resources is too many for an idle game | Low | Med | Start with 3 (Gold, Scrap, Food). Add Oil + Bones in post-MVP only if they earn their place. |
+| 8 | **Resource bloat** — 5 resources is too many for an idle game | Low | Med | Start with 3 (Gold, Scrap, Food). Add Oil + Bones post-MVP only if they earn their place. |
 | 9 | **Offline simulation accuracy** — too generous or too punishing | Low | Low | Percentage-based formula. Tune with real play data. Conservative defaults. |
 | 10 | **"X meets Y" never found** — game lacks easy pitch | Low | Low | Play more games in the genre. Note influences. Not a blocker — game can stand on its own. |
 
-**Riskiest assumption:** That the B/C hybrid (named survivors + engineering tree + 5 skills) is fun as a package before all pieces exist. Mitigation: MVP first, expand only when core is proven fun.
+**Riskiest assumption:** That the B/C hybrid (named survivors + engineering tree + 5 skills) is fun as a package before all pieces exist. My mitigation: MVP first, expand only when core is proven fun.
 
 ---
 
@@ -502,14 +506,14 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 
 ## GDScript Prototype
 
-The original GDScript prototype at [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) (playable alpha, archived 2026-07-02). All original systems (3.1-3.5) were documented from its live code. The C# version (Kero Keep) inherits this design and expands it with systems 3.6-3.12.
+The original GDScript prototype lives at [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) (playable alpha, archived 2026-07-02). All original systems (3.1-3.5) were documented from its live code. The C# version (Kero Keep) inherits this design and expands it with systems 3.6-3.12.
 
 ---
 
 ## Cross-References
 
 - [[Dev-Log|Dev Log]] — C# port session log
-- [[../../Projects/GameDev-Career/START-HERE|Career Plan]] — C# learning path
+- [[../../Projects/GameDev-Career/START-HERE|Career Plan]] — my C# learning path
 - [[../../Knowledge/Godot/_index|Godot Knowledge]] — engine reference
 - [[../../Knowledge/Game-Programming-Patterns/_index|Game Programming Patterns]] — Nystrom's 19 patterns
 

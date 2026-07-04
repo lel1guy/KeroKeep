@@ -1,65 +1,113 @@
 # Kero Keep
 
-Defend the last keep of **Batrachia** — an incremental siege defense game where armored frog warriors hold the wall against an endless horde. C# port of the GDScript prototype (formerly "LastBastion").
+**The last fortress of Batrachia is mine to defend.**
 
-**Engine:** Godot 4 (Mono) · **Language:** C#  
-**Status:** 🟢 Active — GameManager.cs in progress (6/10 chunks)  
-**Setting:** Medieval fantasy — humanoid frog civilization, kingdom of Batrachia
+![Status](https://img.shields.io/badge/status-active-brightgreen) ![Godot](https://img.shields.io/badge/Godot-4-478cbf?logo=godot-engine) ![C#](https://img.shields.io/badge/C%23-12-239120?logo=csharp) ![License](https://img.shields.io/badge/license-MIT-blue)
 
 ---
 
-## The Game
+## What Is This?
+
+An incremental siege defense game where armored frog warriors hold the wall against an endless horde. Click to kill, earn resources, build defenses, survive waves. No victory screen — the siege never ends.
+
+I built the original prototype in GDScript (Godot). Now I'm porting it to C# to learn the language properly — same game, better foundation. Formerly called **LastBastion**.
 
 > You command Kero Keep — the last fortress standing between the kingdom of Batrachia and an endless siege. Build. Fight. Grow. Everything you earn, you earned.
 
-- **Genre:** Incremental idle with tower defense and RPG elements
-- **Civilization:** Humanoid frogs — armored, bow-wielding, medieval fantasy warriors. Not comedic.
-- **Kingdom:** Batrachia — the ancient realm whose last wall is Kero Keep
-- **Design philosophy:** B/C hybrid — named survivors with stats + skill levels, engineering tree, siege waves
-- **Design pillars:** Earned Growth, Persistent Siege, Fair Forever
-- **Platforms:** Windows (primary), Linux
+- **Genre:** Incremental idle + tower defense + RPG elements
+- **Setting:** Batrachia — a medieval kingdom of humanoid frogs (not comedic, think *Redwall* with frog armor)
+- **Platform:** Windows, Linux
+- **Design:** Earned Growth · Persistent Siege · Fair Forever
 
-📖 **[Full Game Design Document](docs/GDD.md)** — 8 sections: vision, core loop, 12 systems (B/C hybrid), MoSCoW content plan, MVP/cut list, risk assessment, tuning variables.
+📖 **[Full Game Design Document →](docs/GDD.md)**
 
-## Prototype
+---
 
-The original GDScript version is archived at [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) — playable alpha, used as reference for the C# port.
+## Why Frog Warriors?
 
-## Structure
+The incremental/idle genre is crowded with spreadsheets and generic fantasy. I wanted a game with visible consequence — archers you *see* fire, waves you *feel* bearing down. The frog civilization gives it a distinct visual identity without making it a joke. These are warriors holding the last wall of a dying kingdom. The stakes are real.
 
-```
-Scripts/    ← C# source (GameManager.cs, ...)
-Scenes/     ← Godot scenes (Game, Main, Enemies, Upgrades, ...)
-Assets/     ← sprites, textures, audio
-docs/       ← GDD.md (full design document)
-```
+---
 
-## Conversion Progress
-
-### Current Sprint
+## Where I'm At
 
 | System | Status |
-|--------|:---:|
-| GameManager | 🟡 6/10 chunks |
+|--------|:------:|
+| GameManager (autoload) | 🟡 6/10 |
 | Save & Load | ⬜ |
 | Combat (arrows) | ⬜ |
 | Enemies | ⬜ |
 | Upgrades (9-flat) | ⬜ |
 | UI | ⬜ |
 | Economy (timers) | ⬜ |
-
-### Post-MVP
-
-| System | Status |
-|--------|:---:|
 | Survivors | ⬜ |
 | Skills (5-skill) | ⬜ |
-| Quests | ⬜ |
-| Achievements | ⬜ |
 | Bosses | ⬜ |
-| Engineering | ⬜ |
+| Engineering tree | ⬜ |
 | Prestige | ⬜ |
+
+**MVP target:** 7 core systems, ~3 weeks. **Full game:** all 12 systems, ~15 weeks. Solo dev, one system at a time.
 
 ---
 
-Built by [@lel1guy](https://github.com/lel1guy) from Quarteira, Algarve, Portugal.
+## Tech Stack
+
+| What | Detail |
+|------|--------|
+| **Engine** | Godot 4 (Mono) |
+| **Language** | C# 12 (.NET 8) |
+| **Architecture** | Autoloads (GameManager, Save&Load) |
+| **Save format** | JSON — `user://SaveFile.json` |
+| **Namespace** | `KeroKeep` |
+| **Prototype** | [LastBastion](https://github.com/lel1guy/LastBastion) (GDScript, archived) |
+
+```
+Scripts/    ← C# source (GameManager.cs, ...)
+Scenes/     ← Godot scenes
+Assets/     ← sprites, textures, audio
+docs/       ← GDD.md (full design document)
+```
+
+---
+
+## Run It
+
+```bash
+# Clone
+git clone https://github.com/lel1guy/KeroKeep.git
+cd KeroKeep
+
+# Open in Godot 4 Mono
+godot --editor .
+
+# Or run headless
+godot --headless
+```
+
+You need **Godot 4 with Mono/.NET support** and **.NET 8 SDK**.
+
+---
+
+## What I'm Learning
+
+This project is my C# classroom. I'm an electrician apprentice from Portugal learning game dev from scratch — Godot free, code open, building in public. Every commit is me figuring something out:
+
+- Godot C# signals and autoloads
+- File-scoped namespaces and partial classes
+- JSON save/load pipelines
+- Economy and upgrade scaling math
+- MoSCoW scoping for solo dev
+
+If you're also learning, the [dev log](https://github.com/lel1guy/KeroKeep/blob/main/docs/Dev-Log.md) has session-by-session breakdowns of what I built, what broke, and how I fixed it.
+
+---
+
+## The Prototype
+
+The original GDScript version is at [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) — playable alpha with working combat, economy, archers, and 3 enemy types. I'm using it as a design reference while I rebuild in C#.
+
+---
+
+Built by [@lel1guy](https://github.com/lel1guy) — Quarteira, Algarve, Portugal. Open source, no pay-to-win, forever.
+
+*Previously: [LastBastion](https://github.com/lel1guy/LastBastion) (GDScript) | [FootPong](https://github.com/lel1guy/FootPong) (first game)*
