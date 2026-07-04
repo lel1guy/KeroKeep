@@ -1,6 +1,29 @@
+# Kero Keep
+
+**The last fortress of Batrachia is mine to defend.**
+
+![Status](https://img.shields.io/badge/status-active-brightgreen) ![Godot](https://img.shields.io/badge/Godot-4-478cbf?logo=godot-engine) ![C#](https://img.shields.io/badge/C%23-12-239120?logo=csharp) ![License](https://img.shields.io/badge/license-MIT-blue)
+
 ---
 
-## What I've Built
+## What Is This?
+
+An incremental siege defense game where armored frog warriors hold the wall against an endless horde. Click to kill, earn resources, build defenses, survive waves. No victory screen — the siege never ends.
+
+I built the original prototype in GDScript (Godot). Now I'm porting it to C# to learn the language properly — same game, better foundation. Formerly called **LastBastion**.
+
+> You command Kero Keep — the last fortress standing between the kingdom of Batrachia and an endless siege. Build. Fight. Grow. Everything you earn, you earned.
+
+- **Genre:** Incremental idle + tower defense + RPG elements
+- **Setting:** Batrachia — a medieval kingdom of humanoid frogs (not comedic, think *Redwall* with frog armor)
+- **Platform:** Windows, Linux
+- **Design:** Earned Growth · Persistent Siege · Fair Forever
+
+📖 **[Full Game Design Document →](docs/GDD.md)**
+
+---
+
+## Where I'm At
 
 | System | Status |
 |--------|:------:|
