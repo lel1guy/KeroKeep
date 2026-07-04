@@ -1,11 +1,13 @@
-# LastBastion — Game Design Document
+# Kero Keep — Game Design Document
 
 > **Status:** 🟢 Active — C# port in progress
+> **Game:** Kero Keep — defend the last keep of the kingdom of **Batrachia**
 > **Engine:** Godot 4 (Mono) · **Language:** C#
-> **Repo:** [lel1guy/LastBastionCS](https://github.com/lel1guy/LastBastionCS) (private)
+> **Repo:** [lel1guy/KeroKeep](https://github.com/lel1guy/KeroKeep) (public)
 > **Prototype:** [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) — GDScript (archived)
+> **Dev Log:** Dev Log (vault)
 > **Design philosophy:** B/C hybrid — named survivors with stats + skill levels, engineering tree, siege waves
-> **Last updated:** 2026-07-02
+> **Last updated:** 2026-07-04
 
 ---
 
@@ -13,11 +15,11 @@
 
 ### Elevator Pitch
 
-> You are the last bastion standing between humanity and an endless siege. Build. Fight. Grow. Everything you earn, you earned.
+> You command Kero Keep — the last fortress standing between the kingdom of Batrachia and an endless siege. Build. Fight. Grow. Everything you earn, you earned.
 
 ### Why This Game Exists
 
-The incremental/idle genre is rich with games where numbers go up — but few where the numbers *feel* real. V wanted an incremental game with visible consequence: archers you see fire, waves you feel bearing down, every upgrade earned by surviving one more round. A game where survival tension and RPG influence are threaded through the core idle DNA.
+The incremental/idle genre is rich with games where numbers go up — but few where the numbers *feel* real. V wanted an incremental game with visible consequence: archers you see fire, waves you feel bearing down, every upgrade earned by surviving one more round. A game where survival tension and RPG influence are threaded through the core idle DNA — and where the defenders aren't generic humans, but the armored frog warriors of a dying kingdom.
 
 ### The Feeling
 
@@ -41,7 +43,7 @@ No pay-to-win. No premium currency. Money never touches game balance. If monetiz
 
 ### B/C Hybrid Design
 
-LastBastion uses a hybrid approach between two design philosophies:
+Kero Keep uses a hybrid approach between two design philosophies:
 
 | Aspect | Approach | What It Means |
 |--------|----------|---------------|
@@ -50,11 +52,19 @@ LastBastion uses a hybrid approach between two design philosophies:
 | **Engineering** | Option C | Tech tree unlocked through skill levels. Recipes persist through prestige. |
 | **Siege waves** | Option C | Percentage-based difficulty. Unpredictable = tense. No fixed wave schedules. |
 
+### Setting & World
+
+**The kingdom of Batrachia** is a civilization of humanoid frogs — bipedal, armored, wielding bows and blades like any medieval realm. They are not comedic or cartoonish; they are warriors holding the last wall of a dying kingdom.
+
+Kero Keep is the final fortress. Behind its walls: the last farmers, scavengers, and archers of Batrachia. Beyond them: nothing but the enemy.
+
+**Tone:** Grounded fantasy with charm. The frog identity adds visual distinction and personality, but the stakes are real — your survivors can starve, your walls can fall, and the siege never ends. Think *Redwall* grit with an amphibian skin.
+
 ---
 
 ## 2. Core Loop
 
-LastBastion's gameplay operates on three nested timescales, plus four progression layers.
+Kero Keep's gameplay operates on three nested timescales, plus four progression layers.
 
 ### 2.1 Moment-to-Moment (~10 seconds)
 
@@ -382,7 +392,7 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 
 | Decision | Rationale |
 |----------|-----------|
-| `namespace LastBastion;` | File-scoped namespace |
+| `namespace KeroKeep;` | File-scoped namespace (renamed from LastBastion 2026-07-04) |
 | `partial class` | Required by Godot source generators |
 | `[Signal] delegate` | Godot C# signal pattern |
 | `{ get; private set; }` | Resource properties — read-only externally |
@@ -492,7 +502,16 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 
 ## GDScript Prototype
 
-The original GDScript version at [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) (playable alpha, archived 2026-07-02). All original systems (3.1-3.5) were documented from its live code. The C# version inherits this design and expands it with systems 3.6-3.12.
+The original GDScript prototype at [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) (playable alpha, archived 2026-07-02). All original systems (3.1-3.5) were documented from its live code. The C# version (Kero Keep) inherits this design and expands it with systems 3.6-3.12.
+
+---
+
+## Cross-References
+
+- [[Dev-Log|Dev Log]] — C# port session log
+- [[../../Projects/GameDev-Career/START-HERE|Career Plan]] — C# learning path
+- [[../../Knowledge/Godot/_index|Godot Knowledge]] — engine reference
+- [[../../Knowledge/Game-Programming-Patterns/_index|Game Programming Patterns]] — Nystrom's 19 patterns
 
 ---
 
