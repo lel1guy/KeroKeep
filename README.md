@@ -1,20 +1,23 @@
-# LastBastion
+# Kero Keep
 
-Post-apocalyptic medieval fantasy idle game. C# port of the GDScript prototype.
+Defend the last keep of **Batrachia** — an incremental siege defense game where armored frog warriors hold the wall against an endless horde. C# port of the GDScript prototype (formerly "LastBastion").
 
 **Engine:** Godot 4 (Mono) · **Language:** C#  
-**Status:** 🟢 Active — GameManager.cs in progress (6/10 chunks)
+**Status:** 🟢 Active — GameManager.cs in progress (6/10 chunks)  
+**Setting:** Medieval fantasy — humanoid frog civilization, kingdom of Batrachia
 
 ---
 
 ## The Game
 
-> You are the last bastion standing between humanity and an endless siege. Build. Fight. Grow. Everything you earn, you earned.
+> You command Kero Keep — the last fortress standing between the kingdom of Batrachia and an endless siege. Build. Fight. Grow. Everything you earn, you earned.
 
 - **Genre:** Incremental idle with tower defense and RPG elements
+- **Civilization:** Humanoid frogs — armored, bow-wielding, medieval fantasy warriors. Not comedic.
+- **Kingdom:** Batrachia — the ancient realm whose last wall is Kero Keep
 - **Design philosophy:** B/C hybrid — named survivors with stats + skill levels, engineering tree, siege waves
 - **Design pillars:** Earned Growth, Persistent Siege, Fair Forever
-- **Platforms:** Windows (primary), Android (partial)
+- **Platforms:** Windows (primary), Linux
 
 📖 **[Full Game Design Document](docs/GDD.md)** — 8 sections: vision, core loop, 12 systems (B/C hybrid), MoSCoW content plan, MVP/cut list, risk assessment, tuning variables.
 
