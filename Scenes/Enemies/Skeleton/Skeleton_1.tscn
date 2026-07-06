@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5ubwoimj13ga"]
 
-[ext_resource type="Script" uid="uid://cbd70v2j3dvuj" path="res://Scripts/Mob.gd" id="1_xttje"]
+[ext_resource type="Script" uid="uid://cmkbpnwkauc8r" path="res://Scripts/BaseMob.cs" id="1_xttje"]
 [ext_resource type="Texture2D" uid="uid://dh5plhwqa33f3" path="res://Assets/Enemies/Skeleton/Skeleton_1.png" id="2_3cdiw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjie3"]
