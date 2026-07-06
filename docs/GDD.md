@@ -372,8 +372,8 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 |---|--------|--------|--------|:---:|
 | 1 | GameManager | `GameManager.gd` | `Scripts/GameManager.cs` | ✅ Complete |
 | 2 | Save & Load | `Save&Load.gd` | `Scripts/SaveLoad.cs` | ✅ Complete |
-| 3 | Combat (arrows) | `Scripts/Arrow.gd` | TBD | ⬜ |
-| 4 | Enemies | `Scripts/Enemy*.gd` | TBD | ⬜ |
+| 3 | Combat (arrows) | `Scripts/Arrow.gd` | TBD | 🟡 |
+| 4 | Enemies | `Scripts/Enemy*.gd` | TBD | 🟡 |
 | 5 | Upgrades (9-flat, transitional) | `Scripts/Upgrade*.gd` | TBD | ⬜ |
 | 6 | UI | Scene scripts | TBD | ⬜ |
 | 7 | Economy (timers) | In GameManager | TBD | ⬜ |
@@ -500,15 +500,23 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 | Base prestige currency | 10 | 5-20 | Per cycle |
 | Bonus per achievement | +2 | 1-5 | Encourages completionism |
 | Bonus per boss killed | +5 | 3-10 | Bosses matter |
-| Bonus per surviving survivor | +3 | 1-7 | Attachment incentive |
-| Prestige scaling factor | 1.2× | 1.1-1.5× | Currency earned per subsequent cycle |
+| Starting resource bonus | +10% | 5-25% | Per prestige level |
 
 ---
 
-## 9. Comparable Titles
+## GDScript Prototype
 
-*(Pending — V hasn't finalised comparison titles yet.)*
+The original GDScript prototype lives at [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) (playable alpha, archived 2026-07-02). All original systems (3.1-3.5) were documented from its live code. The C# version (Kero Keep) inherits this design and expands it with systems 3.6-3.12.
 
 ---
 
-*Game design by V. Last updated 2026-07-06.*
+## Cross-References
+
+- [[Dev-Log|Dev Log]] — C# port session log
+- [[../../Projects/GameDev-Career/START-HERE|Career Plan]] — my C# learning path
+- [[../../Knowledge/Godot/_index|Godot Knowledge]] — engine reference
+- [[../../Knowledge/Game-Programming-Patterns/_index|Game Programming Patterns]] — Nystrom's 19 patterns
+
+---
+
+*Single GDD — B/C hybrid redesign, 2026-07-02. Session 2.*

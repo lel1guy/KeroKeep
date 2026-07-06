@@ -451,3 +451,91 @@ SaveLoad.cs (autoload)              GameManager.cs (autoload)
 - `Scripts/SaveLoad.cs` — created (60 lines): `_Ready`, `SaveGame`, `LoadGame`
 - `Scripts/GameManager.cs` — modified (added `_saveLoad` field, `GetNode<>()`, `LoadState()`, uncommented `SaveGame()` calls)
 - `project.godot` — autoload entry added for `SaveLoad`
+
+---
+
+## Session 8 — 2026-07-06 (Sprint 3 Started)
+
+**Source:** Discord (#game-dev)
+**Duration:** ~1.5 hours
+**Status:** 🟡 In progress — Chunk 1 complete (BaseMob.cs)
+
+### What Was Done
+
+| Chunk | What | Status |
+|-------|------|:---:|
+| 1 | `BaseMob.cs` — skeleton, properties, `_Ready`, `_PhysicsProcess`, `TakeDamage`, `_InputEvent` | ✅ |
+| 2 | `Skeleton.cs` — derived class with specific stats | ⬜ |
+| 3 | Spawn — Game/Main scene mob spawning | ⬜ |
+| 4 | `Arrow.cs` — projectile with travel + damage | ⬜ |
+| 5 | Click→Dano — integrated click attack via `_InputEvent` | ✅ (built into BaseMob) |
+| 6 | Loot — gold drop on death | ✅ (built into BaseMob) |
+| 7 | ArrowPool — reusable arrow pool | ⬜ |
+
+### BaseMob.cs Structure
+
+```
+BaseMob : CharacterBody2D
+├── [Export] Health (int, default 1)
+├── [Export] Speed (int, default 50)
+├── [Export] GoldDrop (int, default 1)
+├── Damage (int, public)
+├── _Ready() — cache _sprite + _gameManager via GetNode<>()
+├── _PhysicsProcess(double) — Velocity = new Vector2(0, Speed)
+├── TakeDamage(float) — async void, death animation + loot + queue_free
+└── _InputEvent() — @event.IsActionPressed("clickAttack") → TakeDamage
+```
+
+### Concepts Learned
+
+| Concept | Where | Absorbed? |
+|---------|-------|:---:|
+| `[Export] public int Health { get; set; } = 1;` — C# exported property | Properties | ✅ |
+| `new Vector2(0, Speed)` — Vector2 struct, immutable X/Y fields | _PhysicsProcess | ✅ |
+| `async void` + `await ToSignal()` — async death animation pattern | TakeDamage | ✅ |
+| `(int)damage` — float → int cast for Health | TakeDamage | ✅ |
+| `@event` prefix — `event` is C# reserved keyword | _InputEvent | ✅ |
+| `long shapeIdx` — Godot C# uses long, not int | _InputEvent | ✅ |
+| `GetNode<GameManager>("/root/GameManager")` — autoload access in C# | _Ready | ✅ |
+| `&&` combining conditions in one if | _InputEvent | ✅ |
+| Brace discipline — don't close class before methods are inside | Class structure | ✅ |
+
+### C# vs GDScript Differences (This Sprint)
+
+| GDScript | C# |
+|----------|-----|
+| `@export var health = 1` | `[Export] public int Health { get; set; } = 1;` |
+| `velocity.y = speed` | `Velocity = new Vector2(0, Speed)` |
+| `$AnimatedSprite2D` | `GetNode<AnimatedSprite2D>("AnimatedSprite2D")` cached in field |
+| `GameManager.add_gold(...)` | `_gameManager.AddGold(...)` via cached reference |
+| `await $AnimatedSprite2D.animation_finished` | `await ToSignal(_sprite, AnimatedSprite2D.SignalName.AnimationFinished)` |
+| `event.is_action_pressed(...)` | `@event.IsActionPressed(...)` |
+| `shape_idx: int` | `long shapeIdx` |
+| `queue_free()` | `QueueFree()` |
+
+### Errors Encountered & Fixed
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| CS0115 — no suitable method found to override | `int shapeIdx` instead of `long shapeIdx` | Changed to `long shapeIdx` |
+| Missing `_sprite.Play("Death")` before await | Jumped straight to `await ToSignal()` without triggering animation | Added `.Play("Death")` line |
+| TakeDamage(int) — truncates float arrows to 0 | ArrowDamage is float (0.25f) | Changed to `TakeDamage(float damage)` with `(int)damage` cast |
+
+### Decisions Made
+
+- Sprint 3 scope: Enemies + Combat combined (BaseMob.cs + Arrow.cs + Skeleton.cs)
+- Click→Dano and Loot built directly into BaseMob — not separate chunks
+- ArrowPool deferred to post-Arrow implementation
+- `GoldDrop` property name chosen over prototype's `gold_amout` (typo fix)
+- `clickAttack` action name used (camelCase, not `click_attack` with underscore)
+
+### Files Modified
+
+- `Scripts/BaseMob.cs` — created (52 lines): `BaseMob : CharacterBody2D` with 4 properties, 4 methods
+
+### Next Session
+
+1. Build test — verify BaseMob.cs parses with `godot --headless`
+2. **Chunk 2: Skeleton.cs** — derive from BaseMob with specific stats (health, speed, sprite)
+3. Chunk 3: Spawn — Game/Main scene mob spawning logic
+4. Chunk 4: Arrow.cs — projectile system

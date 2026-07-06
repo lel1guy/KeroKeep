@@ -29,8 +29,8 @@ I built the original prototype in GDScript (Godot). Now I'm porting it to C# to 
 |--------|:------:|
 | GameManager (autoload) | ✅ Complete |
 | Save & Load | ✅ Complete |
-| Combat (arrows) | ⬜ |
-| Enemies | ⬜ |
+| Combat (arrows) | 🟡 BaseMob.cs done, Arrow.cs next |
+| Enemies | 🟡 BaseMob.cs done |
 | Upgrades (9-flat) | ⬜ |
 | UI | ⬜ |
 | Economy (timers) | ⬜ |
