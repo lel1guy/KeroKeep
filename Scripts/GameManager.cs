@@ -3,9 +3,11 @@ using System;
 
 namespace KeroKeep
 {
-
 public partial class GameManager : Node
 {
+
+      private SaveLoad _saveLoad;
+
 
     // Resources Signals
     [Signal]
@@ -116,6 +118,9 @@ public partial class GameManager : Node
 
     public override void _Ready()
     {
+
+        _saveLoad = GetNode<SaveLoad>("/root/SaveLoad");
+
         var timer = new Timer();
         timer.WaitTime = AutoResourceTimer;
         timer.Autostart = true;
@@ -140,20 +145,125 @@ public partial class GameManager : Node
     {
         if (what == NotificationWMCloseRequest)
         {
-            //SaveLoad.SaveGame();
+            _saveLoad.SaveGame();
             GetTree().Quit();
         }
 
         else if (what == NotificationWMGoBackRequest)
         {
-            //SaveLoad.SaveGame();
+            _saveLoad.SaveGame();
             GetTree().Quit();
         }
 
         else if (what == NotificationApplicationPaused || what == NotificationApplicationFocusOut)
         {
-            //SaveLoad.SaveGame();
+            _saveLoad.SaveGame();
         }
     }
+
+    public void LoadState(Godot.Collections.Dictionary data)
+        {
+            Gold = data.ContainsKey("gold")
+                ? data["gold"].AsInt32()
+                : 0;
+
+            Food = data.ContainsKey("food")
+                ? data["food"].AsInt32()
+                : 0;
+
+            Scrap = data.ContainsKey("scrap")
+                ? data["scrap"].AsInt32()
+                : 0;
+
+            StoreroomUnlocked = data.ContainsKey("storeroomUnlocked")
+                ? data["storeroomUnlocked"].AsBool()
+                : false;
+            
+            FarmUnlocked = data.ContainsKey("farmUnlocked")
+                ? data["farmUnlocked"].AsBool()
+                : false;
+
+            ClickDamage = data.ContainsKey("clickDamage")
+                ? data["clickDamage"].AsInt32()
+                : 1;
+            
+            ArrowDamage = data.ContainsKey("arrowDamage")
+                ? data["arrowDamage"].AsSingle()
+                : 0.25f;
+
+            ArrowCount = data.ContainsKey("arrowCount")
+                ? data["arrowCount"].AsInt32()
+                : 1;
+            
+            GoldDropMultiplier = data.ContainsKey("goldDropMultiplier")
+                ? data["goldDropMultiplier"].AsSingle()
+                : 1.0f;
+            
+            ArcherCount = data.ContainsKey("archerCount")
+                ? data["archerCount"].AsInt32()
+                : 0;
+
+            MaxArcherCount = data.ContainsKey("maxArcherCount")
+                ? data["maxArcherCount"].AsInt32()
+                : 4;
+
+            UnlockedStage = data.ContainsKey("unlockedStage")
+                ? data["unlockedStage"].AsInt32()
+                : 0;
+
+            UpgradeLevel = data.ContainsKey("upgradeLevel")
+                ? data["upgradeLevel"].AsInt32()
+                : 1;
+
+            FarmTime = data.ContainsKey("farmTime")
+                ? data["farmTime"].AsSingle()
+                : 4f;
+            
+            FoodPerFarm = data.ContainsKey("foodPerFarm")
+                ? data["foodPerFarm"].AsInt32()
+                : 5;
+
+            AutoFarm = data.ContainsKey("autoFarm")
+                ? data["autoFarm"].AsBool()
+                : false;
+            
+            AutoFarmTimer = data.ContainsKey("autoFarmTimer")
+                ? data["autoFarmTimer"].AsSingle()
+                : 2f;
+            
+            AutoFarmAmount = data.ContainsKey("autoFarmAmount")
+                ? data["autoFarmAmount"].AsInt32()
+                : 1;
+            
+            ScavangeTime = data.ContainsKey("scavangeTime")
+                ? data["scavangeTime"].AsSingle()
+                : 15f;
+
+            ScrapPerScavange = data.ContainsKey("scrapPerScavange")
+                ? data["scrapPerScavange"].AsInt32()
+                : 10;
+
+            AutoScavange = data.ContainsKey("autoScavange")
+                ? data["autoScavange"].AsBool()
+                : false;
+
+            AutoScavangeTimer = data.ContainsKey("autoScavangeTimer")
+                ? data["autoScavangeTimer"].AsSingle()
+                : 2f;
+
+            AutoScavangeAmount = data.ContainsKey("autoScavangeAmount")
+                ? data["autoScavangeAmount"].AsInt32()
+                : 1;
+
+            AutoResourceTimer = data.ContainsKey("autoResourceTimer")
+                ? data["autoResourceTimer"].AsSingle()
+                : 1f;
+
+            LastSaveTime = data.ContainsKey("lastSaveTime")
+                ? data["lastSaveTime"].AsSingle()
+                : 0f;
+
+            
+        }
 }
 }
