@@ -5,11 +5,21 @@
 > **Engine:** Godot 4 (Mono) · **Language:** C#
 > **Repo:** [lel1guy/KeroKeep](https://github.com/lel1guy/KeroKeep) (public)
 > **Prototype:** [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) — GDScript (archived)
-> **Dev Log:** [[Dev-Log|C# port session log]]
+> **Dev Log:** Dev-Log
 > **Design philosophy:** B/C hybrid — named survivors with stats + skill levels, engineering tree, siege waves
 > **Last updated:** 2026-07-06
 
 ---
+
+## Revision History
+
+| Date | Change | Reason |
+|------|--------|--------|
+| 2026-07-06 | Food death spiral → Famine Mode (25% efficiency) | Too punishing — collided with P3 Fair Forever |
+| 2026-07-06 | Offline simulation available from start at 25% | Gating idle feature behind mid-game made no sense |
+| 2026-07-06 | Monster table expanded with HP/Speed/DPS/Mechanical columns | Documenting actual game design — not just numbers |
+| 2026-07-06 | Wave layout documented: 4 lanes, wall layout, building positions | Missing spatial design now captured |
+| 2026-07-02 | GDD fully redesigned — B/C hybrid, 12 systems, MoSCoW | Session 2 — co-design with Hermes |
 
 ## 1. Vision & Pillars
 
@@ -90,7 +100,7 @@ Kero Keep's gameplay operates on three nested timescales, plus four progression 
 
 | Element | Description |
 |---------|-------------|
-| **Offline simulation** | Unlocks when all archers acquired. World runs while you're away. |
+| **Offline simulation** | **Available from the start** at 25% rate. Upgrades to 50-75% rate when all archers acquired. World runs while you're away. |
 | **Random events** | Hordes and bosses can appear unpredictably. |
 | **Progression check** | Has the wall held? Are new upgrades available? |
 
@@ -179,10 +189,11 @@ The endgame loop. Reset the world, keep permanent bonuses, start stronger.
 
 Every archer and survivor has an ongoing **food upkeep cost**.
 
-**If food hits zero:**
-1. Archers stop firing — defenses go silent
-2. Survivors stop producing — Scrap and Food income drops to zero
-3. **Death spiral**: no food → no workers → no production → no recovery without manual intervention
+**If food hits zero — Famine Mode:**
+1. All production drops to 25% efficiency — archers fire slower, farmers produce less, scavengers find less
+2. Food is only produced through farming (no purchasing) — you must farm your way out
+3. **Recovery path**: manual scavenging and farming still work at reduced rate. Kill monsters for gold to upgrade farm efficiency. The wall holds, but barely.
+4. **No death spiral** — famine is a setback, not a game over. Tension without punishment.
 
 ---
 
@@ -200,14 +211,16 @@ Each archer: unlock cost (Gold + Scrap + Food), upkeep cost (Food/tick), per-arr
 
 ### 3.2 Monster System
 
-| Monster | Stage | Status |
-|---------|-------|--------|
-| **Skeleton** | 0 | Implemented (3 variants) |
-| **Zombie** | 1 | Implemented (7 variants) |
-| **Orc** | 2 | Planned |
-| **Demon** | 3 | Planned |
+| Monster | Stage | HP | Speed | DPS | Mechanical Difference | Status |
+|---------|-------|----|-------|-----|----------------------|--------|
+| **Skeleton** | 0 | Low | Fast | Low | Basic — no special mechanics | Implemented (3 variants) |
+| **Zombie** | 1 | Medium | Slow | Medium | Tanky — takes more clicks to kill | Implemented (7 variants) |
+| **Orc** | 2 | High | Medium | High | Armored — reduces click damage, arrows pierce | Planned |
+| **Demon** | 3 | Very High | Fast | Very High | Teleports, fire AoE, unique attack patterns | Planned |
 
-**Behavior:** All monsters descend from `BaseMob` (CharacterBody2D). Move straight down. On click → damage. 0 HP → death animation + gold + bones. Progression via `unlocked_stage`.
+Each monster type has different HP, speed, and damage output — not just bigger numbers. Mechanical differences force the player to adapt strategy per stage (e.g., Orcs need arrows, Demons need positioning).
+
+**Wave layout:** 4 lanes running top-to-bottom. At the bottom: the wall and archer positions. Below the wall: storeroom, farm, dormitory, and upgrade buildings. The upgrade building opens a menu page with all upgrade options.
 
 ### 3.3 Upgrade System → Transitioning to Skills
 
@@ -505,17 +518,16 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 ---
 
 ## GDScript Prototype
-
 The original GDScript prototype lives at [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) (playable alpha, archived 2026-07-02). All original systems (3.1-3.5) were documented from its live code. The C# version (Kero Keep) inherits this design and expands it with systems 3.6-3.12.
 
 ---
 
 ## Cross-References
 
-- [[Dev-Log|Dev Log]] — C# port session log
-- [[../../Projects/GameDev-Career/START-HERE|Career Plan]] — my C# learning path
-- [[../../Knowledge/Godot/_index|Godot Knowledge]] — engine reference
-- [[../../Knowledge/Game-Programming-Patterns/_index|Game Programming Patterns]] — Nystrom's 19 patterns
+- Dev Log — C# port session log
+- Career Plan — my C# learning path
+- Godot Knowledge — engine reference
+- Game Programming Patterns — Nystrom's 19 patterns
 
 ---
 
