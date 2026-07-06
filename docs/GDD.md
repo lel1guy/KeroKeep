@@ -5,9 +5,9 @@
 > **Engine:** Godot 4 (Mono) · **Language:** C#
 > **Repo:** [lel1guy/KeroKeep](https://github.com/lel1guy/KeroKeep) (public)
 > **Prototype:** [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) — GDScript (archived)
-> **Dev Log:** Dev-Log
+> **Dev Log:** [[Dev-Log|C# port session log]]
 > **Design philosophy:** B/C hybrid — named survivors with stats + skill levels, engineering tree, siege waves
-> **Last updated:** 2026-07-04
+> **Last updated:** 2026-07-06
 
 ---
 
@@ -371,7 +371,7 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 | # | System | Source | Target | Status |
 |---|--------|--------|--------|:---:|
 | 1 | GameManager | `GameManager.gd` | `Scripts/GameManager.cs` | ✅ Complete |
-| 2 | Save & Load | `Save&Load.gd` | `Scripts/SaveLoad.cs` | 🟡 |
+| 2 | Save & Load | `Save&Load.gd` | `Scripts/SaveLoad.cs` | ✅ Complete |
 | 3 | Combat (arrows) | `Scripts/Arrow.gd` | TBD | ⬜ |
 | 4 | Enemies | `Scripts/Enemy*.gd` | TBD | ⬜ |
 | 5 | Upgrades (9-flat, transitional) | `Scripts/Upgrade*.gd` | TBD | ⬜ |
@@ -400,6 +400,8 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 | `{ get; private set; }` | Resource properties — read-only externally |
 | `f` suffix on floats | C# explicit float literal |
 | `EmitSignal(SignalName.X, value)` | Type-safe signal emission |
+| `GetNode<T>("/root/Name")` in `_Ready()` | C# autoload access — no global magic, fetch instance from scene tree |
+| `LoadState(Dictionary)` method | External code can't touch `private set` properties — GameManager loads its own state |
 
 ---
 
@@ -412,7 +414,7 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 - [ ] 3 monster types spawnable (Skeleton, Zombie, Orc)
 - [ ] 4 archers placeable, firing arrows
 - [ ] Manual + auto economy working (Scrap, Food)
-- [ ] Save/Load working (auto-save every 60s)
+- [x] Save/Load working (auto-save every 60s, JSON to user://savegame.json)
 - [ ] Core UI: resource bars, upgrade panel, archer panel
 - [ ] Wave system: percentage-based scaling, endless
 
@@ -498,14 +500,15 @@ A tech tree that unlocks through skill levels. Permanent upgrades, buildings, an
 | Base prestige currency | 10 | 5-20 | Per cycle |
 | Bonus per achievement | +2 | 1-5 | Encourages completionism |
 | Bonus per boss killed | +5 | 3-10 | Bosses matter |
-| Starting resource bonus | +10% | 5-25% | Per prestige level |
+| Bonus per surviving survivor | +3 | 1-7 | Attachment incentive |
+| Prestige scaling factor | 1.2× | 1.1-1.5× | Currency earned per subsequent cycle |
 
 ---
 
-## GDScript Prototype
+## 9. Comparable Titles
 
-The original GDScript prototype lives at [lel1guy/LastBastion](https://github.com/lel1guy/LastBastion) (playable alpha, archived 2026-07-02). All original systems (3.1-3.5) were documented from its live code. The C# version (Kero Keep) inherits this design and expands it with systems 3.6-3.12.
+*(Pending — V hasn't finalised comparison titles yet.)*
 
 ---
 
-*Single GDD — B/C hybrid redesign, 2026-07-02. Session 2.*
+*Game design by V. Last updated 2026-07-06.*

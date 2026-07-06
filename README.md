@@ -28,7 +28,7 @@ I built the original prototype in GDScript (Godot). Now I'm porting it to C# to 
 | System | Status |
 |--------|:------:|
 | GameManager (autoload) | ✅ Complete |
-| Save & Load | 🟡 In progress |
+| Save & Load | ✅ Complete |
 | Combat (arrows) | ⬜ |
 | Enemies | ⬜ |
 | Upgrades (9-flat) | ⬜ |
