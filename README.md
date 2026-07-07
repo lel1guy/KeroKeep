@@ -22,7 +22,7 @@ I built the original prototype in GDScript (Godot). Now I'm porting it to C# to 
 - **Design:** Earned Growth · Persistent Siege · Fair Forever
 - **License:** [PolyForm Shield 1.0.0](LICENSE.md) — free for learning, paid for playing
 
-📖 **[Full Game Design Document →](GDD.md)**
+📖 **[Full Game Design Document →](https://github.com/lel1guy/KeroKeep/blob/main/docs/GDD.md)**
 
 ---
 
