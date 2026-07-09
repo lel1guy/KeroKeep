@@ -20,10 +20,10 @@ public partial class GameManager : Node
     public delegate void ScrapChangedEventHandler(int amount);
     
     // Resources
-    public int Gold { get; private set; } = 0;
-    public int Food { get; private set; } = 0;
+    public int Gold { get; set; } = 0;
+    public int Food { get; set; } = 0;
 
-    public int Scrap { get; private set; } = 0;
+    public int Scrap { get; set; } = 0;
 
 
     // Unlocks
