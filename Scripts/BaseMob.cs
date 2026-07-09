@@ -42,7 +42,7 @@ public partial class BaseMob : CharacterBody2D
             }
         }
 
-        public override void _InputEvent(Node viewport, InputEvent @event, long shapeIdx)
+        public override void _InputEvent(Viewport viewport, InputEvent @event, int shapeIdx)
         {
             if (Health > 0 && @event.IsActionPressed("clickAttack"))
             {
