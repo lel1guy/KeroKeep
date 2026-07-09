@@ -28,7 +28,7 @@ window/stretch/aspect="expand"
 
 [dotnet]
 
-project/assembly_name="lastbastioncs"
+project/assembly_name="KeroKeep"
 
 [physics]
 
