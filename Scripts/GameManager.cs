@@ -48,11 +48,11 @@ public partial class GameManager : Node
     public int AutoFarmAmount { get; set; } = 1;
     
     // Scrap Management
-    public float ScavangeTime { get; set; } = 15f;
-    public int ScrapPerScavange { get; set; } = 10;
-    public bool AutoScavange { get; set; } = false;
-    public float AutoScavangeTimer { get; set; } = 2f;
-    public int AutoScavangeAmount { get; set; } = 1;
+    public float ScavengeTime { get; set; } = 15f;
+    public int ScrapPerScavenge { get; set; } = 10;
+    public bool AutoScavenge { get; set; } = false;
+    public float AutoScavengeTimer { get; set; } = 2f;
+    public int AutoScavengeAmount { get; set; } = 1;
 
     // Auto Resource Management
     public float AutoResourceTimer { get; set; } = 1f;
@@ -135,9 +135,9 @@ public partial class GameManager : Node
             AddFood(AutoFarmAmount);
         }
 
-        if (AutoScavange)
+        if (AutoScavenge)
         {
-            AddScrap(AutoScavangeAmount);
+            AddScrap(AutoScavengeAmount);
         }
     }
 
@@ -235,24 +235,24 @@ public partial class GameManager : Node
                 ? data["autoFarmAmount"].AsInt32()
                 : 1;
             
-            ScavangeTime = data.ContainsKey("scavangeTime")
-                ? data["scavangeTime"].AsSingle()
+            ScavengeTime = data.ContainsKey("ScavengeTime")
+                ? data["ScavengeTime"].AsSingle()
                 : 15f;
 
-            ScrapPerScavange = data.ContainsKey("scrapPerScavange")
-                ? data["scrapPerScavange"].AsInt32()
+            ScrapPerScavenge = data.ContainsKey("scrapPerScavenge")
+                ? data["scrapPerScavenge"].AsInt32()
                 : 10;
 
-            AutoScavange = data.ContainsKey("autoScavange")
-                ? data["autoScavange"].AsBool()
+            AutoScavenge = data.ContainsKey("autoScavenge")
+                ? data["autoScavenge"].AsBool()
                 : false;
 
-            AutoScavangeTimer = data.ContainsKey("autoScavangeTimer")
-                ? data["autoScavangeTimer"].AsSingle()
+            AutoScavengeTimer = data.ContainsKey("autoScavengeTimer")
+                ? data["autoScavengeTimer"].AsSingle()
                 : 2f;
 
-            AutoScavangeAmount = data.ContainsKey("autoScavangeAmount")
-                ? data["autoScavangeAmount"].AsInt32()
+            AutoScavengeAmount = data.ContainsKey("autoScavengeAmount")
+                ? data["autoScavengeAmount"].AsInt32()
                 : 1;
 
             AutoResourceTimer = data.ContainsKey("autoResourceTimer")

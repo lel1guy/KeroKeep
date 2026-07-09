@@ -13,7 +13,6 @@ public partial class BaseMob : CharacterBody2D
         [Export] public int Speed { get; set; } = 50;
         [Export] public int GoldDrop { get; set; } = 1;
 
-        public int Damage { get; set; }
 
         private AnimatedSprite2D _sprite;
         public override void _Ready()
@@ -36,7 +35,7 @@ public partial class BaseMob : CharacterBody2D
             if (Health <= 0)
             {
                 Speed = 0;
-                _gameManager.AddGold(GoldDrop * (int)_gameManager.GoldDropMultiplier);
+                _gameManager.AddGold(Mathf.CeilToInt(GoldDrop * _gameManager.GoldDropMultiplier));
                 _sprite.Play("Death");
                 await ToSignal(_sprite, AnimatedSprite2D.SignalName.AnimationFinished);
                 QueueFree();

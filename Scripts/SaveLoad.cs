@@ -45,11 +45,11 @@ namespace KeroKeep
             data["autoFarm"] = _gameManager.AutoFarm;
             data["autoFarmTimer"] = _gameManager.AutoFarmTimer;
             data["autoFarmAmount"] = _gameManager.AutoFarmAmount;
-            data["scavangeTime"] = _gameManager.ScavangeTime;
-            data["scrapPerScavange"] = _gameManager.ScrapPerScavange;
-            data["autoScavange"] = _gameManager.AutoScavange;
-            data["autoScavangeTimer"] = _gameManager.AutoScavangeTimer;
-            data["autoScavangeAmount"] = _gameManager.AutoScavangeAmount;
+            data["ScavengeTime"] = _gameManager.ScavengeTime;
+            data["scrapPerScavenge"] = _gameManager.ScrapPerScavenge;
+            data["autoScavenge"] = _gameManager.AutoScavenge;
+            data["autoScavengeTimer"] = _gameManager.AutoScavengeTimer;
+            data["autoScavengeAmount"] = _gameManager.AutoScavengeAmount;
             data["autoResourceTimer"] = _gameManager.AutoResourceTimer;
             data["lastSaveTime"] = _gameManager.LastSaveTime;
 
