@@ -4,6 +4,12 @@
 
 > Kero Keep is an incremental siege defense game where armored frog warriors hold the last wall of a dying kingdom against an endless horde. Click to kill. Earn resources. Build. Survive. The siege never ends — but neither do you.
 
+## Why I'm Making It
+
+I love incremental games. Numbers go up, dopamine hits. But most of them feel like spreadsheets — you don't *see* anything happening.
+
+I wanted an incremental game where the world actually reacts. Archers you see fire. Waves you feel bearing down on the wall. Every upgrade traces back to something *you did*, not something a timer decided. Survival tension with RPG depth, wrapped in idle DNA — and instead of generic humans, the defenders are the armored frog warriors of a dying kingdom.
+
 ## Genre
 
 - **Primary:** Incremental idle (numbers go up, dopamine hits)
@@ -19,6 +25,17 @@ Most idle games feel like spreadsheets — numbers climb but you don't *see* any
 - Builds you watch evolve visually as you progress
 - Survivors you name, level, and grow attached to
 - A keep that changes — banners appear, walls reinforce, scars mark past cycles
+
+## B/C Hybrid Design
+
+Kero Keep uses a hybrid approach between two design philosophies:
+
+| Aspect | Approach | What It Means |
+|--------|----------|---------------|
+| **Survivors** | Option B | Named individuals with stats, personality, and attachment. 6 max (3 farmers, 3 scavengers). |
+| **Skills** | Option C | 5 skills replace 9 flat upgrades. Depth over breadth. Skill levels gate new mechanics. |
+| **Engineering** | Option C | Tech tree unlocked through skill levels. Recipes persist through prestige. |
+| **Siege waves** | Option C | Percentage-based difficulty. Unpredictable = tense. No fixed wave schedules. |
 
 ## Design Pillars
 
@@ -53,3 +70,7 @@ No pay-to-win. No premium currency. Money never touches game balance. If monetiz
 ## Why Frogs?
 
 Because fantasy is oversaturated with humans, elves, and dwarves. Batrachia — a kingdom of armored, bipedal frog warriors — is visually distinct, memorable, and opens design space that generic fantasy doesn't. Think *Redwall* grit with an amphibian skin. Not comedic. Not cartoonish. Warriors holding the last wall of a dying kingdom.
+
+---
+
+*Next: [The World of Batrachia →](world.md)*
