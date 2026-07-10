@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnseyeu7wmpcr"]
 
-[ext_resource type="Script" uid="uid://cbd70v2j3dvuj" path="res://Scripts/Mob.gd" id="1_7hd1e"]
+[ext_resource type="Script" uid="uid://cmkbpnwkauc8r" path="res://Scripts/BaseMob.cs" id="1_7hd1e"]
 [ext_resource type="Texture2D" uid="uid://brscgc8r1kogj" path="res://Assets/Enemies/Zombies/Big Zombie_2.png" id="2_7hd1e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lslb8"]

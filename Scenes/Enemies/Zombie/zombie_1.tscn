@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bg8nc3rnwqc5g"]
 
-[ext_resource type="Script" uid="uid://cbd70v2j3dvuj" path="res://Scripts/Mob.gd" id="1_11jav"]
+[ext_resource type="Script" uid="uid://cmkbpnwkauc8r" path="res://Scripts/BaseMob.cs" id="1_11jav"]
 [ext_resource type="Texture2D" uid="uid://hs4dtdfo8o2k" path="res://Assets/Enemies/Zombies/Zombie_1.png" id="2_ovue5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vy0uf"]

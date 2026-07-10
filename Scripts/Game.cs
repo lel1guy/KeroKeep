@@ -53,11 +53,52 @@ namespace KeroKeep
 
             _mobSpawnTimer = GetNode<Timer>("MobSpawnTimer");
 
+            _scavengeButton.Pressed +=  _OnScavengeButtonPressed;
+            _scavengeTimer.Timeout += _OnScavengeTimerTimeout;
+
+            _farmButton.Pressed += _OnFarmButtonPressed;
+            _farmTimer.Timeout += _OnFarmTimerTimeout;
+
         }
 
         public override void _Process(double delta)
         {
             
+        }
+
+        private void _OnScavengeButtonPressed()
+        {
+            if (!_gameManager.StoreroomUnlocked) return;
+
+            _scavengeButton.Disabled = true;
+            _scavengeTimer.Start(_gameManager.ScavengeTime);
+            _autoScrap.Visible = true;
+        }
+
+        private void _OnScavengeTimerTimeout()
+        {
+            _scavengeButton.Disabled = false;
+            _gameManager.AddScrap(_gameManager.ScrapPerScavenge);
+            _autoScrap.Visible = false;
+            _autoScrapLoad.Play("default");
+        }
+
+        private void _OnFarmButtonPressed()
+        {
+            if (!_gameManager.FarmUnlocked) return;
+
+            _farmButton.Disabled = true;
+            _farmTimer.Start(_gameManager.FarmTime);
+            _autoFood.Visible = true;
+            
+        }
+
+        private void _OnFarmTimerTimeout()
+        {
+            _farmButton.Disabled = false;
+            _gameManager.AddFood(_gameManager.FoodPerFarm);
+            _autoFood.Visible = false;
+            _autoFarmLoad.Play("default");
         }
 
         

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dw48ht817xr8k"]
 
-[ext_resource type="Script" uid="uid://cbd70v2j3dvuj" path="res://Scripts/Mob.gd" id="1_lq368"]
+[ext_resource type="Script" uid="uid://cmkbpnwkauc8r" path="res://Scripts/BaseMob.cs" id="1_lq368"]
 [ext_resource type="Texture2D" uid="uid://dgs3083cxi2la" path="res://Assets/Enemies/Zombies/Big Zombie_3_hurt.png" id="2_t0xhx"]
 [ext_resource type="Texture2D" uid="uid://deojy0sjn44dj" path="res://Assets/Enemies/Zombies/Big Zombie_3_walk.png" id="3_nqkai"]
 
