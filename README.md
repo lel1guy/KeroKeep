@@ -44,9 +44,9 @@ No pay-to-win. No premium currency. Money never touches game balance. The game r
 |--------|:------:|
 | GameManager (autoload) | ✅ Complete |
 | Save & Load | ✅ Complete |
-| Combat (arrows) | 🟡 BaseMob.cs done, Arrow.cs next |
-| Enemies | 🟡 BaseMob.cs done |
-| Upgrades (9-flat) | ⬜ |
+| Combat (BaseMob + Arrows) | ✅ Complete |
+| Enemies (Skeleton, Zombie) | ✅ BaseMob + Skeleton done |
+| Upgrades (9-flat) | ✅ Complete — 12 files, IUpgradeEffect interface |
 | UI | ⬜ |
 | Economy (timers) | ⬜ |
 | Survivors | ⬜ |
@@ -54,6 +54,8 @@ No pay-to-win. No premium currency. Money never touches game balance. The game r
 | Bosses | ⬜ |
 | Engineering tree | ⬜ |
 | Prestige | ⬜ |
+
+**MVP target:** 7 core systems, ~3 weeks. **Full game:** all 12 systems, ~15 weeks. Solo dev, one system at a time.
 
 📋 **[Full Roadmap →](docs/gdd/roadmap.md)**
 
