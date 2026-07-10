@@ -20,9 +20,9 @@
 |--------|:------:|
 | GameManager (autoload) | ✅ |
 | Save & Load (JSON) | ✅ |
-| BaseMob (enemy base class) | 🟡 |
-| Click combat | 🟡 |
-| Arrow projectile | ⬜ |
+| BaseMob (enemy base class) | ✅ |
+| Click combat | ✅ |
+| Arrow projectile | ✅ |
 
 ## Phase 2: First Playable
 
@@ -31,9 +31,8 @@
 | System | Status |
 |--------|:------:|
 | UI (HUD, menus) | ⬜ |
-| Economy (timers, auto-income) | ⬜ |
-| First archer unlock | ⬜ |
-| Upgrade system (9-flat) | ⬜ |
+| Economy (timers, auto-income) | 🟡 |
+| Upgrade system (9-flat, IUpgradeEffect) | ✅ |
 | Wave spawning | ⬜ |
 
 ## Phase 3: The Siege
@@ -43,7 +42,7 @@
 | System | Status |
 |--------|:------:|
 | All 4 archers | ⬜ |
-| Multiple enemy types | ⬜ |
+| Multiple enemy types | 🟡 |
 | Bosses (every 10 waves) | ⬜ |
 | Survivor system | ⬜ |
 | Base visual evolution | ⬜ |
