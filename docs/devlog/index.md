@@ -8,6 +8,7 @@
 
 | # | Date | Title |
 |---|------|-------|
+| [004](004-sprints-three-four-five.md) | 2026-07-12 | Interfaces, Upgrades, and Sprint Momentum |
 | [003](003-upgrades-and-scavange.md) | 2026-07-09 | Upgrades & A Typo Called Scavange |
 | [002](002-systems-that-last.md) | 2026-07-08 | Systems That Last |
 | [001](001-foundations.md) | 2026-07-07 | Foundations — Porting from GDScript to C# |

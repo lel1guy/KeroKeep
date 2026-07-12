@@ -1,41 +1,16 @@
-# Game Design Document — Kero Keep
+# Kero Keep — Game Design Document
 
-> The last fortress of Batrachia is mine to defend.
+> **Status:** 🟡 Phase A — porting GDScript prototype to C# (Sprint 4/6). Phase B (new MVP features) after port complete.
+> **Engine:** Godot 4 (Mono) · **Language:** C#
+> **Last updated:** 2026-07-12
 
-An incremental siege defense game. Godot 4 Mono / C#.
+Kero Keep is an incremental siege-defense game set in the last fortress of the frog kingdom of Batrachia. Defend the wall, command your mages, manage resources, and hold the line against an endless siege.
 
----
+## Contents
 
-## Quick Navigation
-
-| Section | |
-|---------|---|
-| [1. Concept & Vision](concept.md) | Genre, pillars, the feeling |
-| [2. The World of Batrachia](world.md) | Setting, tone, the kingdom |
-| [3. Gameplay](gameplay.md) | Core loop, systems, progression |
-| [4. Art Direction](art-direction.md) | Visual style, inspirations, palette |
-| [5. Roadmap](roadmap.md) | Phases and current status |
-
----
-
-## At a Glance
-
-| | |
-|---|---|
-| **Genre** | Incremental idle + tower defense + RPG |
-| **Setting** | Batrachia — medieval kingdom of humanoid frogs |
-| **Platform** | Windows, Linux |
-| **Engine** | Godot 4 (Mono) / C# |
-| **Status** | 🟡 Pre-Alpha — core systems in development |
-
----
-
-## The Pitch
-
-You command Kero Keep — the last fortress standing between the kingdom of Batrachia and an endless siege. Click to kill. Earn resources. Build defenses. Recruit armored frog archers. Survive wave after wave. There is no victory screen. The siege never ends.
-
-But you grow. Every upgrade traces back to something *you* did — mobs killed, resources earned, archers commanded. And when the wall finally falls? You begin again. Stronger. With scars that show.
-
----
-
-*Last updated: 2026-07-07*
+- [Concept](concept.md) — Vision, pillars, the feeling, design philosophy
+- [World](world.md) — Setting, tone, the keep, its defenders and enemies
+- [Gameplay](gameplay.md) — Core loop, systems overview, progression
+- [Art Direction](art-direction.md) — Visual style, inspirations, palette
+- [Roadmap](roadmap.md) — MoSCoW priorities and current status
+- [Dev Log](../devlog/index.md) — Development journal

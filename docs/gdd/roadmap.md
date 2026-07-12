@@ -12,62 +12,49 @@
 
 ---
 
-## Phase 1: Core Foundation
+## Phase A — Port Prototype to C#
 
-*The game boots, saves, and combat works.*
+*Port every system that already works in the GDScript prototype. Game plays identically to prototype when done.*
 
-| System | Status |
-|--------|:------:|
-| GameManager (autoload) | ✅ |
-| Save & Load (JSON) | ✅ |
-| BaseMob (enemy base class) | ✅ |
-| Click combat | ✅ |
-| Arrow projectile | ✅ |
+| Sprint | System | Status |
+|:------:|--------|:------:|
+| 1 | GameManager + SaveLoad | ✅ |
+| 2 | Combat (BaseMob, Arrow, Skeleton) | ✅ |
+| 3 | Code review & fixes | ✅ |
+| 4 | Upgrades (9-flat, IUpgradeEffect) | ✅ |
+| 5 | Economy + Game scene (scavenge/farm buttons, mob spawner, mage spawner) | 🟡 |
+| 6 | UI + Integration | ⬜ |
 
-## Phase 2: First Playable
+## Phase B — New MVP Features
 
-*You can kill things and spend resources.*
+*Systems that make it a real game, not just a prototype.*
 
-| System | Status |
-|--------|:------:|
-| UI (HUD, menus) | ⬜ |
-| Economy (timers, auto-income) | 🟡 |
-| Upgrade system (9-flat, IUpgradeEffect) | ✅ |
-| Wave spawning | ⬜ |
+| System | Dependencies | Status |
+|--------|-------------|:------:|
+| Wave counter + record | Phase A | ⬜ |
+| Mage ceremony + unlock gates | Phase A | ⬜ |
+| Milestone popups | GameManager signals | ⬜ |
+| Boss hunting (3 mini-bosses) | Wave system | ⬜ |
+| Chronicle prestige | Wave system | ⬜ |
+| Welcome back screen | GameManager, WaveManager | ⬜ |
+| Daily login bonus | GameManager, SaveLoad | ⬜ |
+| Sound effects | Phase A | ⬜ |
 
-## Phase 3: The Siege
+## Post-MVP
 
-*The game loop emerges.*
-
-| System | Status |
-|--------|:------:|
-| All 4 archers | ⬜ |
-| Multiple enemy types | 🟡 |
-| Bosses (every 10 waves) | ⬜ |
-| Survivor system | ⬜ |
-| Base visual evolution | ⬜ |
-
-## Phase 4: Depth
-
-*Systems that make the game replayable.*
+*Depth, polish, and replayability.*
 
 | System | Status |
 |--------|:------:|
+| Survivors (6 named NPCs) | ⬜ |
 | Skill system (5 skills) | ⬜ |
+| Quest system | ⬜ |
+| Achievements | ⬜ |
+| Full boss system | ⬜ |
 | Engineering tree | ⬜ |
-| Quests & achievements | ⬜ |
-| Offline simulation | ⬜ |
-| Daily bonuses | ⬜ |
-
-## Phase 5: Eternal
-
-*The endgame and polish.*
-
-| System | Status |
-|--------|:------:|
-| Prestige cycle | ⬜ |
-| Final boss | ⬜ |
+| Expanded prestige + Valor Marks | ⬜ |
+| Visual base evolution | ⬜ |
 | Art pass (replace placeholders) | ⬜ |
-| Audio (music + SFX) | ⬜ |
+| Music & soundtrack | ⬜ |
 | Platform builds (Windows, Linux) | ⬜ |
 | itch.io release | ⬜ |

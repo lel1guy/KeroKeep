@@ -1,48 +1,46 @@
-# The World of Batrachia
+# World
 
-## The Kingdom
+## The Kingdom of Batrachia
 
-Batrachia is a civilization of humanoid frogs — bipedal, armored, wielding bows and blades like any medieval realm. They are not comedic. They are warriors, farmers, scavengers, and archers holding the last wall of a dying kingdom.
+**Batrachia** is a civilization of humanoid frogs — bipedal, armored, wielding staffs and blades like any medieval realm. They are not comedic or cartoonish; they are warriors holding the last wall of a dying kingdom.
 
-Kero Keep is the final fortress. Behind its walls: the last survivors of Batrachia. Beyond them: nothing but the enemy.
+Kero Keep is the final fortress. Behind its walls: the last farmers, scavengers, and mages of Batrachia. Beyond them: nothing but the enemy.
 
-## Tone
-
-**Grounded fantasy with charm.** The frog identity adds visual distinction and personality, but the stakes are real:
-
-- Your survivors can starve
-- Your walls can fall
-- Named archers you've grown attached to can die
-- The siege never ends
-
-Think *Redwall* — anthropomorphic animals, but real danger, real loss, real courage. Not Saturday morning cartoon. Not grimdark either. The middle ground where charm meets consequence.
+**Tone:** Grounded fantasy with charm. The frog identity adds visual distinction and personality, but the stakes are real — your survivors can starve, your walls can fall, and the siege never ends.
 
 ## The Keep
 
-Kero Keep is a walled fortress on a hill. Four lanes of approach run top-to-bottom toward the wall. Behind the wall: the storeroom, the farm, the dormitory, and the upgrade buildings. Everything the player builds appears in the world.
+The keep is the player's home base and last line of defense. Its spatial layout:
 
-**Visual evolution:** The keep changes as you progress:
-- First archer → wall gets a banner
-- Four archers → wall reinforced with stone
-- Storeroom built → building appears, fills with scrap sprites
-- Farm built → crops appear, grow over time
-- After prestige → wall gains scars from past cycles
+- **4 lanes** run top-to-bottom — enemies march down these corridors
+- **At the bottom:** the wall and mage positions — your defensive line
+- **Below the wall:** storeroom, farm, dormitory, and upgrade buildings
 
-## The Archers
+The keep changes visually as the player progresses. Banners appear with the first mage. Walls reinforce at four mages. Crops grow when the farm is unlocked. After prestige, the wall bears scars from past cycles — a history visible in the stone.
 
-Four archers can hold the wall. Named from a pool of Batrachian names: Kael, Lyra, Torvin, Sera, Brann, Vexa, Oric, Myra. Each has a short recruitment line. Each can be leveled, upgraded, and — if the wall falls — lost. Six is small enough to remember names. Small enough that losing one hurts.
+## The Defenders — Mages of Batrachia
+
+Ranged units are mages wielding swamp-green magic bolts from staffs and glowing hands. Up to 4 mages can be recruited, each with a name from a pool of Batrachian names (Kael, Lyra, Torvin, Sera, Brann, Vexa, Oric, Myra).
+
+Each mage is earned, not bought. The first comes free after 10 kills. The fourth requires defeating a boss or surviving 15 waves — a milestone that transforms automation from "I bought a thing" to "I earned my wall."
 
 ## The Enemy
 
-| Stage | Enemy | Nature |
-|-------|-------|--------|
-| 0 | **Skeletons** | Fast, fragile. The first threat. |
-| 1 | **Zombies** | Slow, tanky. Takes punishment. |
-| 2 | **Orcs** | Armored, hard-hitting. Arrows pierce where clicks fail. |
-| 3 | **Demons** | Teleporting, fire AoE. Unique attack patterns force adaptation. |
+Four monster stages, each with distinct mechanics:
 
-Every 10 waves, a boss appears. Named. Dangerous. Rewarding.
+| Monster | Stage | Mechanical Difference |
+|---------|-------|----------------------|
+| **Skeleton** | 0 | Basic — no special mechanics |
+| **Zombie** | 1 | Tanky — takes more clicks to kill |
+| **Orc** | 2 | Armored — reduces click damage, magic bolts pierce |
+| **Demon** | 3 | Teleports, fire AoE, unique attack patterns |
 
-## The Survivors
+Each monster type forces the player to adapt strategy — they're not just bigger numbers.
 
-Behind the wall, up to 6 survivors work the keep: 3 farmers, 3 scavengers. They have names, stats, and attachment. They gain XP from working. They level up. They can be lost to famine or siege. The keep is their home — and yours.
+## Bosses
+
+Bosses break the rhythm. Random spawns can appear during any wave with percentage-based chance, bringing tougher stats and unique attack patterns. Quest bosses are named, multi-phase threats summoned when specific conditions are met — they gate the next progression tier and offer the game's best rewards.
+
+---
+
+*From the Kero Keep Game Design Document · Updated 2026-07-12*

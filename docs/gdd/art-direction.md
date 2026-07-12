@@ -14,14 +14,14 @@
 
 ## Why This Style
 
-- **Readability:** 4 lanes of enemies, 4 archers, resource counters — the player needs to parse the battlefield instantly
+- **Readability:** 4 lanes of enemies, 4 mages, resource counters — the player needs to parse the battlefield instantly
 - **Scope:** Low-poly flat-shaded 3D is achievable for a solo developer
 - **Distinction:** Stands out from pixel-art indie games and realistic tower defense titles
 - **Charm:** The simple style lets the frog identity shine without visual clutter
 
 ## Color Palette
 
-*To be defined once concept art exists.* Direction: earthy greens and browns for the keep (natural, grounded), muted reds and purples for enemies (threat), gold and warm tones for progression moments.
+*To be defined once concept art exists.* Direction: earthy greens and browns for the keep (natural, grounded), swamp-green for magic bolts, muted reds and purples for enemies (threat), gold and warm tones for progression moments.
 
 ## Inspirations
 
@@ -35,7 +35,7 @@
 
 | Moment | Visual |
 |--------|--------|
-| **Recruitment** | Banner unfurls on the wall, archer takes position |
+| **Recruitment** | Banner unfurls on the wall, mage takes position with staff glowing |
 | **Boss arrival** | Screen darkens, boss nameplate appears |
 | **Wall upgrade** | Stone texture replaces wood, scars accumulate |
 | **Prestige** | Screen fades, keep resets with markings from past cycles |
