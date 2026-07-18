@@ -2,7 +2,7 @@
 
 **The last fortress of Batrachia is mine to defend.**
 
-![Status](https://img.shields.io/badge/status-active-brightgreen) ![Godot](https://img.shields.io/badge/Godot-4-478cbf?logo=godot-engine) ![C#](https://img.shields.io/badge/C%23-12-239120?logo=csharp) ![License](https://img.shields.io/badge/license-PolyForm%20Shield-orange)
+![Status](https://img.shields.io/badge/status-playable-success) ![Godot](https://img.shields.io/badge/Godot-4-478cbf?logo=godot-engine) ![C#](https://img.shields.io/badge/C%23-12-239120?logo=csharp) ![Phase](https://img.shields.io/badge/Phase-A%20Complete-blue) ![License](https://img.shields.io/badge/license-PolyForm%20Shield-orange)
 
 > ⚠️ **Source-available, not open-source.** You can view, learn from, and contribute to the code. Commercial use, redistribution, and selling derivatives is prohibited.
 
@@ -11,6 +11,8 @@
 ## What Is This?
 
 An incremental siege defense game where armored frog warriors hold the wall against an endless horde. Click to kill, earn resources, build defenses, survive waves. No victory screen — the siege never ends.
+
+Built the prototype in GDScript. Ported it to C# — 24 scripts across 6 sprints, zero GDScript remaining. Fully playable.
 
 > You command Kero Keep — the last fortress standing between the kingdom of Batrachia and an endless siege. Build. Fight. Grow. Everything you earn, you earned.
 
@@ -44,18 +46,18 @@ No pay-to-win. No premium currency. Money never touches game balance. The game r
 |--------|:------:|
 | GameManager (autoload) | ✅ Complete |
 | Save & Load | ✅ Complete |
-| Combat (BaseMob + Arrows) | ✅ Complete |
-| Enemies (Skeleton, Zombie) | ✅ BaseMob + Skeleton done |
-| Upgrades (9-flat) | ✅ Complete — 12 files, IUpgradeEffect interface |
-| UI | ⬜ |
-| Economy (timers) | ⬜ |
+| Combat (click-to-kill + arrows) | ✅ Complete |
+| Enemies (BaseMob, Skeleton, Zombie) | ✅ Complete |
+| Upgrades (9-flat, IUpgradeEffect interface) | ✅ Complete |
+| Game scene (economy + spawners) | ✅ Complete |
+| UI (HUD, workshop menu, archers) | ✅ Complete |
 | Survivors | ⬜ |
 | Skills (5-skill) | ⬜ |
 | Bosses | ⬜ |
 | Engineering tree | ⬜ |
 | Prestige | ⬜ |
 
-**MVP target:** 7 core systems, ~3 weeks. **Full game:** all 12 systems, ~15 weeks. Solo dev, one system at a time.
+**Phase A complete.** 24 .cs files, 6 sprints, fully playable. Next: Phase B — MVP features (waves, bosses, prestige).
 
 📋 **[Full Roadmap →](docs/gdd/roadmap.md)**
 
@@ -67,22 +69,24 @@ No pay-to-win. No premium currency. Money never touches game balance. The game r
 |------|--------|
 | **Engine** | Godot 4 (Mono) |
 | **Language** | C# 12 (.NET 8) |
-| **Architecture** | Autoloads (GameManager, Save&Load) |
+| **Architecture** | Autoloads (GameManager, SaveLoad, UpgradeManager) |
 | **Save format** | JSON — `user://SaveFile.json` |
 | **Namespace** | `KeroKeep` |
+| **Scripts** | 24 .cs files (zero GDScript) |
 | **Prototype** | [LastBastion](https://github.com/lel1guy/LastBastion) (GDScript, archived) |
 
 ```
-Scripts/    ← C# source (GameManager.cs, ...)
-Scenes/     ← Godot scenes
-Assets/     ← sprites, textures, audio
+Scripts/           ← 24 C# files
+Scripts/Upgarde/   ← Upgrade system (interface + 9 effects + manager + UI)
+Scenes/            ← 15 Godot scenes (all wired to C#)
+Assets/            ← sprites, textures, fonts, audio
 ```
 
 ---
 
 ## Want the Game?
 
-🔜 Builds coming to itch.io when the game is playable. This repo is the **source code only** — no pre-built binaries.
+🔜 Builds coming to itch.io when Phase B is complete. This repo is the **source code only** — no pre-built binaries.
 
 ---
 
