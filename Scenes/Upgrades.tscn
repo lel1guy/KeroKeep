@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3jpgi12torvu"]
 
-[ext_resource type="Script" uid="uid://d0c45j47ot5th" path="res://Scripts/Upgarde/UpgradeManager.cs" id="1_6ahmb"]
+[ext_resource type="Script" uid="uid://50tdiiq1yt1c" path="res://Scripts/Upgarde/UpgradeMenu.cs" id="1_lh4wn"]
 [ext_resource type="Script" uid="uid://udcm8t8fmikc" path="res://Scripts/ResourcesHud.cs" id="2_eoefc"]
 [ext_resource type="Texture2D" uid="uid://bw50ir56i8we5" path="res://Assets/UpgradeMenuUi/Plain Paper UI SpriteSheet.png" id="2_pjr1x"]
 [ext_resource type="Texture2D" uid="uid://b42t4aublhd8w" path="res://Assets/Resources/Gold.png" id="4_lh4wn"]
@@ -29,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6ahmb")
+script = ExtResource("1_lh4wn")
 
 [node name="Resources" type="CanvasLayer" parent="." unique_id=1837918510]
 layer = 10
@@ -153,17 +153,9 @@ alignment = 1
 
 [node name="PocketSearch" parent="HBoxContainer" unique_id=318686114 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
-upgrade_name = "Pocket Search"
-description = "Check their pockets! Mobs drop more gold when defeated"
-base_cost_gold = 10
-upgrade_id = "Pocket Search"
 
 [node name="Unloack_storeroom" parent="HBoxContainer" unique_id=1793971074 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
-upgrade_name = "Unlock Storeroom"
-description = "Opens the storeroom to allow for scrap collection."
-base_cost_gold = 50
-upgrade_id = "Storeroom_Unlocked"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1391702883]
 layout_mode = 0
@@ -176,19 +168,9 @@ alignment = 1
 
 [node name="Scavengers" parent="HBoxContainer2" unique_id=2103818080 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
-upgrade_name = "Scavengers"
-description = "Hire help to pick through the wreckage automatically."
-base_cost_gold = 75
-base_cost_scrap = 10
-upgrade_id = "Scavengers"
 
 [node name="Unlock_Farm" parent="HBoxContainer2" unique_id=869019377 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
-upgrade_name = "Unlock Farm"
-description = "Get the plants to begin growing food for the camp."
-base_cost_gold = 150
-base_cost_scrap = 50
-upgrade_id = "Farm_Unlocked"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=1615334803]
 layout_mode = 0
@@ -201,20 +183,9 @@ alignment = 1
 
 [node name="Farmers" parent="HBoxContainer3" unique_id=867564510 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
-upgrade_name = "Farmers"
-description = "Experienced hands to tend the crops day and night."
-base_cost_gold = 200
-base_cost_food = 20
-upgrade_id = "Farmers"
 
 [node name="Archers" parent="HBoxContainer3" unique_id=1003815459 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
-upgrade_name = "Archer Militia"
-description = "Recruit a new defender to watch the walls."
-base_cost_gold = 200
-base_cost_scrap = 100
-base_cost_food = 50
-upgrade_id = "Archers"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="." unique_id=984705716]
 layout_mode = 0
@@ -227,19 +198,8 @@ alignment = 1
 
 [node name="Archery Gear" parent="HBoxContainer4" unique_id=537833518 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
-upgrade_name = "Archery Gear"
-description = "High-quality bows and sharpened tips for more impact."
-base_cost_gold = 300
-base_cost_scrap = 175
-upgrade_id = "Gear"
 
 [node name="Quiver Capacity" parent="HBoxContainer4" unique_id=1741351364 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
-upgrade_name = "Quiver Capacity"
-description = "Allows archers to fire multiple arrows at once."
-base_cost_gold = 500
-base_cost_scrap = 250
-base_cost_food = 150
-upgrade_id = "Arrow_count"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

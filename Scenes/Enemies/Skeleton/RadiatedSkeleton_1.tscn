@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bsq40xec2pxcy"]
 
-[ext_resource type="Script" uid="uid://cmkbpnwkauc8r" path="res://Scripts/BaseMob.cs" id="1_vl7d6"]
+[ext_resource type="Script" uid="uid://d3qfdqoroner2" path="res://Scripts/Skeleton.cs" id="1_vl7d6"]
 [ext_resource type="Texture2D" uid="uid://btnfg16ij28a6" path="res://Assets/Enemies/Skeleton/Skeleton_Boss.png" id="2_vl7d6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xirca"]
@@ -69,7 +69,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eftbj")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -95,7 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_laqmr")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walk",
 "speed": 5.0
 }]
@@ -118,8 +118,6 @@ height = 78.0
 collision_layer = 2
 input_pickable = true
 script = ExtResource("1_vl7d6")
-health = 2
-gold_amout = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=863245252]
 scale = Vector2(1.25, 1.25)

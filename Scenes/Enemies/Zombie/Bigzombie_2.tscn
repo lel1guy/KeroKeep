@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnseyeu7wmpcr"]
 
-[ext_resource type="Script" uid="uid://cmkbpnwkauc8r" path="res://Scripts/BaseMob.cs" id="1_7hd1e"]
+[ext_resource type="Script" uid="uid://dojm8865adpoq" path="res://Scripts/Zombie.cs" id="1_bhxl7"]
 [ext_resource type="Texture2D" uid="uid://brscgc8r1kogj" path="res://Assets/Enemies/Zombies/Big Zombie_2.png" id="2_7hd1e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lslb8"]
@@ -73,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i64cc")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -102,7 +102,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2lmvq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walk",
 "speed": 5.0
 }]
@@ -123,10 +123,7 @@ height = 58.0
 
 [node name="Mob" type="CharacterBody2D" unique_id=1551133509]
 input_pickable = true
-script = ExtResource("1_7hd1e")
-health = 4
-speed = 60
-gold_amout = 4
+script = ExtResource("1_bhxl7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=863245252]
 scale = Vector2(1.5, 1.5)

@@ -66,7 +66,6 @@ namespace KeroKeep
 
         public override void _Process(double delta)
         {
-            _storeroomNode.Visible = _gameManager.StoreroomUnlocked;
             _farmNode.Visible = _gameManager.FarmUnlocked;
         }
 

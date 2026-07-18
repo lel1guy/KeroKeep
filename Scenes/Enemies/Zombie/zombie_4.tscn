@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bcij3d5gyqdqd"]
 
-[ext_resource type="Script" uid="uid://cmkbpnwkauc8r" path="res://Scripts/BaseMob.cs" id="1_4nu6k"]
+[ext_resource type="Script" uid="uid://dojm8865adpoq" path="res://Scripts/Zombie.cs" id="1_eueex"]
 [ext_resource type="Texture2D" uid="uid://brtt16oi326he" path="res://Assets/Enemies/Zombies/Zombie_4.png" id="2_4nu6k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4d5fv"]
@@ -73,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cun5j")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -102,7 +102,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cpdxm")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walk",
 "speed": 5.0
 }]
@@ -123,10 +123,7 @@ height = 58.0
 
 [node name="Mob" type="CharacterBody2D" unique_id=1551133509]
 input_pickable = true
-script = ExtResource("1_4nu6k")
-health = 3
-speed = 55
-gold_amout = 3
+script = ExtResource("1_eueex")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=863245252]
 sprite_frames = SubResource("SpriteFrames_ofjqa")

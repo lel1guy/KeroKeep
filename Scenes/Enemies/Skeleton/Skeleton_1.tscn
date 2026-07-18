@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5ubwoimj13ga"]
 
-[ext_resource type="Script" uid="uid://cmkbpnwkauc8r" path="res://Scripts/BaseMob.cs" id="1_xttje"]
+[ext_resource type="Script" uid="uid://d3qfdqoroner2" path="res://Scripts/Skeleton.cs" id="1_3cdiw"]
 [ext_resource type="Texture2D" uid="uid://dh5plhwqa33f3" path="res://Assets/Enemies/Skeleton/Skeleton_1.png" id="2_3cdiw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjie3"]
@@ -69,7 +69,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xflkw")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -95,7 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c7dep")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walk",
 "speed": 5.0
 }]
@@ -118,8 +118,7 @@ height = 58.0
 collision_layer = 2
 input_pickable = true
 safe_margin = 0.001
-script = ExtResource("1_xttje")
-speed = 40
+script = ExtResource("1_3cdiw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=863245252]
 sprite_frames = SubResource("SpriteFrames_ofjqa")

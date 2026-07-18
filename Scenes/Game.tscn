@@ -1,22 +1,8 @@
 [gd_scene format=4 uid="uid://pst02jfmy1rv"]
 
 [ext_resource type="Script" uid="uid://882ndpycs3q4" path="res://Scripts/Game.cs" id="1_8e0uq"]
-[ext_resource type="PackedScene" uid="uid://c5ubwoimj13ga" path="res://Scenes/Enemies/Skeleton/Skeleton_1.tscn" id="2_i0vto"]
-[ext_resource type="PackedScene" uid="uid://dbsy2kvdarqjy" path="res://Scenes/Enemies/Skeleton/Skeleton_2.tscn" id="3_3jf1l"]
-[ext_resource type="PackedScene" uid="uid://bsq40xec2pxcy" path="res://Scenes/Enemies/Skeleton/RadiatedSkeleton_1.tscn" id="4_356ba"]
-[ext_resource type="PackedScene" uid="uid://bg8nc3rnwqc5g" path="res://Scenes/Enemies/Zombie/zombie_1.tscn" id="5_i4lct"]
-[ext_resource type="PackedScene" uid="uid://b2lyaiwhvo7jy" path="res://Scenes/Enemies/Zombie/zombie_2.tscn" id="6_iyesh"]
-[ext_resource type="PackedScene" uid="uid://cslwkeyhkobw5" path="res://Scenes/Enemies/Zombie/zombie_3.tscn" id="7_i1pr2"]
-[ext_resource type="PackedScene" uid="uid://bcij3d5gyqdqd" path="res://Scenes/Enemies/Zombie/zombie_4.tscn" id="8_4f4ik"]
-[ext_resource type="PackedScene" uid="uid://xwbrevy25qp7" path="res://Scenes/Enemies/Zombie/Bigzombie_1.tscn" id="9_khs3t"]
-[ext_resource type="PackedScene" uid="uid://dnseyeu7wmpcr" path="res://Scenes/Enemies/Zombie/Bigzombie_2.tscn" id="10_0iyqm"]
-[ext_resource type="PackedScene" uid="uid://dw48ht817xr8k" path="res://Scenes/Enemies/Zombie/Bigzombie_3.tscn" id="11_jn8rg"]
-[ext_resource type="PackedScene" uid="uid://brpt23aiaomo0" path="res://Scenes/Survivors/Lvl1/Archer_1.tscn" id="12_t2joc"]
 [ext_resource type="Script" uid="uid://udcm8t8fmikc" path="res://Scripts/ResourcesHud.cs" id="12_umnjm"]
-[ext_resource type="PackedScene" uid="uid://d1wt00pn34aeb" path="res://Scenes/Survivors/Lvl1/Archer_2.tscn" id="13_audqb"]
-[ext_resource type="PackedScene" uid="uid://dscpo6ehwemgm" path="res://Scenes/Survivors/Lvl1/Archer_3.tscn" id="14_7w24h"]
 [ext_resource type="Texture2D" uid="uid://b42t4aublhd8w" path="res://Assets/Resources/Gold.png" id="14_18uti"]
-[ext_resource type="PackedScene" uid="uid://buanb2ae7fe6" path="res://Scenes/Survivors/Lvl1/Archer_4.tscn" id="15_6okg5"]
 [ext_resource type="Texture2D" uid="uid://mgxxjdipa7oi" path="res://Assets/Resources/Scrap.png" id="15_khy6b"]
 [ext_resource type="Texture2D" uid="uid://dhvwfl4xg68ry" path="res://Assets/Resources/food.png" id="16_pti6k"]
 [ext_resource type="Texture2D" uid="uid://dk6rrrkcydyw8" path="res://Assets/Tileset/Dungeon_Tiles.png" id="17_lmarx"]
@@ -40,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://bqh7lvywtojis" path="res://Assets/Stations/Cooking Station/Butchery/Butchery_03.png" id="33_mi7vx"]
 [ext_resource type="Texture2D" uid="uid://djf5trc32hpwt" path="res://Assets/NPC/Workshop/Upgrades_NPC_smash.png" id="34_t2joc"]
 [ext_resource type="Texture2D" uid="uid://b8vi2frvnt6lu" path="res://Assets/Stations/Cooking Station/Estructure.png" id="35_audqb"]
-[ext_resource type="Script" path="res://Scripts/BaseNpc.gd" id="35_pti6k"]
 [ext_resource type="Texture2D" uid="uid://cwxci1o8mf3ws" path="res://Assets/Stations/Cooking Station/Cooker/Cooker_04-Sheet.png" id="36_7w24h"]
 [ext_resource type="Texture2D" uid="uid://c2w780tl0qvvy" path="res://Assets/NPC/Cook_universal.png" id="37_18uti"]
 [ext_resource type="Texture2D" uid="uid://clr5bi1v66l1c" path="res://Assets/NPC/Scav_universal.png" id="38_khy6b"]
@@ -40684,7 +40669,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ym08v")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -61706,7 +61691,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mi7vx")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -61749,7 +61734,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_smnwb")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -61771,7 +61756,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_audqb")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -61779,8 +61764,6 @@ animations = [{
 [node name="Game" type="Node2D" unique_id=442346204]
 position = Vector2(11, 0)
 script = ExtResource("1_8e0uq")
-mobs = Array[PackedScene]([ExtResource("4_356ba"), ExtResource("2_i0vto"), ExtResource("3_3jf1l"), ExtResource("9_khs3t"), ExtResource("10_0iyqm"), ExtResource("11_jn8rg"), ExtResource("5_i4lct"), ExtResource("6_iyesh"), ExtResource("7_i1pr2"), ExtResource("8_4f4ik")])
-archer = Array[PackedScene]([ExtResource("12_t2joc"), ExtResource("13_audqb"), ExtResource("14_7w24h"), ExtResource("15_6okg5")])
 
 [node name="Resources" type="CanvasLayer" parent="." unique_id=1003675752]
 script = ExtResource("12_umnjm")
@@ -61998,7 +61981,6 @@ position = Vector2(23, 689)
 scale = Vector2(0.33333334, 0.33333334)
 sprite_frames = SubResource("SpriteFrames_8ekww")
 frame_progress = 0.061327334
-script = ExtResource("35_pti6k")
 
 [node name="Label" type="Label" parent="BaseUserInterface/Rooms/Workshop" unique_id=2131718674]
 z_index = 5
@@ -62013,7 +61995,6 @@ text = "Workshop"
 metadata/_edit_use_anchors_ = true
 
 [node name="Farm" type="Node2D" parent="BaseUserInterface/Rooms" unique_id=1365224460]
-visible = false
 
 [node name="Farm" type="TileMapLayer" parent="BaseUserInterface/Rooms/Farm" unique_id=468702103]
 z_index = 3
@@ -62033,7 +62014,6 @@ position = Vector2(321, 538)
 scale = Vector2(0.333, 0.333)
 sprite_frames = SubResource("SpriteFrames_t2joc")
 frame_progress = 0.3436112
-script = ExtResource("35_pti6k")
 
 [node name="Label" type="Label" parent="BaseUserInterface/Rooms/Farm" unique_id=1760279407]
 z_index = 5
@@ -62076,7 +62056,6 @@ position = Vector2(57.999996, 602)
 scale = Vector2(0.333, 0.333)
 sprite_frames = SubResource("SpriteFrames_7w24h")
 frame_progress = 0.35656717
-script = ExtResource("35_pti6k")
 
 [node name="Label3" type="Label" parent="BaseUserInterface/Rooms/StoreRoom" unique_id=475844142]
 z_index = 5
