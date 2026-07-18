@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dfiuc65ia3srd"]
 
-[ext_resource type="Script" uid="uid://6tn7uxq1uhh5" path="res://Scripts/upgrade_item.gd" id="1_gbm3y"]
+[ext_resource type="Script" uid="uid://08b2kdtuhdp3" path="res://Scripts/Upgarde/UpgradeItem.cs" id="1_gbm3y"]
 [ext_resource type="Texture2D" uid="uid://bw50ir56i8we5" path="res://Assets/UpgradeMenuUi/Plain Paper UI SpriteSheet.png" id="1_nv7xa"]
 [ext_resource type="FontFile" uid="uid://b5slelaak7bnu" path="res://Assets/Font/Kaph-Regular.ttf" id="3_gbm3y"]
 

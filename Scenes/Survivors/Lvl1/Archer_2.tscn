@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1wt00pn34aeb"]
 
-[ext_resource type="Script" uid="uid://bio8dwe2lowig" path="res://Scripts/archer.gd" id="1_phmq1"]
+[ext_resource type="Script" uid="uid://dd3n4fq6jqdie" path="res://Scripts/Archer.cs" id="1_phmq1"]
 [ext_resource type="Texture2D" uid="uid://ds0w5try1h8qp" path="res://Assets/NPC/Archers/lvl3/Archer_lv3_1_universal.png" id="2_phmq1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vk6sd"]

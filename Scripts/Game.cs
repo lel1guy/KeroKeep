@@ -9,6 +9,8 @@ namespace KeroKeep
     {
         private GameManager _gameManager;
 
+        [Signal] public delegate void UpgradeMenuOpenEventHandler();
+
         [Export] public Godot.Collections.Array<PackedScene> Mobs {get; set; } = new();
         [Export] public Godot.Collections.Array<PackedScene> ArcherScenes {get; set; } = new();
 

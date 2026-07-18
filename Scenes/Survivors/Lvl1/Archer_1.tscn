@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://brpt23aiaomo0"]
 
 [ext_resource type="Texture2D" uid="uid://bn74p8qos5aq7" path="res://Assets/NPC/Archers/lvl1/Archer_lv1_3_universal.png" id="1_3adfd"]
-[ext_resource type="Script" uid="uid://bio8dwe2lowig" path="res://Scripts/archer.gd" id="1_mn6t8"]
+[ext_resource type="Script" uid="uid://dd3n4fq6jqdie" path="res://Scripts/Archer.cs" id="1_mn6t8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryx0b"]
 atlas = ExtResource("1_3adfd")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d3jpgi12torvu"]
 
-[ext_resource type="Script" uid="uid://due05sw4mwss1" path="res://Scripts/upgrades.gd" id="1_6ahmb"]
-[ext_resource type="Script" uid="uid://bkgrud2ndnkj3" path="res://Scripts/resources.gd" id="2_eoefc"]
+[ext_resource type="Script" uid="uid://d0c45j47ot5th" path="res://Scripts/Upgarde/UpgradeManager.cs" id="1_6ahmb"]
+[ext_resource type="Script" uid="uid://udcm8t8fmikc" path="res://Scripts/ResourcesHud.cs" id="2_eoefc"]
 [ext_resource type="Texture2D" uid="uid://bw50ir56i8we5" path="res://Assets/UpgradeMenuUi/Plain Paper UI SpriteSheet.png" id="2_pjr1x"]
 [ext_resource type="Texture2D" uid="uid://b42t4aublhd8w" path="res://Assets/Resources/Gold.png" id="4_lh4wn"]
 [ext_resource type="Texture2D" uid="uid://mgxxjdipa7oi" path="res://Assets/Resources/Scrap.png" id="5_e8f14"]

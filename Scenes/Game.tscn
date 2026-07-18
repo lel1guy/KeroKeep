@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dnseyeu7wmpcr" path="res://Scenes/Enemies/Zombie/Bigzombie_2.tscn" id="10_0iyqm"]
 [ext_resource type="PackedScene" uid="uid://dw48ht817xr8k" path="res://Scenes/Enemies/Zombie/Bigzombie_3.tscn" id="11_jn8rg"]
 [ext_resource type="PackedScene" uid="uid://brpt23aiaomo0" path="res://Scenes/Survivors/Lvl1/Archer_1.tscn" id="12_t2joc"]
-[ext_resource type="Script" path="res://Scripts/resources.gd" id="12_umnjm"]
+[ext_resource type="Script" uid="uid://udcm8t8fmikc" path="res://Scripts/ResourcesHud.cs" id="12_umnjm"]
 [ext_resource type="PackedScene" uid="uid://d1wt00pn34aeb" path="res://Scenes/Survivors/Lvl1/Archer_2.tscn" id="13_audqb"]
 [ext_resource type="PackedScene" uid="uid://dscpo6ehwemgm" path="res://Scenes/Survivors/Lvl1/Archer_3.tscn" id="14_7w24h"]
 [ext_resource type="Texture2D" uid="uid://b42t4aublhd8w" path="res://Assets/Resources/Gold.png" id="14_18uti"]
