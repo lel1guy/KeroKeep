@@ -52,7 +52,7 @@ namespace KeroKeep
             _mobSpawnPoints    = GetNode<Node2D>("MobSpawnPoints");
             _archerSpawnPoints = GetNode<Node2D>("ArcherSpawnPoints");
 
-            _mobSpawnTimer = GetNode<Timer>("MobSpwanTimer");
+            _mobSpawnTimer = GetNode<Timer>("MobSpawnTimer");
 
             _scavengeButton.Pressed +=  _OnScavengeButtonPressed;
             _scavengeTimer.Timeout += _OnScavengeTimerTimeout;
@@ -106,6 +106,7 @@ namespace KeroKeep
 
         private void SpawnMob()
         {
+            if (Mobs.Count == 0) return;
             var randomScene = Mobs.PickRandom();
             var mob = randomScene.Instantiate<BaseMob>();
 
@@ -118,6 +119,7 @@ namespace KeroKeep
 
         private void SpawnArcher()
         {
+            if (ArcherScenes.Count == 0) return;
             var points = _archerSpawnPoints.GetChildren();
             if (_gameManager.ArcherCount > points.Count) return;
 
