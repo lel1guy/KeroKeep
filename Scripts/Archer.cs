@@ -46,7 +46,7 @@ namespace KeroKeep
                 if (i >= spawnNodes.Count) break;
 
                 var arrow = _arrowScene.Instantiate<Node2D>();
-                var spawnPoint = spawnNodes[i];
+                var spawnPoint = (Node2D)spawnNodes[i];
                 arrow.GlobalPosition = spawnPoint.GlobalPosition;
                 arrow.GlobalRotation = GlobalRotation;
                 GetTree().Root.AddChild(arrow);

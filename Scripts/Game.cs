@@ -111,7 +111,7 @@ namespace KeroKeep
             var mob = randomScene.Instantiate<BaseMob>();
 
             var spawnPoints = _mobSpawnPoints.GetChildren();
-            var randomSpawn = spawnPoints.PickRandom();
+            var randomSpawn = (Node2D)spawnPoints.PickRandom();
 
             mob.GlobalPosition = randomSpawn.GlobalPosition;
             AddChild(mob);
@@ -125,7 +125,7 @@ namespace KeroKeep
             var randomScene = ArcherScenes.PickRandom();
             var archer = randomScene.Instantiate<Node2D>();
 
-            var spawnPoint = points[_gameManager.ArcherCount - 1];
+            var spawnPoint = (Node2D)points[_gameManager.ArcherCount - 1];
             archer.GlobalPosition = spawnPoint.GlobalPosition;
             AddChild(archer);
         }

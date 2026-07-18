@@ -6,13 +6,13 @@ namespace KeroKeep
     
     public partial class Main : Node
     {
-        private Node2D _game;
-        private Control _upgradeMenu;
+        private Game _game;
+        private UpgradeMenu _upgradeMenu;
 
         public override void _Ready()
         {
-            _game = GetNode<Node2D>("Game");
-            _upgradeMenu = GetNode<Control>("UI_Layer/UpgradeMenu");
+            _game = GetNode<Game>("Game");
+            _upgradeMenu = GetNode<UpgradeMenu>("UI_Layer/UpgradeMenu");
 
             _game.UpgradeMenuOpen += OnOpenUpgradeMenu;
             _upgradeMenu.UpgradeMenuClose += OnCloseUpgradeMenu;
