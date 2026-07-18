@@ -32,6 +32,8 @@ namespace KeroKeep
 
         private Timer _mobSpawnTimer;
 
+        private Button _upgradeMenuButton;
+
         public override void _Ready()
         {
             _gameManager = GetNode<GameManager>("/root/GameManager");
@@ -62,10 +64,14 @@ namespace KeroKeep
 
             _mobSpawnTimer.Timeout += SpawnMob;
 
+            _upgradeMenuButton = GetNode<Button>("BaseUserInterface/RoomsButtons/UpgradeMenuButton");
+            _upgradeMenuButton.Pressed += OnUpgradeMenuButtonPressed;
+
         }
 
         public override void _Process(double delta)
         {
+            _storeroomNode.Visible = _gameManager.StoreroomUnlocked;
             _farmNode.Visible = _gameManager.FarmUnlocked;
         }
 
@@ -129,6 +135,11 @@ namespace KeroKeep
             var spawnPoint = (Node2D)points[_gameManager.ArcherCount - 1];
             archer.GlobalPosition = spawnPoint.GlobalPosition;
             AddChild(archer);
+        }
+
+        private void OnUpgradeMenuButtonPressed()
+        {
+            EmitSignal(SignalName.UpgradeMenuOpen);
         }
 
         
