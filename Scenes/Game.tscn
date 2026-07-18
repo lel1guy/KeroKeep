@@ -1,8 +1,15 @@
 [gd_scene format=4 uid="uid://pst02jfmy1rv"]
 
 [ext_resource type="Script" uid="uid://882ndpycs3q4" path="res://Scripts/Game.cs" id="1_8e0uq"]
+[ext_resource type="PackedScene" uid="uid://c5ubwoimj13ga" path="res://Scenes/Enemies/Skeleton/Skeleton_1.tscn" id="2_i0vto"]
+[ext_resource type="PackedScene" uid="uid://dbsy2kvdarqjy" path="res://Scenes/Enemies/Skeleton/Skeleton_2.tscn" id="3_3jf1l"]
+[ext_resource type="PackedScene" uid="uid://bsq40xec2pxcy" path="res://Scenes/Enemies/Skeleton/RadiatedSkeleton_1.tscn" id="4_356ba"]
+[ext_resource type="PackedScene" uid="uid://brpt23aiaomo0" path="res://Scenes/Survivors/Lvl1/Archer_1.tscn" id="12_t2joc"]
 [ext_resource type="Script" uid="uid://udcm8t8fmikc" path="res://Scripts/ResourcesHud.cs" id="12_umnjm"]
+[ext_resource type="PackedScene" uid="uid://d1wt00pn34aeb" path="res://Scenes/Survivors/Lvl1/Archer_2.tscn" id="13_audqb"]
+[ext_resource type="PackedScene" uid="uid://dscpo6ehwemgm" path="res://Scenes/Survivors/Lvl1/Archer_3.tscn" id="14_7w24h"]
 [ext_resource type="Texture2D" uid="uid://b42t4aublhd8w" path="res://Assets/Resources/Gold.png" id="14_18uti"]
+[ext_resource type="PackedScene" uid="uid://buanb2ae7fe6" path="res://Scenes/Survivors/Lvl1/Archer_4.tscn" id="15_6okg5"]
 [ext_resource type="Texture2D" uid="uid://mgxxjdipa7oi" path="res://Assets/Resources/Scrap.png" id="15_khy6b"]
 [ext_resource type="Texture2D" uid="uid://dhvwfl4xg68ry" path="res://Assets/Resources/food.png" id="16_pti6k"]
 [ext_resource type="Texture2D" uid="uid://dk6rrrkcydyw8" path="res://Assets/Tileset/Dungeon_Tiles.png" id="17_lmarx"]
@@ -61764,6 +61771,8 @@ animations = [{
 [node name="Game" type="Node2D" unique_id=442346204]
 position = Vector2(11, 0)
 script = ExtResource("1_8e0uq")
+Mobs = Array[PackedScene]([ExtResource("4_356ba"), ExtResource("2_i0vto"), ExtResource("3_3jf1l")])
+ArcherScenes = Array[PackedScene]([ExtResource("12_t2joc"), ExtResource("13_audqb"), ExtResource("14_7w24h"), ExtResource("15_6okg5")])
 
 [node name="Resources" type="CanvasLayer" parent="." unique_id=1003675752]
 script = ExtResource("12_umnjm")
@@ -61995,6 +62004,7 @@ text = "Workshop"
 metadata/_edit_use_anchors_ = true
 
 [node name="Farm" type="Node2D" parent="BaseUserInterface/Rooms" unique_id=1365224460]
+visible = false
 
 [node name="Farm" type="TileMapLayer" parent="BaseUserInterface/Rooms/Farm" unique_id=468702103]
 z_index = 3

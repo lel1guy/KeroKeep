@@ -24,8 +24,8 @@ namespace KeroKeep
         private AnimatedSprite2D _autoScrapLoad;
         private AnimatedSprite2D _autoFarmLoad;
 
-        private ColorRect _storeroomNode;
-        private ColorRect _farmNode;
+        private CanvasItem _storeroomNode;
+        private CanvasItem _farmNode;
 
         private Node2D _mobSpawnPoints;
         private Node2D _archerSpawnPoints;
@@ -46,13 +46,13 @@ namespace KeroKeep
             _autoFood      = GetNode<ColorRect>("BaseUserInterface/Rooms/Farm/AutoFood");
             _autoFarmLoad  = GetNode<AnimatedSprite2D>("BaseUserInterface/Rooms/Farm/AutoFood/Auto_Food_Load");
 
-            _storeroomNode = GetNode<ColorRect>("BaseUserInterface/Rooms/StoreRoom");
-            _farmNode      = GetNode<ColorRect>("BaseUserInterface/Rooms/Farm");
+            _storeroomNode = GetNode<CanvasItem>("BaseUserInterface/Rooms/StoreRoom");
+            _farmNode      = GetNode<CanvasItem>("BaseUserInterface/Rooms/Farm");
 
             _mobSpawnPoints    = GetNode<Node2D>("MobSpawnPoints");
             _archerSpawnPoints = GetNode<Node2D>("ArcherSpawnPoints");
 
-            _mobSpawnTimer = GetNode<Timer>("MobSpawnTimer");
+            _mobSpawnTimer = GetNode<Timer>("MobSpwanTimer");
 
             _scavengeButton.Pressed +=  _OnScavengeButtonPressed;
             _scavengeTimer.Timeout += _OnScavengeTimerTimeout;

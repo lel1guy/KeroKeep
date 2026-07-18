@@ -32,17 +32,17 @@ namespace KeroKeep
 
         public void OnGoldChanged(int amount)
         {
-            _goldLabel.Text = $"Gold: {amount}";
+            _goldLabel.Text = $": {amount}";
         }
 
         public void OnFoodChanged(int amount)
         {
-            _foodLabel.Text = $"Food: {amount}";
+            _foodLabel.Text = $": {amount}";
         }
 
         public void OnScrapChanged(int amount)
         {
-            _scrapLabel.Text = $"Scrap: {amount}";
+            _scrapLabel.Text = $": {amount}";
         }
 
     }
