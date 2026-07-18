@@ -176,10 +176,16 @@ layout_mode = 2
 UpgradeName = "Scavanger"
 Description = "Workes for Scrap"
 BaseGoldCost = 50
+BaseScrapCost = 10
 UpgradeIndex = 3
 
 [node name="Unlock_Farm" parent="HBoxContainer" unique_id=869019377 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
+UpgradeName = "Unlock Farm"
+Description = "Get that food Growing"
+BaseGoldCost = 150
+BaseScrapCost = 50
+UpgradeIndex = 4
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1391702883]
 layout_mode = 0
@@ -192,14 +198,35 @@ alignment = 1
 
 [node name="Farmers" parent="HBoxContainer2" unique_id=867564510 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
+UpgradeName = "Farmers"
+Description = "Get Them working on thta food"
+BaseGoldCost = 200
+BaseFoodCost = 20
+UpgradeIndex = 5
 
 [node name="Archers" parent="HBoxContainer2" unique_id=1003815459 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
+UpgradeName = "Archers"
+Description = "Get them defending that wall"
+BaseGoldCost = 200
+BaseFoodCost = 50
+BaseScrapCost = 100
+UpgradeIndex = 6
 
 [node name="Archery Gear" parent="HBoxContainer2" unique_id=537833518 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
+UpgradeName = "Archery Gear"
+Description = "Better Gear Duh!!"
+BaseGoldCost = 300
+BaseScrapCost = 175
+UpgradeIndex = 7
 
 [node name="Quiver Capacity" parent="HBoxContainer2" unique_id=1741351364 instance=ExtResource("8_lh4wn")]
 layout_mode = 2
+UpgradeName = "More Arrows"
+Description = "Fire more arrows in 1 go"
+BaseGoldCost = 500
+BaseFoodCost = 150
+BaseScrapCost = 250
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
