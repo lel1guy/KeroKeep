@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Linq;
 
 
 namespace KeroKeep
@@ -59,11 +58,14 @@ namespace KeroKeep
             _farmButton.Pressed += _OnFarmButtonPressed;
             _farmTimer.Timeout += _OnFarmTimerTimeout;
 
+            _mobSpawnTimer.Timeout += SpawnMob;
+
         }
 
         public override void _Process(double delta)
         {
-            
+            _storeroomNode.Visible = _gameManager.StoreroomUnlocked;
+            _farmNode.Visible = _gameManager.FarmUnlocked;
         }
 
         private void _OnScavengeButtonPressed()
@@ -99,6 +101,31 @@ namespace KeroKeep
             _gameManager.AddFood(_gameManager.FoodPerFarm);
             _autoFood.Visible = false;
             _autoFarmLoad.Play("default");
+        }
+
+        private void SpawnMob()
+        {
+            var randomScene = Mobs.PickRandom();
+            var mob = randomScene.Instantiate<BaseMob>();
+
+            var spawnPoints = _mobSpawnPoints.GetChildren();
+            var randomSpawn = spawnPoints.PickRandom();
+
+            mob.GlobalPosition = randomSpawn.GlobalPosition;
+            AddChild(mob);
+        }
+
+        private void SpawnArcher()
+        {
+            var points = _archerSpawnPoints.GetChildren();
+            if (_gameManager.ArcherCount > points.Count) return;
+
+            var randomScene = ArcherScenes.PickRandom();
+            var archer = randomScene.Instantiate<Node2D>();
+
+            var spawnPoint = points[_gameManager.ArcherCount - 1];
+            archer.GlobalPosition = spawnPoint.GlobalPosition;
+            AddChild(archer);
         }
 
         
