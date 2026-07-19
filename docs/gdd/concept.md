@@ -1,8 +1,20 @@
 # Concept
 
+> "You command Kero Keep — the last fortress standing between the kingdom of Batrachia and an endless siege. Build. Fight. Grow. Everything you earn, you earned."
+
 ## What Is This?
 
-> You command Kero Keep — the last fortress standing between the kingdom of Batrachia and an endless siege. Build. Fight. Grow. Everything you earn, you earned.
+Kero Keep is an incremental siege defense game where armored frog warriors hold the wall against an endless horde. There is no victory screen — only the next wave, the next upgrade, the next wall that needs to hold.
+
+The game blends idle mechanics with tower defense and RPG elements. You click to kill monsters, earn resources, recruit frog mages to fire from the wall, upgrade your keep, and survive. When the wall falls, you prestige — coming back stronger with permanent bonuses.
+
+Built in Godot 4 (Mono) with C#. 24 scripts across 6 sprints. Fully playable.
+
+## Why This Game
+
+Most incremental games feel like spreadsheets — numbers go up, but the world doesn't react. Kero Keep makes progress *visible*. Mages you see on the wall. Waves you feel bearing down. Every upgrade traces back to something you did, not a timer.
+
+The frog identity gives the game visual distinction in a crowded genre — armored warriors of a dying kingdom, not generic humans. The stakes are real: your survivors can starve, your walls can fall, and the siege never ends.
 
 ## The Feeling
 
@@ -22,11 +34,11 @@ Progress traces back to player action — mobs killed, mages commanded, resource
 There is no pause. No victory screen. The siege is eternal. Once all mages are unlocked, the simulation runs even while you're offline — random hordes and bosses appear, the world keeps burning. Offline persistence is a reward, not a given.
 
 **P3 — FAIR FOREVER**
-No pay-to-win. No premium currency. Money never touches game balance. If monetization ever happens, it's optional. The game respects your time and your wallet equally. Non-negotiable.
+No pay-to-win. No premium currency. Money never touches game balance. If monetization ever happens, it's optional — ads for a temporary assist. The game respects your time and your wallet equally. Non-negotiable.
 
-## Design Philosophy — B/C Hybrid
+## B/C Hybrid Design
 
-Kero Keep uses a hybrid approach between two design philosophies:
+Kero Keep uses a hybrid design approach:
 
 | Aspect | Approach | What It Means |
 |--------|----------|---------------|
@@ -35,12 +47,12 @@ Kero Keep uses a hybrid approach between two design philosophies:
 | **Engineering** | Option C | Tech tree unlocked through skill levels. Recipes persist through prestige. |
 | **Siege waves** | Option C | Percentage-based difficulty. Unpredictable = tense. No fixed wave schedules. |
 
-## Why This Game Exists
+## Genre & Audience
 
-Incremental games are satisfying — numbers go up, dopamine hits. But most of them feel like spreadsheets; you don't *see* anything happening.
+- **Primary:** Incremental/idle game players who want more than a spreadsheet
+- **Secondary:** Tower defense fans who enjoy persistent, endless modes
+- **Tone:** Grounded fantasy with charm — *Redwall* grit with an amphibian skin
 
-Kero Keep was built so the world actually reacts. Mages you see fire. Waves you feel bearing down on the wall. Every upgrade traces back to something *you did*, not something a timer decided. Survival tension with RPG depth, wrapped in idle DNA — and instead of generic humans, the defenders are the armored frog warriors of a dying kingdom.
+## Comparable Titles
 
----
-
-*From the Kero Keep Game Design Document · Updated 2026-07-12*
+The game draws mechanical inspiration from Cookie Clicker (exponential scaling), Realm Grinder (prestige depth), and Leaf Blower Revolution (visible automation). The frog identity and siege loop distinguish it from anything else in the genre.

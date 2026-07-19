@@ -1,46 +1,51 @@
 # Art Direction
 
-> ⚠️ **Art is not finalized.** This page captures the intended visual direction. Actual in-game assets are placeholder.
+> This page will evolve as the game gets dedicated art. For now, it captures the intended visual identity.
 
-## Visual Style
+## Visual Identity
 
-**Bad North aesthetic** — low-poly 3D with flat shading and isometric camera:
+**Grounded fantasy, not cartoon.** The frog civilization of Batrachia is treated with the dignity of any medieval fantasy setting — armored warriors, weathered stone, swamp magic. No googly eyes, no tongue gags.
 
-- Flat colors, no gradients
-- Strong silhouettes — characters readable at tiny sizes
-- Limited palette — atmosphere comes from lighting, not art detail
-- Fixed isometric camera — the player sees the keep from one angle
-- Clean, legible, tactical
+**Swamp palette:** deep greens, murky browns, amber torchlight, pale blue magic. The world feels ancient, wet, and lived-in.
 
-## Why This Style
-
-- **Readability:** 4 lanes of enemies, 4 mages, resource counters — the player needs to parse the battlefield instantly
-- **Scope:** Low-poly flat-shaded 3D is achievable for a solo developer
-- **Distinction:** Stands out from pixel-art indie games and realistic tower defense titles
-- **Charm:** The simple style lets the frog identity shine without visual clutter
-
-## Color Palette
-
-*To be defined once concept art exists.* Direction: earthy greens and browns for the keep (natural, grounded), swamp-green for magic bolts, muted reds and purples for enemies (threat), gold and warm tones for progression moments.
+**Contrast is king:** dark silhouettes against bright magic bolts. Glowing eyes in the fog. Firelight on wet stone. Visual clarity matters more than detail count.
 
 ## Inspirations
 
-| Game | What I'm Taking |
-|------|-----------------|
-| **Bad North** | Flat-shaded low-poly, isometric camera, strong silhouettes, clean UI |
-| **Kingdom: Two Crowns** | Base-building visible in the world, day/night cycle tension |
-| **Realm Grinder** | Numbers-up incremental satisfaction, UI that rewards checking back |
+| Reference | What We Steal |
+|-----------|---------------|
+| **Redwall (Brian Jacques)** | Medieval grit with animal characters. The abbey under siege, the communal feel. |
+| **Darkest Dungeon** | Silhouetted character designs, limited palette, heavy atmosphere with minimal animation. |
+| **Kingdom: New Lands** | Pixel-art depth in a 2D plane. Parallax layers, day/night cycle, minimalist UI. |
+| **Leaf Blower Revolution** | How visual clutter becomes satisfying. The keep should look *busier* as you progress. |
 
 ## Key Visual Moments
 
 | Moment | Visual |
 |--------|--------|
-| **Recruitment** | Banner unfurls on the wall, mage takes position with staff glowing |
-| **Boss arrival** | Screen darkens, boss nameplate appears |
-| **Wall upgrade** | Stone texture replaces wood, scars accumulate |
-| **Prestige** | Screen fades, keep resets with markings from past cycles |
-| **Welcome back** | Summary screen overlays the idle keep |
+| **First mage recruited** | Banner unfurls on the wall. "Kael takes position on the wall." |
+| **Four mages on the wall** | Wall texture upgrades to reinforced stone. It looks like a *fortress*. |
+| **Farm unlocked** | Crops appear in the muck, grow over time stages. Life persists. |
+| **Boss spawn** | Screen edges darken. Boss silhouette materializes from the fog. Music shifts. |
+| **Wall-fall (prestige)** | Slow-motion collapse. Dust. Then: dawn. A new wall rises — scarred, stronger. |
+| **Prestige scars** | After every prestige cycle, the wall gains permanent markings. Visual proof of history. |
+
+## Character Design
+
+**Mages:** Batrachian spellcasters with staves or glowing hands. Magic bolts are swamp-green orbs of energy. Tier progression: Acolyte → Channeler → Oracle (post-MVP).
+
+**Monsters:** Silhouetted enemies that read clearly against the swamp background. Skeletons are fast and fragile. Zombies are slow and bulky. Orcs are armored and menacing. Demons are large, fire-wreathed threats.
+
+**Survivors:** Named frog NPCs with distinct silhouettes. Farmers carry tools. Scavengers wear patchwork armor. Each has a unique color accent for instant recognition at small scale.
+
+## UI Philosophy
+
+- Minimalist HUD — resources only (Gold, Scrap, Food)
+- Damage numbers that float, scale, and fade
+- Upgrade cards in a workshop grid layout
+- Milestone popups are celebratory but brief — never block gameplay
+- Welcome back screen is the only full-screen overlay
 
 ## Current State
 
-🔜 **Placeholder assets only during development.** Concept art and final sprites will be commissioned or created once core systems are functional.
+The prototype uses Godot's built-in primitives and placeholder sprites. Art production begins when core systems are stable and the visual direction brief is complete.
