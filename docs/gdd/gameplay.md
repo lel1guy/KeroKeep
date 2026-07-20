@@ -2,19 +2,35 @@
 
 ## Core Loop
 
-Kero Keep operates on three nested timescales.
+Kero Keep operates on three nested timescales:
 
 ### Moment-to-Moment (~10 seconds)
 
-Click on monsters to deal damage. HP decreases, damage numbers pop, death animations play at 0 HP. Gold drops — occasionally rare Essence from special enemies. Every click matters.
+| Element | Description |
+|---------|-------------|
+| **Player input** | Click on monster → deal damage |
+| **System response** | HP decreases, damage number pops, death animation at 0 HP |
+| **Reward** | Gold, occasionally Essence (rare drops) |
+| **Feel** | Snappy, responsive, impact. Every click matters. |
 
 ### Session (~10-20 minutes)
 
-Spend resources to unlock new mages and defenses. Level up skills, upgrade survivors, progress the engineering tree. Over time, monsters grow stronger, new types appear, and bosses can spawn. Resources are finite — every choice delays another.
+| Element | Description |
+|---------|-------------|
+| **Unlocking** | Spend resources to recruit mages / build defenses |
+| **Upgrading** | Level up skills, upgrade survivors, progress engineering tree |
+| **Monster scaling** | Over time, monsters grow stronger. New types appear. Bosses can spawn. |
+| **Tension** | Resources are finite. Every choice delays another. |
 
 ### Meta (hours / days)
 
-Offline simulation runs while you're away. Random hordes and bosses appear unpredictably. Return to check: has the wall held? Are new upgrades available?
+| Element | Description |
+|---------|-------------|
+| **Offline simulation** | Available from the start at 25% rate. Upgrades to 50-75% when all mages acquired. World runs while you're away. |
+| **Random events** | Hordes and bosses can appear unpredictably. |
+| **Progression check** | Has the wall held? Are new upgrades available? |
+
+### Loop Diagram
 
 ```
 [Click to kill] ──→ [Earn resources] ──→ [Unlock/Upgrade/Skill]
@@ -26,63 +42,90 @@ Offline simulation runs while you're away. Random hordes and bosses appear unpre
 [Quests] ──→ [Bosses] ──→ [Prestige] ──→ [Stronger restart]
 ```
 
-## Progression Visibility
-
-Progress is *felt*, not just calculated.
-
-**Milestone Popups** fire on key moments — combat milestones (100 kills, first boss slain), economy unlocks (storeroom built), mage recruitment (named ceremony with one-line intro), and wave survival (every 5-10 waves). Never more than one popup per 30 seconds.
-
-**Visual Base Evolution** — the keep changes physically. Wall banners appear with the first mage. Stone textures upgrade at four mages. Buildings fill with sprites as they're built. After prestige, wall scars tell the story of past cycles.
-
-## Resources
-
-| Resource | Earned How | Spent On |
-|----------|-----------|----------|
-| **Gold** | Kills, waves, base income | Unlocks, general upgrades |
-| **Scrap** | Manual scavenge + auto-scrap (upgrade) | Mage unlocks, damage upgrades |
-| **Food** | Manual farm + auto-food (upgrade) | Upkeep for mages, survivors, workers |
-| **Essence** | Rare drops, boss kills, quest rewards | Engineering tree, advanced buildings |
-
-The player learns to produce before they spend. Gold comes first (clicking kills skeletons). Then the storeroom unlocks manual scavenging. Then the farm unlocks manual food production. Only after understanding the economy does the first mage appear — costing Scrap and ongoing Food upkeep.
-
-### Famine Mode
-
-If food hits zero, all production drops to 25% efficiency. Mages fire slower, farmers produce less, scavengers find less. Recovery is always possible through farming — famine is a setback, not a game over.
-
 ## Systems Overview
 
-### Mages
+### Mage System
 
-Up to 4 mages defend the wall. Each costs resources to unlock and food to maintain. Mage unlocks are gated by achievements — the 4th requires defeating a boss or surviving 15 waves. A recruitment ceremony names each mage with a one-line introduction, turning automation into a milestone.
+The keep's ranged defenders. One type with tier progression. Max 4 mages, each firing up to 3 magic bolts. Each mage has an unlock cost and ongoing food upkeep.
 
-### Monsters
+Recruitment is a ceremony — each mage gets a name from a pool of Batrachian names and a short intro line. The moment you unlock your fourth mage should feel earned.
 
-Four monster types across four stages, each with mechanical differences beyond bigger numbers. Skeleton (basic), Zombie (tanky), Orc (armored — reduces click damage, magic bolts pierce), Demon (teleports, fire AoE, unique patterns).
+### Monster System
 
-### Bosses
+Four enemy types across four stages, each with different HP, speed, and mechanical behaviors. Not just bigger numbers — each stage forces tactical adaptation.
 
-Two types: random spawns during waves (tougher stats, rare loot) and quest bosses (named, multi-phase, gated to progression tiers). Bosses at waves 10, 20, and 30 provide early-game checkpoint challenges.
+Wave layout: 4 lanes running top-to-bottom. At the bottom: the wall and mage positions. Below the wall: storeroom, farm, dormitory, and upgrade buildings.
 
 ### Economy
 
-Manual and automated resource collection. An energy pool (max 10, regenerates over time) replaces cooldowns — burst several actions then let it recharge while mages fire. Auto-production is a separate upgrade from unlocking, preserving the manual-to-automation arc.
+Three primary resources visible in the HUD at all times:
+
+| Resource | Source | Spent On |
+|----------|--------|----------|
+| **Gold** | Combat kills | Unlocks, general upgrades, prestige |
+| **Scrap** | Manual scavenging + auto-scrap | Mage recruitment, combat upgrades, wall repairs |
+| **Food** | Manual farming + auto-food | Upkeep for mages, survivors, workers |
+
+Essence is a rare fourth resource (boss kills, quest rewards) that appears in its own UI context — the engineering menu and crafting system.
+
+Manual actions (scavenge, farm) use an Energy pool instead of cooldowns. Burst 5 actions, let it recharge. Upgrades increase max energy and regen rate.
+
+Combat income scales exponentially — ×1.5 per level for click damage, ×1.4 for magic bolt damage, ×1.3 for gold multiplier. Numbers multiply, not add.
+
+### Upgrade System
+
+Nine flat upgrades currently implemented, covering click damage, magic bolt damage, bolt capacity, gold multiplier, scavenging rate, farming rate, and mage count. Exponential cost growth.
+
+Post-MVP, these transition to a 5-skill system (Combat, Scavenging, Farming, Engineering, Leadership) where skills level up through use rather than purchase.
+
+### Progression Visibility
+
+Progress must be *felt*, not just calculated. Two systems ensure the player sees growth:
+
+**Milestone Popups** fire on key thresholds — combat milestones, economy unlocks, mage recruitment, wave survival. Brief, celebratory, never spammy.
+
+**Visual Base Evolution** changes the keep as you progress. The wall gets banners when your first mage joins. Stone texture upgrades when you have four. Crops appear when the farm unlocks. Scars mark the wall after prestige — proof you've been here before.
+
+### Post-4-Mages Loop
+
+Once all four mages are acquired, the game shifts from "unlock" to "optimize and push":
+
+- **Economy Focus:** sustain all four mages' food upkeep. UI highlights production rates.
+- **Wave Pushing:** visible counter with personal record. "How far can I go?"
+- **Boss Hunting:** every 10 waves, a mini-boss appears. Reward checkpoints to prepare for.
+
+### Welcome Back Screen
+
+When returning after more than 5 minutes away, a summary screen shows time away, resources earned, waves survived, and mage status. The emotional payoff of idle games — connects "I was away" to "my keep endured."
+
+### Daily Login Bonus
+
+Free, equal for all players. Seven-day streak with small daily rewards. Day 7 gives a prestige bonus. Miss a day, streak resets. No premium tier. No pay-to-win.
+
+### Quests
+
+Three active quest slots. Four types: milestone, survivor, boss, prestige. Quests guide but don't gate — the siege loop works without them.
+
+### Achievements
+
+Permanent, one-time accomplishments. Three tiers (~38 total): Bronze, Silver, Gold. Persist through prestige. Cosmetic rewards — titles and visual flourishes.
+
+### Boss System
+
+Random bosses (percentage chance per wave) keep the siege tense. Quest bosses (summoned via quest completion) give structure and clear progression gates.
+
+### Engineering
+
+A tech tree unlocked through skill levels. Four tiers: reinforced walls and traps (T1), essence refinery and ballista (T2), auto-repair and signal fire (T3), foundry and thunder dome (T4). Engineering recipes persist through prestige — the primary long-term progression anchor.
 
 ### Prestige — The Chronicle
 
-Reset the world, keep permanent bonuses. Dual trigger: defeat the final quest boss (voluntary) or the wall falls (forced, reduced bonus). Three resources contribute to Chronicle Points, with milestone bonuses for waves survived, bosses killed, and flawless defense. A 5-upgrade shop offers permanent improvements across cycles.
+The endgame loop. Reset the world, keep permanent bonuses, start stronger.
 
-### Engineering (Post-MVP)
+**Trigger:** defeat the final quest boss (voluntary) or the wall falls (forced). Dual path — player choice, never forced.
 
-A tech tree unlocked through skill levels. T1: reinforced walls, basic traps. T2: Essence refinery, ballista tower. T3: auto-repair walls, signal fire. T4: foundry (permanent damage bonus through prestige), thunder dome (farmable boss arena). Engineering recipes persist through prestige — once learned, never forgotten.
+**What sticks:** skill level bonuses, engineering recipes, achievement titles/cosmetics, prestige currency.
 
-### Skills (Post-MVP)
+**What resets:** all resources, survivors, mages, upgrades, monster stages.
 
-Five skills replace nine flat upgrades: Combat, Scavenging, Farming, Engineering, Leadership. Skills level up through use — deeper, more earned. Skill levels gate new mechanics (Engineering 3 unlocks Essence refinery, Leadership 4 unlocks 5th mage).
-
-### Survivors (Post-MVP)
-
-Six named NPCs (3 farmers, 3 scavengers) with stats, personality, and attachment. Recruited with resources, gain XP from working, level up to improve stats. Small enough to remember names — losing one to a siege hurts.
-
----
-
-*From the Kero Keep Game Design Document · Updated 2026-07-12*
+**Currency:** Chronicle Points (CP) based on resources held + milestone bonuses. Two-tier post-MVP: CP (grind currency) + Valor Marks (merit currency, earned by excellence).
