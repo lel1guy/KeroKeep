@@ -32,11 +32,11 @@ public partial class GameManager : Node
 
     //Upgrades
     public int ClickDamage { get; set; } = 1;
-    public float ArrowDamage { get; set; } = 0.25f;
-    public int ArrowCount { get; set; } = 1;
+    public float BoltDamage { get; set; } = 0.25f;
+    public int BoltCount { get; set; } = 1;
     public float GoldDropMultiplier { get; set; } = 1.0f;
-    public int ArcherCount { get; set; } = 0;
-    public int MaxArcherCount { get; set; } = 4;
+    public int MageCount { get; set; } = 0;
+    public int MaxMageCount { get; set; } = 4;
     public int UnlockedStage { get; set; } = 0;
     public int UpgradeLevel { get; set; } = 1;
 
@@ -187,24 +187,24 @@ public partial class GameManager : Node
                 ? data["clickDamage"].AsInt32()
                 : 1;
             
-            ArrowDamage = data.ContainsKey("arrowDamage")
-                ? data["arrowDamage"].AsSingle()
+            BoltDamage = data.ContainsKey("BoltDamage")
+                ? data["BoltDamage"].AsSingle()
                 : 0.25f;
 
-            ArrowCount = data.ContainsKey("arrowCount")
-                ? data["arrowCount"].AsInt32()
+            BoltCount = data.ContainsKey("BoltCount")
+                ? data["BoltCount"].AsInt32()
                 : 1;
             
             GoldDropMultiplier = data.ContainsKey("goldDropMultiplier")
                 ? data["goldDropMultiplier"].AsSingle()
                 : 1.0f;
             
-            ArcherCount = data.ContainsKey("archerCount")
-                ? data["archerCount"].AsInt32()
+            MageCount = data.ContainsKey("MageCount")
+                ? data["MageCount"].AsInt32()
                 : 0;
 
-            MaxArcherCount = data.ContainsKey("maxArcherCount")
-                ? data["maxArcherCount"].AsInt32()
+            MaxMageCount = data.ContainsKey("maxMageCount")
+                ? data["maxMageCount"].AsInt32()
                 : 4;
 
             UnlockedStage = data.ContainsKey("unlockedStage")

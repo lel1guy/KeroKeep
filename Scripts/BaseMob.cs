@@ -25,7 +25,7 @@ public partial class BaseMob : CharacterBody2D
 
         public override void _PhysicsProcess(double delta)
         {
-            Velocity = new Vector2(0, Speed);
+            Velocity = new Vector2(-Speed, 0);
             MoveAndSlide();
         }
 

@@ -12,7 +12,7 @@ namespace KeroKeep
         [Signal] public delegate void UpgradeMenuOpenEventHandler();
 
         [Export] public Godot.Collections.Array<PackedScene> Mobs {get; set; } = new();
-        [Export] public Godot.Collections.Array<PackedScene> ArcherScenes {get; set; } = new();
+        [Export] public Godot.Collections.Array<PackedScene> MageScenes {get; set; } = new();
 
         private Button _scavengeButton;
         private Timer _scavengeTimer;
@@ -28,7 +28,7 @@ namespace KeroKeep
         private CanvasItem _farmNode;
 
         private Node2D _mobSpawnPoints;
-        private Node2D _archerSpawnPoints;
+        private Node2D _MageSpawnPoints;
 
         private Timer _mobSpawnTimer;
 
@@ -52,7 +52,7 @@ namespace KeroKeep
             _farmNode      = GetNode<CanvasItem>("BaseUserInterface/Rooms/Farm");
 
             _mobSpawnPoints    = GetNode<Node2D>("MobSpawnPoints");
-            _archerSpawnPoints = GetNode<Node2D>("ArcherSpawnPoints");
+            _MageSpawnPoints = GetNode<Node2D>("MageSpawnPoints");
 
             _mobSpawnTimer = GetNode<Timer>("MobSpawnTimer");
 
@@ -123,18 +123,18 @@ namespace KeroKeep
             AddChild(mob);
         }
 
-        private void SpawnArcher()
+        private void SpawnMage()
         {
-            if (ArcherScenes.Count == 0) return;
-            var points = _archerSpawnPoints.GetChildren();
-            if (_gameManager.ArcherCount > points.Count) return;
+            if (MageScenes.Count == 0) return;
+            var points = _MageSpawnPoints.GetChildren();
+            if (_gameManager.MageCount > points.Count) return;
 
-            var randomScene = ArcherScenes.PickRandom();
-            var archer = randomScene.Instantiate<Node2D>();
+            var randomScene = MageScenes.PickRandom();
+            var Mage = randomScene.Instantiate<Node2D>();
 
-            var spawnPoint = (Node2D)points[_gameManager.ArcherCount - 1];
-            archer.GlobalPosition = spawnPoint.GlobalPosition;
-            AddChild(archer);
+            var spawnPoint = (Node2D)points[_gameManager.MageCount - 1];
+            Mage.GlobalPosition = spawnPoint.GlobalPosition;
+            AddChild(Mage);
         }
 
         private void OnUpgradeMenuButtonPressed()

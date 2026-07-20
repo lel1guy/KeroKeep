@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://c5ubwoimj13ga"]
+
+[ext_resource type="Script" uid="uid://d3qfdqoroner2" path="res://Scripts/Skeleton.cs" id="1_3cdiw"]
+[ext_resource type="Texture2D" uid="uid://bd6tmwucmau6j" path="res://Assets/Enemies/Skeleton/Skeleton/Skeleton with shadows/Skeleton_Death.png" id="2_8xdws"]
+[ext_resource type="Texture2D" uid="uid://dihf1bfhijl7" path="res://Assets/Enemies/Skeleton/Skeleton/Skeleton with shadows/Skeleton_Walk.png" id="3_54u0t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8052u"]
+atlas = ExtResource("2_8xdws")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfnhs"]
+atlas = ExtResource("2_8xdws")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiebx"]
+atlas = ExtResource("2_8xdws")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfinf"]
+atlas = ExtResource("2_8xdws")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhuqw"]
+atlas = ExtResource("3_54u0t")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1ijp"]
+atlas = ExtResource("3_54u0t")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efq54"]
+atlas = ExtResource("3_54u0t")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4op8g"]
+atlas = ExtResource("3_54u0t")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8wv8"]
+atlas = ExtResource("3_54u0t")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_typnm"]
+atlas = ExtResource("3_54u0t")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkxaf"]
+atlas = ExtResource("3_54u0t")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cfkh"]
+atlas = ExtResource("3_54u0t")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ofjqa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8052u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfnhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiebx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfinf")
+}],
+"loop": 0,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhuqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1ijp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efq54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4op8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8wv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_typnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkxaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cfkh")
+}],
+"loop": 1,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_fqawy"]
+script/source = "extends AnimatedSprite2D
+
+func walk():
+	play(\"Walk\")
+	
+func die():
+	play(\"Death\")
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x0ip"]
+radius = 18.0
+height = 58.0
+
+[node name="Mob" type="CharacterBody2D" unique_id=1551133509]
+collision_layer = 2
+input_pickable = true
+safe_margin = 0.001
+script = ExtResource("1_3cdiw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=863245252]
+sprite_frames = SubResource("SpriteFrames_ofjqa")
+animation = &"Death"
+speed_scale = 2.5
+flip_h = true
+script = SubResource("GDScript_fqawy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1487630720]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_7x0ip")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -30,9 +30,9 @@ namespace KeroKeep
                 new UpgradeData { ID = "scavengers",     UpgradeName = "Scavengers",       BaseGoldCost = 75,  BaseScrapCost = 10,  Effect = new ScavengerEffect() },
                 new UpgradeData { ID = "farm",           UpgradeName = "Unlock Farm",      BaseGoldCost = 150, BaseScrapCost = 50,  Effect = new FarmUnlockedEffect() },
                 new UpgradeData { ID = "farmers",        UpgradeName = "Farmers",          BaseGoldCost = 200, BaseFoodCost = 20,   Effect = new FarmersEffect() },
-                new UpgradeData { ID = "archers",        UpgradeName = "Archer Militia",   BaseGoldCost = 200, BaseScrapCost = 100, BaseFoodCost = 50, Effect = new MageEffect() },
-                new UpgradeData { ID = "gear",           UpgradeName = "Archery Gear",     BaseGoldCost = 300, BaseScrapCost = 175, Effect = new GearEffect() },
-                new UpgradeData { ID = "arrow_count",    UpgradeName = "Quiver Capacity",  BaseGoldCost = 500, BaseScrapCost = 250, BaseFoodCost = 150, Effect = new ArrowCountEffect() },
+                new UpgradeData { ID = "mages",        UpgradeName = "Mage Militia",   BaseGoldCost = 200, BaseScrapCost = 100, BaseFoodCost = 50, Effect = new MageEffect() },
+                new UpgradeData { ID = "gear",           UpgradeName = "Mage Gear",     BaseGoldCost = 300, BaseScrapCost = 175, Effect = new GearEffect() },
+                new UpgradeData { ID = "bolt_count",    UpgradeName = "Botl Amount",  BaseGoldCost = 500, BaseScrapCost = 250, BaseFoodCost = 150, Effect = new BoltCountEffect() },
                           
             };
         }

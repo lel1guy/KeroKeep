@@ -7,7 +7,7 @@ namespace KeroKeep
     {
         public void ApplyEffect(GameManager gm, int level)
         {
-            gm.ArrowDamage += level == 0 ? 1f : 0.5f;
+            gm.BoltDamage += level == 0 ? 1f : 0.5f;
         }
     }
 }

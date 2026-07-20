@@ -33,11 +33,11 @@ namespace KeroKeep
             data["storeroomUnlocked"] = _gameManager.StoreroomUnlocked;
             data["farmUnlocked"] = _gameManager.FarmUnlocked;
             data["clickDamage"] = _gameManager.ClickDamage;
-            data["arrowDamage"] = _gameManager.ArrowDamage;
-            data["arrowCount"] = _gameManager.ArrowCount;
+            data["BoltDamage"] = _gameManager.BoltDamage;
+            data["BoltCount"] = _gameManager.BoltCount;
             data["goldDropMultiplier"] = _gameManager.GoldDropMultiplier;
-            data["archerCount"] = _gameManager.ArcherCount;
-            data["maxArcherCount"] = _gameManager.MaxArcherCount;
+            data["MageCount"] = _gameManager.MageCount;
+            data["maxMageCount"] = _gameManager.MaxMageCount;
             data["unlockedStage"] = _gameManager.UnlockedStage;
             data["upgradeLevel"] = _gameManager.UpgradeLevel;
             data["farmTime"] = _gameManager.FarmTime;

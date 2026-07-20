@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://dbsy2kvdarqjy"]
+
+[ext_resource type="Script" uid="uid://d3qfdqoroner2" path="res://Scripts/Skeleton.cs" id="1_ps46v"]
+[ext_resource type="Texture2D" uid="uid://d2q5r4cchb8bw" path="res://Assets/Enemies/Skeleton/Greatsword Skeleton/Greatsword Skeleton with shadows/Greatsword Skeleton_Death.png" id="2_tjwkr"]
+[ext_resource type="Texture2D" uid="uid://cex4ycpfmoi56" path="res://Assets/Enemies/Skeleton/Greatsword Skeleton/Greatsword Skeleton with shadows/Greatsword Skeleton_Walk.png" id="3_3lvyj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fqhr"]
+atlas = ExtResource("2_tjwkr")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7fk0"]
+atlas = ExtResource("2_tjwkr")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj6ic"]
+atlas = ExtResource("2_tjwkr")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v21jd"]
+atlas = ExtResource("2_tjwkr")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1txo"]
+atlas = ExtResource("3_3lvyj")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj1wg"]
+atlas = ExtResource("3_3lvyj")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6hwi"]
+atlas = ExtResource("3_3lvyj")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4t1q"]
+atlas = ExtResource("3_3lvyj")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y4w2"]
+atlas = ExtResource("3_3lvyj")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn6na"]
+atlas = ExtResource("3_3lvyj")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wly8p"]
+atlas = ExtResource("3_3lvyj")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weltf"]
+atlas = ExtResource("3_3lvyj")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37xkn"]
+atlas = ExtResource("3_3lvyj")
+region = Rect2(800, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ofjqa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fqhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7fk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj6ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v21jd")
+}],
+"loop": 0,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1txo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj1wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6hwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4t1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y4w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn6na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wly8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weltf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37xkn")
+}],
+"loop": 1,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_fqawy"]
+script/source = "extends AnimatedSprite2D
+
+func walk():
+	play(\"Walk\")
+	
+func die():
+	play(\"Death\")
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x0ip"]
+radius = 18.0
+height = 58.0
+
+[node name="Mob" type="CharacterBody2D" unique_id=1551133509]
+collision_layer = 2
+input_pickable = true
+script = ExtResource("1_ps46v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=863245252]
+sprite_frames = SubResource("SpriteFrames_ofjqa")
+animation = &"Death"
+speed_scale = 2.5
+flip_h = true
+script = SubResource("GDScript_fqawy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1487630720]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_7x0ip")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -7,14 +7,14 @@ namespace KeroKeep
     {
         public void ApplyEffect(GameManager gm, int level)
         {
-            if (gm.ArcherCount < gm.MaxArcherCount)
+            if (gm.MageCount < gm.MaxMageCount)
             {
-                gm.ArcherCount += 1;
+                gm.MageCount += 1;
             }
 
             else
             {
-                gm.ArcherCount = gm.MaxArcherCount;
+                gm.MageCount = gm.MaxMageCount;
             }
 
         }
