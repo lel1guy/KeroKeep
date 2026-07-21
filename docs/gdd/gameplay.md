@@ -52,7 +52,14 @@ Recruitment is a ceremony — each mage gets a name from a pool of Batrachian na
 
 ### Monster System
 
-Four enemy types across four stages, each with different HP, speed, and mechanical behaviors. Not just bigger numbers — each stage forces tactical adaptation.
+Three enemy types implemented (Skeleton, Zombie, Orc) with a fourth (Demon) planned for post-MVP. Each has different HP, speed, and mechanical behaviors — not just bigger numbers.
+
+| Monster | Stage | HP | Speed | Role |
+|---------|-------|----|-------|------|
+| **Skeleton** | 0 | Low | Fast | Basic — no special mechanics |
+| **Zombie** | 1 | Medium | Slow | Tanky — 7 variants, takes more clicks |
+| **Orc** | 2 | High | Medium | Armored — base class ready, full armor mechanic planned for Phase B |
+| **Demon** | 3 | — | — | Planned — teleports, fire AoE |
 
 Wave layout: 4 lanes running top-to-bottom. At the bottom: the wall and mage positions. Below the wall: storeroom, farm, dormitory, and upgrade buildings.
 
@@ -74,7 +81,7 @@ Combat income scales exponentially — ×1.5 per level for click damage, ×1.4 f
 
 ### Upgrade System
 
-Nine flat upgrades currently implemented, covering click damage, magic bolt damage, bolt capacity, gold multiplier, scavenging rate, farming rate, and mage count. Exponential cost growth.
+Ten flat upgrades currently implemented, covering click damage, magic bolt damage, bolt capacity, gold multiplier, scavenging rate, farming rate, and mage count. Exponential cost growth via the `IUpgradeEffect` interface — adding a new effect is a 6-line class with no existing code to touch.
 
 Post-MVP, these transition to a 5-skill system (Combat, Scavenging, Farming, Engineering, Leadership) where skills level up through use rather than purchase.
 
@@ -97,35 +104,3 @@ Once all four mages are acquired, the game shifts from "unlock" to "optimize and
 ### Welcome Back Screen
 
 When returning after more than 5 minutes away, a summary screen shows time away, resources earned, waves survived, and mage status. The emotional payoff of idle games — connects "I was away" to "my keep endured."
-
-### Daily Login Bonus
-
-Free, equal for all players. Seven-day streak with small daily rewards. Day 7 gives a prestige bonus. Miss a day, streak resets. No premium tier. No pay-to-win.
-
-### Quests
-
-Three active quest slots. Four types: milestone, survivor, boss, prestige. Quests guide but don't gate — the siege loop works without them.
-
-### Achievements
-
-Permanent, one-time accomplishments. Three tiers (~38 total): Bronze, Silver, Gold. Persist through prestige. Cosmetic rewards — titles and visual flourishes.
-
-### Boss System
-
-Random bosses (percentage chance per wave) keep the siege tense. Quest bosses (summoned via quest completion) give structure and clear progression gates.
-
-### Engineering
-
-A tech tree unlocked through skill levels. Four tiers: reinforced walls and traps (T1), essence refinery and ballista (T2), auto-repair and signal fire (T3), foundry and thunder dome (T4). Engineering recipes persist through prestige — the primary long-term progression anchor.
-
-### Prestige — The Chronicle
-
-The endgame loop. Reset the world, keep permanent bonuses, start stronger.
-
-**Trigger:** defeat the final quest boss (voluntary) or the wall falls (forced). Dual path — player choice, never forced.
-
-**What sticks:** skill level bonuses, engineering recipes, achievement titles/cosmetics, prestige currency.
-
-**What resets:** all resources, survivors, mages, upgrades, monster stages.
-
-**Currency:** Chronicle Points (CP) based on resources held + milestone bonuses. Two-tier post-MVP: CP (grind currency) + Valor Marks (merit currency, earned by excellence).

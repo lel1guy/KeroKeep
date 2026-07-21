@@ -1,6 +1,6 @@
 # Roadmap
 
-> Last updated: 2026-07-19
+> Last updated: 2026-07-21
 
 ## Phase A — Port GDScript Prototype to C# ✅ COMPLETE
 
@@ -9,11 +9,12 @@
 | 1 | GameManager + SaveLoad (autoloads, signals, resource methods) | ✅ |
 | 2 | Combat (BaseMob, Arrow, Skeleton) | ✅ |
 | 3 | Code review + fixes (dead code, cast bug, typos) | ✅ |
-| 4 | Upgrades (IUpgradeEffect, 9 effect classes, UpgradeManager) | ✅ |
+| 4 | Upgrades (IUpgradeEffect, 10 effect classes, UpgradeManager) | ✅ |
 | 5 | Game.cs (economy buttons, room visibility, Zombie, spawners) | ✅ |
 | 6 | UI + Integration (ResourcesHud, Archer, Main, UpgradeMenu, UpgradeItem) | ✅ |
+| + | Orc enemy + BoltCountEffect | ✅ |
 
-**Result:** 24 C# scripts. Zero GDScript remaining. Fully playable — click, kill, earn, upgrade loop complete.
+**Result:** 26 C# scripts. Zero GDScript remaining. Fully playable — click, kill, earn, upgrade loop complete.
 
 ## Phase B — New MVP Features ⬜ In Progress
 
@@ -51,7 +52,7 @@
 | C2 | Engineering T3-T4 | 4d |
 | C3 | Mage tier system (Acolyte → Channeler → Oracle) | 3d |
 | C4 | Music & ambient soundtrack | 5d |
-| C5 | Orc + Demon monsters | 3d |
+| C5 | Demon monsters | 3d |
 | C6 | Animated UI feedback | 4d |
 
 ## Anti-Cut List

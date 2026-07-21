@@ -12,14 +12,14 @@
 
 An incremental siege defense game where armored frog warriors hold the wall against an endless horde. Click to kill, earn resources, build defenses, survive waves. No victory screen — the siege never ends.
 
-Built the prototype in GDScript. Ported it to C# — 24 scripts across 6 sprints, zero GDScript remaining. Fully playable. Phase B (new MVP features) up next.
+Built the prototype in GDScript. Ported it to C# — 26 scripts across 6 sprints, zero GDScript remaining. Fully playable. Phase B (new MVP features) up next.
 
 > You command Kero Keep — the last fortress standing between the kingdom of Batrachia and an endless siege. Build. Fight. Grow. Everything you earn, you earned.
 
 - **Genre:** Incremental idle + tower defense + RPG elements
 - **Setting:** Batrachia — a medieval kingdom of humanoid frogs (not comedic, think *Redwall* with frog armor)
 - **Platform:** Windows, Linux
-- **Engine:** Godot 4 (Mono) · 24 C# scripts
+- **Engine:** Godot 4 (Mono) · 26 C# scripts
 - **Design:** Earned Growth · Persistent Siege · Fair Forever
 - **License:** [PolyForm Shield 1.0.0](LICENSE.md) — free for learning, paid for playing
 
@@ -45,11 +45,11 @@ No pay-to-win. No premium currency. The game respects your time and your wallet 
 
 - ✅ Click combat — damage numbers, gold drops, death animations
 - ✅ Resource economy — manual scavenge/farm + auto-production timers
-- ✅ 9 upgrades — click damage, magic bolt damage, bolt count, gold multiplier, and more
-- ✅ 3 monster types — Skeletons, Zombies (7 variants), and spawner infrastructure
+- ✅ 10 upgrades — click damage, magic bolt damage, bolt count, gold multiplier, and more
+- ✅ 3 monster types — Skeletons, Zombies (7 variants), Orcs (armored tanks)
 - ✅ Save/Load — JSON autoload, auto-save every 60s, load on startup
 - ✅ UI — resource HUD, upgrade workshop cards, scene switching
-- ✅ Full C# port — 24 scripts, zero GDScript
+- ✅ Full C# port — 26 scripts, zero GDScript
 
 ## What's Next (Phase B)
 

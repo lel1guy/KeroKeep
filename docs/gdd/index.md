@@ -1,8 +1,8 @@
 # Kero Keep — Game Design Document
 
-> **Status:** 🟢 Phase A Complete — 24 C# scripts across 6 sprints. Playable. Phase B (new MVP features) next.
+> **Status:** 🟢 Phase A Complete — 26 C# scripts across 6 sprints. Playable. Phase B (new MVP features) next.
 > **Engine:** Godot 4 (Mono) · **Language:** C#
-> **Last updated:** 2026-07-19
+> **Last updated:** 2026-07-21
 
 This GDD is split into focused pages. Start here or jump to what interests you.
 
