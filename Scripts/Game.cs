@@ -28,7 +28,7 @@ namespace KeroKeep
         private CanvasItem _farmNode;
 
         private Node2D _mobSpawnPoints;
-        private Node2D _MageSpawnPoints;
+        private Node2D _mageSpawnPoints;
 
         private Timer _mobSpawnTimer;
 
@@ -43,11 +43,11 @@ namespace KeroKeep
             _farmButton     = GetNode<Button>("BaseUserInterface/FarmButton");
             _farmTimer      = GetNode<Timer>("BaseUserInterface/FarmButton/FarmTimer");
             
-            // _storeroomNode = GetNode<Sprite2D>("BaseUserInterface/ScavangeButton/StoreRoom");
-            // _farmNode      = GetNode<Sprite2D>("BaseUserInterface/FarmButton/Farm");
+            _storeroomNode = GetNode<Sprite2D>("BaseUserInterface/ScavangeButton/StoreRoom");
+            _farmNode      = GetNode<Sprite2D>("BaseUserInterface/FarmButton/Farm");
 
             _mobSpawnPoints    = GetNode<Node2D>("MobSpawnPoints");
-            _MageSpawnPoints = GetNode<Node2D>("MageSpawnPoints");
+            _mageSpawnPoints = GetNode<Node2D>("MageSpawnPoints");
 
             _mobSpawnTimer = GetNode<Timer>("MobSpawnTimer");
 
@@ -61,6 +61,8 @@ namespace KeroKeep
 
             _upgradeMenuButton = GetNode<Button>("BaseUserInterface/UpgradeMenuButton");
             _upgradeMenuButton.Pressed += OnUpgradeMenuButtonPressed;
+
+            _gameManager.MageCountChanged += OnMageCountChanged;
 
         }
 
@@ -119,7 +121,7 @@ namespace KeroKeep
         private void SpawnMage()
         {
             if (MageScenes.Count == 0) return;
-            var points = _MageSpawnPoints.GetChildren();
+            var points = _mageSpawnPoints.GetChildren();
             if (_gameManager.MageCount > points.Count) return;
 
             var randomScene = MageScenes.PickRandom();
@@ -133,6 +135,11 @@ namespace KeroKeep
         private void OnUpgradeMenuButtonPressed()
         {
             EmitSignal(SignalName.UpgradeMenuOpen);
+        }
+
+        private void OnMageCountChanged(int count)
+        {
+            SpawnMage();
         }
 
         

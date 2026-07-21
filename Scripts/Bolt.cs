@@ -3,14 +3,14 @@ using System;
 
 namespace KeroKeep
 {
-    public partial class Arrow : Area2D
+    public partial class Bolt : Area2D
     {
         [Export] public float Speed {get; set; } = 200f;
-        [Export] public float Damage {get; set; } = 0.25f;
+        [Export] public float Damage {get; set; } = 1.25f;
 
         public override void _Process(double delta)
         {
-            Position -= new Vector2(Speed * (float)delta, 0);
+            Position += new Vector2(Speed * (float)delta, 0);
         }
 
         public override void _Ready()

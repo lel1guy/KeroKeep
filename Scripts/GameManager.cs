@@ -18,6 +18,9 @@ public partial class GameManager : Node
 
     [Signal]
     public delegate void ScrapChangedEventHandler(int amount);
+
+    [Signal]
+    public delegate void MageCountChangedEventHandler(int count);
     
     // Resources
     public int Gold { get; set; } = 0;
@@ -160,6 +163,20 @@ public partial class GameManager : Node
             _saveLoad.SaveGame();
         }
     }
+
+    public void AddMage()
+        {
+            if (MageCount < MaxMageCount)
+            {
+                MageCount += 1;
+                EmitSignal(SignalName.MageCountChanged, MageCount);
+            }
+
+            else
+            {
+                MageCount = MaxMageCount;
+            }
+        }
 
     public void LoadState(Godot.Collections.Dictionary data)
         {

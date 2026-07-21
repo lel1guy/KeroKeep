@@ -1,27 +1,30 @@
 [gd_scene format=3 uid="uid://bvqiritffs0vo"]
 
-[ext_resource type="Texture2D" uid="uid://thmjhk6jnwk" path="res://Assets/Projectile/Arrow.png" id="1_5mg4u"]
-[ext_resource type="Script" uid="uid://cojputbjtyfxv" path="res://Scripts/Arrow.cs" id="1_7v023"]
+[ext_resource type="Texture2D" uid="uid://be2qua5vnxrt7" path="res://Assets/NPC/Wizard/Magic(projectile)/Wizard_Attack02_Effect.png" id="1_5mg4u"]
+[ext_resource type="Script" uid="uid://cojputbjtyfxv" path="res://Scripts/Bolt.cs" id="1_7v023"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7v023"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_acvyw"]
 atlas = ExtResource("1_5mg4u")
-region = Rect2(15.826332, 13.011523, 5.3699455, 21.144165)
+region = Rect2(341, 44, 21, 15)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qttmj"]
 radius = 5.0
 height = 25.0
 
-[node name="Arrow" type="Area2D" unique_id=117585643]
+[node name="Bolt" type="Area2D" unique_id=117585643]
+rotation = 1.567653
 collision_layer = 4
 collision_mask = 3
 input_pickable = false
 script = ExtResource("1_7v023")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2002589661]
-texture = SubResource("AtlasTexture_7v023")
-flip_h = true
+rotation = -1.5648935
+scale = Vector2(0.14231676, 0.14231676)
+texture = SubResource("AtlasTexture_acvyw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1131232668]
+scale = Vector2(0.21980388, 0.21980388)
 shape = SubResource("CapsuleShape2D_qttmj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

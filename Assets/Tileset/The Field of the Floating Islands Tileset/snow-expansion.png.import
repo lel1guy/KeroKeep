@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc2qpcp62wlxu"
-path="res://.godot/imported/Tileset.png-a6016d9091d7a0aead82734fd0c733eb.ctex"
+uid="uid://bmvsxn4k7qaor"
+path="res://.godot/imported/snow-expansion.png-2e2dd7b252b83c596198094d97eb74ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tileset/Tileset.png"
-dest_files=["res://.godot/imported/Tileset.png-a6016d9091d7a0aead82734fd0c733eb.ctex"]
+source_file="res://Assets/Tileset/The Field of the Floating Islands Tileset/snow-expansion.png"
+dest_files=["res://.godot/imported/snow-expansion.png-2e2dd7b252b83c596198094d97eb74ee.ctex"]
 
 [params]
 
