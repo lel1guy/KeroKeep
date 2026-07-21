@@ -38,18 +38,13 @@ namespace KeroKeep
         {
             _gameManager = GetNode<GameManager>("/root/GameManager");
 
-            _scavengeButton = GetNode<Button>("BaseUserInterface/RoomsButtons/ScavangeButton");
-            _scavengeTimer  = GetNode<Timer>("BaseUserInterface/RoomsButtons/ScavangeButton/ScavangeTimer");
-            _farmButton     = GetNode<Button>("BaseUserInterface/RoomsButtons/FarmButton");
-            _farmTimer      = GetNode<Timer>("BaseUserInterface/RoomsButtons/FarmButton/FarmTimer");
+            _scavengeButton = GetNode<Button>("BaseUserInterface/ScavangeButton");
+            _scavengeTimer  = GetNode<Timer>("BaseUserInterface/ScavangeButton/ScavangeTimer");
+            _farmButton     = GetNode<Button>("BaseUserInterface/FarmButton");
+            _farmTimer      = GetNode<Timer>("BaseUserInterface/FarmButton/FarmTimer");
             
-            _autoScrap     = GetNode<ColorRect>("BaseUserInterface/Rooms/StoreRoom/AutoScrap");
-            _autoScrapLoad = GetNode<AnimatedSprite2D>("BaseUserInterface/Rooms/StoreRoom/AutoScrap/Auto_Scrap_Load");
-            _autoFood      = GetNode<ColorRect>("BaseUserInterface/Rooms/Farm/AutoFood");
-            _autoFarmLoad  = GetNode<AnimatedSprite2D>("BaseUserInterface/Rooms/Farm/AutoFood/Auto_Food_Load");
-
-            _storeroomNode = GetNode<CanvasItem>("BaseUserInterface/Rooms/StoreRoom");
-            _farmNode      = GetNode<CanvasItem>("BaseUserInterface/Rooms/Farm");
+            // _storeroomNode = GetNode<Sprite2D>("BaseUserInterface/ScavangeButton/StoreRoom");
+            // _farmNode      = GetNode<Sprite2D>("BaseUserInterface/FarmButton/Farm");
 
             _mobSpawnPoints    = GetNode<Node2D>("MobSpawnPoints");
             _MageSpawnPoints = GetNode<Node2D>("MageSpawnPoints");
@@ -64,7 +59,7 @@ namespace KeroKeep
 
             _mobSpawnTimer.Timeout += SpawnMob;
 
-            _upgradeMenuButton = GetNode<Button>("BaseUserInterface/RoomsButtons/UpgradeMenuButton");
+            _upgradeMenuButton = GetNode<Button>("BaseUserInterface/UpgradeMenuButton");
             _upgradeMenuButton.Pressed += OnUpgradeMenuButtonPressed;
 
         }
@@ -81,15 +76,14 @@ namespace KeroKeep
 
             _scavengeButton.Disabled = true;
             _scavengeTimer.Start(_gameManager.ScavengeTime);
-            _autoScrap.Visible = true;
+            
         }
 
         private void _OnScavengeTimerTimeout()
         {
             _scavengeButton.Disabled = false;
             _gameManager.AddScrap(_gameManager.ScrapPerScavenge);
-            _autoScrap.Visible = false;
-            _autoScrapLoad.Play("default");
+
         }
 
         private void _OnFarmButtonPressed()
@@ -98,7 +92,7 @@ namespace KeroKeep
 
             _farmButton.Disabled = true;
             _farmTimer.Start(_gameManager.FarmTime);
-            _autoFood.Visible = true;
+            
             
         }
 
@@ -106,8 +100,7 @@ namespace KeroKeep
         {
             _farmButton.Disabled = false;
             _gameManager.AddFood(_gameManager.FoodPerFarm);
-            _autoFood.Visible = false;
-            _autoFarmLoad.Play("default");
+
         }
 
         private void SpawnMob()

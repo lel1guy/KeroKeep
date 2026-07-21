@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brpt23aiaomo0"]
 
-[ext_resource type="Script" path="res://Scripts/Archer.cs" id="1_0y75f"]
+[ext_resource type="Script" uid="uid://dd3n4fq6jqdie" path="res://Scripts/Mage.cs" id="1_0y75f"]
 [ext_resource type="Texture2D" uid="uid://dsykjsnv4j785" path="res://Assets/NPC/Wizard/Wizard with shadows/Wizard_Idle.png" id="2_biiu2"]
 [ext_resource type="Texture2D" uid="uid://bt1uw40d8jpa" path="res://Assets/NPC/Wizard/Wizard with shadows/Wizard_Attack02.png" id="3_jal8a"]
 
