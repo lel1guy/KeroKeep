@@ -25,7 +25,6 @@ public partial class GameManager : Node
     // Resources
     public int Gold { get; set; } = 0;
     public int Food { get; set; } = 0;
-
     public int Scrap { get; set; } = 0;
 
 

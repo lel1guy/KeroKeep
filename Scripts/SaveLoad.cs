@@ -6,10 +6,12 @@ namespace KeroKeep
     public partial class SaveLoad : Node
     {
          private GameManager _gameManager;
+         private UpgradeManager _upgradeManager;
 
          public override void _Ready()
          {
             _gameManager = GetNode<GameManager>("/root/GameManager");
+            _upgradeManager = GetNode<UpgradeManager>("/root/UpgradeManager");
 
             LoadGame();
 
@@ -52,6 +54,15 @@ namespace KeroKeep
             data["autoScavengeAmount"] = _gameManager.AutoScavengeAmount;
             data["autoResourceTimer"] = _gameManager.AutoResourceTimer;
             data["lastSaveTime"] = _gameManager.LastSaveTime;
+            
+            var upgradeLevels = new Godot.Collections.Array<int>();
+            var upgrades = _upgradeManager.GetUpgrades();
+            for (int i = 0; i < upgrades.Length; i++)
+            {
+                upgradeLevels.Add(upgrades[i].CurrentLevel);
+            }
+
+            data["upgradeLevels"] = upgradeLevels;
 
             string jsonData = Json.Stringify(data);
             
@@ -75,6 +86,7 @@ namespace KeroKeep
            var data = result.AsGodotDictionary();
 
            _gameManager.LoadState(data);
+           _upgradeManager.LoadState(data);
 
         }
 

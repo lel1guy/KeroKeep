@@ -38,6 +38,8 @@ namespace KeroKeep
             _gameManager.FoodChanged += OnResourceChanged;
             _gameManager.ScrapChanged += OnResourceChanged;
             _upgradeManager.UpgradePurchased += OnUpgradePurchased;
+
+            _currentLevel = _upgradeManager.GetUpgrades()[UpgradeIndex].CurrentLevel;
             
             UpdateUi();
         }

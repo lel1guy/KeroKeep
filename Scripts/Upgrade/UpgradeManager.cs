@@ -20,6 +20,23 @@ namespace KeroKeep
 
         }
 
+        public UpgradeData[] GetUpgrades()
+        {
+            return _upgrades;
+        }
+
+        public void LoadState(Godot.Collections.Dictionary data)
+        {
+            if(!data.ContainsKey("upgradeLevels"))
+            return;
+
+            var levels = data["upgradeLevels"].AsGodotArray();
+            for (int i = 0; i < levels.Count && i < _upgrades.Length; i++)
+            {
+                _upgrades[i].CurrentLevel = levels[i].AsInt32();
+            }
+        }
+
         private void BuildUpgrades()
         {
             _upgrades = new UpgradeData[]

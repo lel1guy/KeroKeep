@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.Serialization.Formatters;
 
 
 namespace KeroKeep
@@ -63,6 +64,7 @@ namespace KeroKeep
             _upgradeMenuButton.Pressed += OnUpgradeMenuButtonPressed;
 
             _gameManager.MageCountChanged += OnMageCountChanged;
+            SpawnExistingMages();
 
         }
 
@@ -140,6 +142,25 @@ namespace KeroKeep
         private void OnMageCountChanged(int count)
         {
             SpawnMage();
+        }
+
+        private void SpawnExistingMages()
+        {
+            if (MageScenes.Count == 0)
+            {
+                GD.PrintErr("SpawnExistingMages: MagesScenes are not set!!");
+                return;
+            }
+
+            var points = _mageSpawnPoints.GetChildren();
+
+            for (int i = 0; i < _gameManager.MageCount && i < points.Count; i++)
+            {
+                var randomScene = MageScenes.PickRandom();
+                var mage = randomScene.Instantiate<Node2D>();
+                mage.GlobalPosition = ((Node2D)points[i]).GlobalPosition;
+                AddChild(mage);
+            }
         }
 
         
