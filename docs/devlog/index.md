@@ -4,6 +4,7 @@ Chronological development journal. One entry per milestone.
 
 | # | Date | Title |
 |---|------|-------|
+| [007](007-save-load-bug-fixes.md) | 2026-07-22 | The Bugs That Waited Until Reload |
 | [006](006-orc-and-bolt-count-effect.md) | 2026-07-20 | Orc Enemy & BoltCountEffect |
 | [005](005-phase-a-complete.md) | 2026-07-15 | Phase A Complete |
 | [004](004-sprints-three-four-five.md) | 2026-07-12 | Interfaces, Upgrades, and Sprint Momentum |

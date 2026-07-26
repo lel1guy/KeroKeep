@@ -2,7 +2,7 @@
 
 > **Status:** 🟢 Phase A Complete — 26 C# scripts across 6 sprints. Playable. Phase B (new MVP features) next.
 > **Engine:** Godot 4 (Mono) · **Language:** C#
-> **Last updated:** 2026-07-21
+> **Last updated:** 2026-07-27
 
 This GDD is split into focused pages. Start here or jump to what interests you.
 
